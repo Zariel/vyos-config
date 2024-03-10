@@ -86,21 +86,21 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-4 mac-address '48:21:0b:56:ac:6c'
 
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj-ipmi ip-address '10.1.1.30'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj-ipmi-address 'ac:1f:6b:e5:bb:5e'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj-ipmi mac-address 'ac:1f:6b:e5:bb:5e'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj ip-address '10.1.1.31'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj mac-address 'ac:1f:6b:e5:be:42' # bond
 
 # vms
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping nas ip-address '10.1.1.40'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping nas-address '2e:d2:2d:d2:34:cd'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping nas mac-address '2e:d2:2d:d2:34:cd'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping postgres ip-address '10.1.1.41'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping postgres-address '52:f0:87:82:1f:2c'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping postgres mac-address '52:f0:87:82:1f:2c'
 
 
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pikvm ip-address '10.1.1.50'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pikvm mac-address 'e4:5f:01:f4:9d:97'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm ip-address '10.1.1.51'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm-address '38:3b:26:7f:32:12'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm mac-address '38:3b:26:7f:32:12'
 
 # Trusted VLAN
 set service dhcp-server shared-network-name TRUSTED authoritative
