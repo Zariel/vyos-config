@@ -1,10 +1,10 @@
 #!/bin/vbash
 
-# set interfaces ethernet eth0 description 'LAN0'
+set interfaces ethernet eth0 description 'LAN0'
 set interfaces ethernet eth0 hw-id '08:c0:eb:0f:e4:30'
 delete interfaces ethernet eth0 address
 
-# set interfaces ethernet eth1 description 'LAN1'
+set interfaces ethernet eth1 description 'LAN1'
 set interfaces ethernet eth1 hw-id '08:c0:eb:0f:e4:31'
 delete interfaces ethernet eth1 address
 
@@ -25,10 +25,6 @@ set interfaces bonding bond0 vif 30 description 'GUEST'
 set interfaces bonding bond0 vif 40 address '10.1.3.1/24'
 set interfaces bonding bond0 vif 40 description 'IOT'
 
-# legacy network
-set interfaces bonding bond0 vif 42 address '192.168.42.1/24'
-set interfaces bonding bond0 vif 42 description 'k8s'
-
 set interfaces ethernet eth2 hw-id 'a0:36:9f:a9:0d:3a'
 set interfaces ethernet eth2 description 'WAN'
 set interfaces ethernet eth2 address 'dhcp'
@@ -37,3 +33,5 @@ set interfaces ethernet eth2 address 'dhcp'
 
 set interfaces ethernet eth3 hw-id 'a0:36:9f:a9:0d:3b'
 set interfaces ethernet eth4 hw-id '50:9a:4c:4b:f6:0c'
+set interfaces ethernet eth4 description 'MGMT'
+set interfaces ethernet eth4 address 'dhcp'

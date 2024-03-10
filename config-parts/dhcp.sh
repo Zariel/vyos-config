@@ -133,9 +133,9 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 
 # roon
 # todo: move roon to IOT vlan and ensure it all works, need to forward ports and enable UDP Broadcast-Relay
-set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rock ip-address '10.1.2.51'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rock ip-address '10.1.2.60'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rock mac-address '7e:7d:c6:c7:26:ac'
-set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping ropiee ip-address '10.1.2.52'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping ropiee ip-address '10.1.2.61'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping ropiee mac-address 'dc:a6:32:e9:d2:4b'
-set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bluesound-node2i ip-address '10.1.2.53'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bluesound-node2i ip-address '10.1.2.63'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bluesound-node2i mac-address '90:56:82:41:62:8e'
