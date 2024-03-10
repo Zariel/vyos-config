@@ -1,0 +1,31 @@
+; SOA Records
+$TTL 1h
+$ORIGIN cbannister.casa.
+@ IN SOA gateway.cbannister.casa. gateway.cbannister.casa. (
+  1708606198        ; serial number; date +%s
+  2h               ; refresh period
+  1h               ; retry period
+  14d              ; expire time
+  1h               ; minimum ttl
+)
+
+; NS Records
+@                        IN  NS gateway.cbannister.casa
+
+; LAN
+gateway                  IN  A  10.1.0.1
+
+ropiee                   IN  A  192.168.1.214
+anthem                   IN  A  192.168.1.63
+
+; servers
+k8s-0                    IN  A  10.1.1.10
+k8s-1                    IN  A  10.1.1.11
+k8s-2                    IN  A  10.1.1.12
+k8s-3                    IN  A  10.1.1.13
+k8s-4                    IN  A  10.1.1.14
+ipmi.pve                 IN  A  10.1.1.30
+pve                      IN  A  10.1.1.31
+nas                      IN  A  10.1.1.40
+postgres                 IN  A  10.1.1.41
+pikvm                    IN  A  10.1.1.50
