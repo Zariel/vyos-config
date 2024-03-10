@@ -17,15 +17,30 @@ delete system host-name
 set system host-name 'gateway'
 set system domain-name 'cbannister.casa'
 
+set system static-host-mapping host-name gateway inet '10.1.0.1'
+
+set system name-server '1.1.1.1'
+
+set system ipv6 disable-forwarding
+
 set system time-zone 'Europe/London'
 
-set interfaces ethernet eth2 description 'WAN'
-set interfaces ethernet eth2 hw-id 'a0:36:9f:a9:0d:3a'
-set interfaces ethernet eth2 address dhcp
-
-set interfaces ethernet eth0 description 'LAN'
+set interfaces ethernet eth0 description 'LAN0'
 set interfaces ethernet eth0 hw-id '08:c0:eb:0f:e4:30'
 set interfaces ethernet eth0 address '10.1.0.1/24'
+
+set interfaces ethernet eth1 description 'LAN1'
+set interfaces ethernet eth1 hw-id '08:c0:eb:0f:e4:31'
+
+set interfaces ethernet eth2 hw-id 'a0:36:9f:a9:0d:3a'
+set interfaces ethernet eth2 description 'WAN'
+set interfaces ethernet eth2 address 'dhcp'
+
+set interfaces ethernet eth3 hw-id 'a0:36:9f:a9:0d:3b'
+
+set interfaces ethernet eth4 hw-id '50:9a:4c:4b:f6:0c'
+set interfaces ethernet eth4 description 'MGMT'
+set interfaces ethernet eth4 address 'dhcp'
 
 set service dhcp-server shared-network-name LAN authoritative
 set service dhcp-server shared-network-name LAN ping-check
@@ -37,6 +52,6 @@ set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 range 0 stop 
 
 # ALL -> WAN masquerade
 set nat source rule 100 description 'LAN -> WAN'
-set nat source rule 100 outbound-interface 'eth0'
+set nat source rule 100 outbound-interface name 'eth2'
 set nat source rule 100 destination address '0.0.0.0/0'
 set nat source rule 100 translation address 'masquerade'
