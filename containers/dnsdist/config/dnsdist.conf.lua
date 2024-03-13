@@ -1,5 +1,7 @@
 -- udp/tcp dns listening
 setLocal("0.0.0.0:5353", {})
+-- disable security status polling via DNS
+setSecurityPollSuffix("")
 
 -- enable prometheus
 webserver("0.0.0.0:8083")
@@ -13,22 +15,32 @@ setAPIWritable(false)
 newServer({
   address = "10.5.0.3",
   pool = "bind",
-  checkName = "gatewy.cbannister.casa",
-  maxCheckFailures = 3,
-  rise = 3,
-  healthCheckMode = "auto",
-  checkInterval = 1,
+  healthCheckMode="lazy",
+  checkInterval=1,
+  lazyHealthCheckFailedInterval=30,
+  rise=2,
+  maxCheckFailures=3,
+  lazyHealthCheckThreshold=30,
+  lazyHealthCheckSampleSize=100,
+  lazyHealthCheckMinSampleCount=10,
+  lazyHealthCheckMode='TimeoutOnly',
+  useClientSubnet = true
 })
 
 -- K8s Bind
 newServer({
-  address = "10.5.0.3",
-  pool = "192.168.42.55",
-  checkName = "ns.cbannister.xyz",
-  maxCheckFailures = 3,
-  rise = 3,
-  healthCheckMode = "auto",
-  checkInterval = 1,
+  address = "192.168.42.55",
+  pool = "k8s",
+  healthCheckMode="lazy",
+  checkInterval=1,
+  lazyHealthCheckFailedInterval=30,
+  rise=2,
+  maxCheckFailures=3,
+  lazyHealthCheckThreshold=30,
+  lazyHealthCheckSampleSize=100,
+  lazyHealthCheckMinSampleCount=10,
+  lazyHealthCheckMode='TimeoutOnly',
+  useClientSubnet = true
 })
 
 -- Local Blocky
@@ -46,7 +58,7 @@ newServer({
   lazyHealthCheckMode = 'TimeoutOnly',
   useClientSubnet = true,
 })
--- PiHole will be given requester IP
+-- Blocky will be given requester IP
 setECSSourcePrefixV4(32)
 
 -- CloudFlare DNS over TLS
@@ -87,7 +99,7 @@ addAction("192.168.2.0/24", PoolAction("blocky"))     -- guest vlan
 addAction("192.168.2.0/24", DropAction())             -- stop processing
 
 -- this will send this domain to the bind server
-addAction('cbannister.xyz', PoolAction('k8s-bind'))
+addAction('cbannister.xyz', PoolAction('k8s'))
 addAction('cbannister.casa', PoolAction('bind'))
 addAction('unifi', PoolAction('bind'))
 
