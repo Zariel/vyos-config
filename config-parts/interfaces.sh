@@ -36,4 +36,4 @@ set interfaces ethernet eth3 hw-id 'a0:36:9f:a9:0d:3b'
 
 set interfaces ethernet eth4 hw-id '50:9a:4c:4b:f6:0c'
 set interfaces ethernet eth4 description 'MGMT'
-set interfaces ethernet eth4 address 'dhcp'
+set interfaces ethernet eth4 address '169.254.10.10/16'
