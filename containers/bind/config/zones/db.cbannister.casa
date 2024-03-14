@@ -10,13 +10,10 @@ $ORIGIN cbannister.casa.
 )
 
 ; NS Records
-@                        IN  NS gateway.cbannister.casa
+@                        IN  NS gateway.cbannister.casa.
 
 ; LAN
 gateway                  IN  A  10.1.0.1
-
-ropiee                   IN  A  192.168.1.214
-anthem                   IN  A  192.168.1.63
 
 ; servers
 k8s-0                    IN  A  10.1.1.10
