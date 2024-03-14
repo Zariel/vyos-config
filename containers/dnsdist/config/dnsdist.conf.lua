@@ -1,5 +1,5 @@
 -- udp/tcp dns listening
-setLocal("0.0.0.0:5353", {})
+setLocal("0.0.0.0:53", {})
 -- disable security status polling via DNS
 setSecurityPollSuffix("")
 
