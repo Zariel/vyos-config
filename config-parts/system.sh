@@ -24,3 +24,5 @@ set system syslog global facility all level info
 # set system task-scheduler task backup-config executable path '/config/scripts/task-config-backup-usb.sh'
 
 set system time-zone 'Europe/London'
+
+set system option kernel disable-mitigations

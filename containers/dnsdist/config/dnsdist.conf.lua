@@ -99,9 +99,9 @@ addAction("192.168.2.0/24", PoolAction("blocky"))     -- guest vlan
 addAction("192.168.2.0/24", DropAction())             -- stop processing
 
 -- this will send this domain to the bind server
+addAction('unifi', PoolAction('bind'))
 addAction('cbannister.xyz', PoolAction('k8s'))
 addAction('cbannister.casa', PoolAction('bind'))
-addAction('unifi', PoolAction('bind'))
 
 addAction("10.1.3.1/24", PoolAction("blocky"))      -- iot
 addAction("10.1.0.0/24", PoolAction("cloudflare"))  -- lan
