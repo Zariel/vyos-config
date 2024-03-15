@@ -20,6 +20,8 @@ newServer({
   lazyHealthCheckFailedInterval=30,
   rise=2,
   maxCheckFailures=3,
+  checkName='gateway.cbannister.casa.',
+  mustResolve=true,
   lazyHealthCheckThreshold=30,
   lazyHealthCheckSampleSize=100,
   lazyHealthCheckMinSampleCount=10,
