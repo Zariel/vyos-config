@@ -45,6 +45,7 @@ set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 lease '28800'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 name-server '10.5.0.4'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 range 0 start '10.1.0.200'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 range 0 stop '10.1.0.254'
+set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 subnet-parameters 'option ubnt.unifi-controller 10.5.0.10;'
 
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping switch-core ip-address '10.1.0.11'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping switch-core mac-address 'd8:b3:70:61:8a:a4'

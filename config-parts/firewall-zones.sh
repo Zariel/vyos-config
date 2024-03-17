@@ -65,6 +65,7 @@ set firewall zone containers from local firewall name 'local-containers'
 set firewall zone containers from servers firewall name 'servers-containers'
 set firewall zone containers from trusted firewall name 'trusted-containers'
 set firewall zone containers from wan firewall name 'wan-containers'
+set firewall zone containers from k8s firewall name 'k8s-containers'
 set firewall zone containers interface 'pod-containers'
 
 set firewall zone trusted default-action 'drop'
