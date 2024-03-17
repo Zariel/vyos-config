@@ -58,6 +58,11 @@ set firewall ipv4 name wan-containers rule 999 log
 set firewall ipv4 name wan-trusted default-action 'drop'
 set firewall ipv4 name wan-trusted description 'From WAN to TRUSTED'
 set firewall ipv4 name wan-trusted default-log
+set firewall ipv4 name wan-trusted rule 100 description 'Rule: accept_roon_arc'
+set firewall ipv4 name wan-trusted rule 100 destination port '59453'
+set firewall ipv4 name wan-trusted rule 100 destination address '10.1.2.60'
+set firewall ipv4 name wan-trusted rule 100 protocol 'tcp'
+set firewall ipv4 name wan-trusted rule 100 action 'accept'
 set firewall ipv4 name wan-trusted rule 999 action 'drop'
 set firewall ipv4 name wan-trusted rule 999 description 'Rule: drop_invalid'
 set firewall ipv4 name wan-trusted rule 999 state invalid
