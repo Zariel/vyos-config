@@ -49,11 +49,11 @@ set nat destination rule 107 translation address '10.1.3.1'
 set nat destination rule 107 translation port '123'
 
 set nat destination rule 108 description 'Force NTP for K8S'
-set nat destination rule 108 destination address '!10.1.1.1'
+set nat destination rule 108 destination address '!192.168.42.1'
 set nat destination rule 108 destination port '123'
 set nat destination rule 108 inbound-interface name 'bond0.42'
 set nat destination rule 108 protocol 'udp'
-set nat destination rule 108 translation address '10.1.1.1'
+set nat destination rule 108 translation address '192.168.42.1'
 set nat destination rule 108 translation port '123'
 
 set nat destination rule 200 description 'Forward port for Roon ARC'
