@@ -134,6 +134,8 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping nvidia-shield mac-address '48:b0:2d:2b:14:03'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping blusound-flex-mini-office ip-address '10.1.2.52'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping blusound-flex-mini-office mac-address '90:56:82:61:1a:fb'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping mrx740 ip-address '10.1.2.53'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping mrx740 mac-address '50:1e:2d:3e:39:48'
 
 # roon
 # todo: move roon to IOT vlan and ensure it all works, need to forward ports and enable UDP Broadcast-Relay
