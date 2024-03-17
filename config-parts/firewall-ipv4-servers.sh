@@ -92,10 +92,3 @@ set firewall ipv4 name servers-trusted rule 999 log
 # From SERVERS to WAN
 set firewall ipv4 name servers-wan default-action 'accept'
 set firewall ipv4 name servers-wan description 'From SERVERS to WAN'
-
-# From SERVERS to K8S
-set firewall ipv4 name servers-k8s default-action 'accept'
-set firewall ipv4 name servers-k8s rule 999 action 'drop'
-set firewall ipv4 name servers-k8s rule 999 description 'Rule: drop_invalid'
-set firewall ipv4 name servers-k8s rule 999 state invalid
-set firewall ipv4 name servers-k8s rule 999 log

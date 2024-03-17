@@ -50,7 +50,7 @@ set firewall zone servers from containers firewall name 'containers-servers'
 set firewall zone servers from trusted firewall name 'trusted-servers'
 set firewall zone servers from wan firewall name 'wan-servers'
 set firewall zone servers interface 'bond0.10'
-set firewall zone servers interface 'bond.42'
+set firewall zone servers interface 'bond0.42'
 
 set firewall zone containers default-action 'drop'
 set firewall zone containers description 'VyOS containers zone'
