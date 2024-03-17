@@ -107,6 +107,7 @@ addAction('cbannister.casa', PoolAction('bind'))
 
 addAction("10.1.3.1/24", PoolAction("blocky"))      -- iot
 addAction("10.1.0.0/24", PoolAction("cloudflare"))  -- lan
-addAction("10.1.1.0/24", PoolAction("blocky"))      -- servers vlan
-addAction("10.1.2.0/24", PoolAction("blocky"))      -- trusted vlan
-addAction("10.1.3.0/24", PoolAction("blocky"))      -- iot vlan
+addAction("10.1.1.0/24", PoolAction("blocky"))      -- servers
+addAction("192.168.42.0/24", PoolAction("blocky"))  -- k8s
+addAction("10.1.2.0/24", PoolAction("blocky"))      -- trusted
+ddAction("10.1.3.0/24", PoolAction("blocky"))       -- iot
