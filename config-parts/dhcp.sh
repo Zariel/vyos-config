@@ -144,12 +144,12 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 # K8s VLAN
 set service dhcp-server shared-network-name K8S authoritative
 set service dhcp-server shared-network-name K8S ping-check
-set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 default-router '192.168.42.0/24.1'
+set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 default-router '192.168.42.1'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 domain-name 'cbannister.casa'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 lease '28800'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 name-server '10.5.0.4'
-set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 range 0 start '192.168.42.0/24.200'
-set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 range 0 stop '192.168.42.0/24.254'
+set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 range 0 start '192.168.42.200'
+set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 range 0 stop '192.168.42.254'
 
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 subnet-parameters 'allow bootp;'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 subnet-parameters 'allow booting;'
@@ -162,16 +162,11 @@ set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 subnet-pa
 
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-0 ip-address '192.168.42.10'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-0 mac-address 'ec:8e:b5:70:ca:20'
-set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-0 subnet-parameters 'ddns-hostname k8s-0;'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-1 ip-address '192.168.42.11'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-1 mac-address 'c4:65:16:19:a0:94'
-set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-1 subnet-parameters 'ddns-hostname k8s-1;'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-2 ip-address '192.168.42.12'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-2 mac-address 'ec:8e:b5:70:f6:59'
-set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-2 subnet-parameters 'ddns-hostname k8s-2;'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-3 ip-address '192.168.42.13'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-3 mac-address 'f6:45:04:c6:96:e0'
-set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-3 subnet-parameters 'ddns-hostname k8s-3;'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-4 ip-address '192.168.42.14'
 set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-4 mac-address '48:21:0b:56:ac:6c'
-set service dhcp-server shared-network-name K8S subnet 192.168.42.0/24 static-mapping k8s-4 subnet-parameters 'ddns-hostname k8s-4;'
