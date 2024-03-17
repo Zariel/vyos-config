@@ -17,6 +17,10 @@ set service ntp server 3.uk.pool.ntp.org
 set service ssh disable-password-authentication
 set service ssh port '22'
 
+# TFTP server
+set service tftp-server directory '/config/tftpboot'
+set service tftp-server listen-address 10.1.1.1
+
 # TODO: enable when roon is in IOT
 # UDP Broadcast-Relay
 # set service broadcast-relay id 1 description 'ROON'

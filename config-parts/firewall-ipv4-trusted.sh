@@ -89,3 +89,10 @@ set firewall ipv4 name trusted-containers rule 999 log
 # From TRUSTED to WAN
 set firewall ipv4 name trusted-wan default-action 'accept'
 set firewall ipv4 name trusted-wan description 'From TRUSTED to WAN'
+
+# From TRUSTED to K8S
+set firewall ipv4 name trusted-k8s default-action 'accept'
+set firewall ipv4 name trusted-k8s rule 999 action 'drop'
+set firewall ipv4 name trusted-k8s rule 999 description 'Rule: drop_invalid'
+set firewall ipv4 name trusted-k8s rule 999 state invalid
+set firewall ipv4 name trusted-k8s rule 999 log
