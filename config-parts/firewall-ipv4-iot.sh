@@ -47,6 +47,11 @@ set firewall ipv4 name iot-local rule 999 log
 set firewall ipv4 name iot-servers default-action 'drop'
 set firewall ipv4 name iot-servers description 'From IOT to SERVERS'
 set firewall ipv4 name iot-servers default-log
+set firewall ipv4 name iot-servers rule 50 action 'accept'
+set firewall ipv4 name iot-servers rule 50 description 'Rule: accept_plex_clients_to_plex'
+set firewall ipv4 name iot-servers rule 50 destination address-group 'k8s_plex'
+set firewall ipv4 name iot-servers rule 50 destination port-group 'k8s_plex_ports'
+set firewall ipv4 name iot-servers rule 50 source address 'plex_clients'
 set firewall ipv4 name iot-servers rule 999 action 'drop'
 set firewall ipv4 name iot-servers rule 999 description 'Rule: drop_invalid'
 set firewall ipv4 name iot-servers rule 999 state invalid

@@ -38,6 +38,10 @@ set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mappin
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping lounge-tv mac-address '58:fd:b1:69:d2:1b'
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping fridge ip-address '10.1.3.15'
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping fridge mac-address 'ac:f1:08:0d:d6:bd'
+set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping lounge-shield ip-address '10.1.3.16'
+set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping lounge-shield mac-address '48:b0:2d:2b:14:03'
+set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping xbox-series-x ip-address '10.1.3.17'
+set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping xbox-series-x mac-address '4c:3b:df:27:f4:00'
 
 # LAN
 set service dhcp-server shared-network-name LAN authoritative
