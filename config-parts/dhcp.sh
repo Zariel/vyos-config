@@ -42,6 +42,8 @@ set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mappin
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping lounge-shield mac-address '48:b0:2d:2b:14:03'
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping xbox-series-x ip-address '10.1.3.17'
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping xbox-series-x mac-address '4c:3b:df:27:f4:00'
+set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping lounge-harmony-hub ip-address '10.1.3.18'
+set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping lounge-harmony-hub mac-address 'c8:db:26:10:c4:a7'
 
 # LAN
 set service dhcp-server shared-network-name LAN authoritative
@@ -135,6 +137,13 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-macbook mac-address 'bc:d0:74:32:06:e6'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-watch ip-address '10.1.2.22'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-watch mac-address 'd2:42:bf:f2:c5:26'
+
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping lounge-homepod ip-address '10.1.2.30'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping lounge-homepod mac-address 'd4:a3:3d:61:d4:76'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-homepod ip-address '10.1.2.31'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-homepod mac-address 'd4:a3:3d:6d:78:a2'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bedroom-homepod ip-address '10.1.2.30'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bedroom-homepod mac-address '58:d3:49:34:6c:6b'
 
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping nvidia-shield ip-address '10.1.2.50'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping nvidia-shield mac-address '48:b0:2d:2b:14:03'
