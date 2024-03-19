@@ -21,6 +21,10 @@ set service ssh port '22'
 set service tftp-server directory '/config/tftpboot'
 set service tftp-server listen-address 10.1.1.1
 
+# mDNS Repeater
+set service mdns repeater interface 'bond0.20'
+set service mdns repeater interface 'bond0.40'
+
 # TODO: enable when roon is in IOT
 # UDP Broadcast-Relay
 # set service broadcast-relay id 1 description 'ROON'
