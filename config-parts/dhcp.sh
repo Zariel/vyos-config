@@ -144,7 +144,7 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping lounge-homepod mac-address 'd4:a3:3d:61:d4:76'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-homepod ip-address '10.1.2.31'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-homepod mac-address 'd4:a3:3d:6d:78:a2'
-set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bedroom-homepod ip-address '10.1.2.30'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bedroom-homepod ip-address '10.1.2.32'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bedroom-homepod mac-address '58:d3:49:34:6c:6b'
 
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping nvidia-shield ip-address '10.1.2.50'
