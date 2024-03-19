@@ -2,10 +2,30 @@
 
 set interfaces ethernet eth0 description 'LAN0'
 set interfaces ethernet eth0 hw-id '08:c0:eb:0f:e4:30'
+set interfaces ethernet eth0 offload gro
+set interfaces ethernet eth0 offload gso
+set interfaces ethernet eth0 offload lro
+set interfaces ethernet eth0 offload rfs
+set interfaces ethernet eth0 offload rps
+set interfaces ethernet eth0 offload sg
+set interfaces ethernet eth0 offload tso
+set interfaces ethernet eth0 ring-buffer rx '4096'
+set interfaces ethernet eth0 ring-buffer tx '4096'
+
 delete interfaces ethernet eth0 address
 
 set interfaces ethernet eth1 description 'LAN1'
 set interfaces ethernet eth1 hw-id '08:c0:eb:0f:e4:31'
+set interfaces ethernet eth1 offload gro
+set interfaces ethernet eth1 offload gso
+set interfaces ethernet eth1 offload lro
+set interfaces ethernet eth1 offload rfs
+set interfaces ethernet eth1 offload rps
+set interfaces ethernet eth1 offload sg
+set interfaces ethernet eth1 offload tso
+set interfaces ethernet eth1 ring-buffer rx '4096'
+set interfaces ethernet eth1 ring-buffer tx '4096'
+
 delete interfaces ethernet eth1 address
 
 set interfaces bonding bond0 description 'LAN'
@@ -31,6 +51,16 @@ set interfaces bonding bond0 address '10.1.0.1/24'
 set interfaces ethernet eth2 hw-id 'a0:36:9f:a9:0d:3a'
 set interfaces ethernet eth2 description 'WAN'
 set interfaces ethernet eth2 address 'dhcp'
+set interfaces ethernet eth2 offload gro
+set interfaces ethernet eth2 offload gso
+set interfaces ethernet eth2 offload lro
+set interfaces ethernet eth2 offload rfs
+set interfaces ethernet eth2 offload rps
+set interfaces ethernet eth2 offload sg
+set interfaces ethernet eth2 offload tso
+set interfaces ethernet eth2 ring-buffer rx '4096'
+set interfaces ethernet eth2 ring-buffer tx '4096'
+
 # TODO: ipv6 prefix delegation
 # set interfaces ethernet eth2 mtu '1500'
 
