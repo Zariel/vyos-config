@@ -2,7 +2,7 @@
 $TTL 1h
 $ORIGIN cbannister.casa.
 @ IN SOA gateway.cbannister.casa. gateway.cbannister.casa. (
-  1708606198        ; serial number; date +%s
+  1708606198       ; serial number; date +%s
   2h               ; refresh period
   1h               ; retry period
   14d              ; expire time
