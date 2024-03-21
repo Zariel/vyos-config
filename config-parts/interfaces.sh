@@ -4,7 +4,6 @@ set interfaces ethernet eth0 description 'LAN0'
 set interfaces ethernet eth0 hw-id '08:c0:eb:0f:e4:30'
 set interfaces ethernet eth0 offload gro
 set interfaces ethernet eth0 offload gso
-set interfaces ethernet eth0 offload lro
 set interfaces ethernet eth0 offload rfs
 set interfaces ethernet eth0 offload rps
 set interfaces ethernet eth0 offload sg
@@ -18,7 +17,6 @@ set interfaces ethernet eth1 description 'LAN1'
 set interfaces ethernet eth1 hw-id '08:c0:eb:0f:e4:31'
 set interfaces ethernet eth1 offload gro
 set interfaces ethernet eth1 offload gso
-set interfaces ethernet eth1 offload lro
 set interfaces ethernet eth1 offload rfs
 set interfaces ethernet eth1 offload rps
 set interfaces ethernet eth1 offload sg
