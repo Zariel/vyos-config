@@ -26,3 +26,5 @@ pve                      IN  A  10.1.1.31
 nas                      IN  A  10.1.1.40
 postgres                 IN  A  10.1.1.41
 pikvm                    IN  A  10.1.1.50
+
+k8s                      IN  A  10.5.0.2
