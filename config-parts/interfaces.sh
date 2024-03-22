@@ -28,7 +28,8 @@ delete interfaces ethernet eth1 address
 
 set interfaces bonding bond0 description 'LAN'
 set interfaces bonding bond0 mode '802.3ad'
-set interfaces bonding bond0 hash-policy 'layer3+4'
+set interfaces bonding bond0 hash-policy 'layer2+3'
+set interfaces bonding bond0 lacp-rate 'fast'
 set interfaces bonding bond0 mac '08:c0:eb:0f:e4:30'
 
 set interfaces bonding bond0 vif 10 address '10.1.1.1/24'
