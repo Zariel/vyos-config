@@ -4,6 +4,16 @@
 set container network containers description 'Network for VyOS containers'
 set container network containers prefix '10.5.0.0/24'
 
+# haproxy-k8s-api
+set container name haproxy-k8s-api image 'docker.io/library/haproxy:2.9.6'
+set container name haproxy-k8s-api memory '0'
+set container name haproxy-k8s-api network containers address '10.5.0.2'
+set container name haproxy-k8s-api restart 'on-failure'
+set container name haproxy-k8s-api shared-memory '0'
+set container name haproxy-k8s-api volume config source '/config/containers/haproxy/config/haproxy.cfg'
+set container name haproxy-k8s-api volume config destination '/usr/local/etc/haproxy/haproxy.cfg'
+set container name haproxy-k8s-api volume config mode 'ro'
+
 # bind
 set container name bind cap-add 'net-bind-service'
 set container name bind image 'docker.io/internetsystemsconsortium/bind9:9.19'
