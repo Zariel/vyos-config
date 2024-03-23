@@ -40,8 +40,6 @@ set interfaces bonding bond0 vif 30 address '192.168.2.1/24'
 set interfaces bonding bond0 vif 30 description 'GUEST'
 set interfaces bonding bond0 vif 40 address '10.1.3.1/24'
 set interfaces bonding bond0 vif 40 description 'IOT'
-set interfaces bonding bond0 vif 42 address '192.168.42.1/24'
-set interfaces bonding bond0 vif 42 description 'K8S'
 
 set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1
