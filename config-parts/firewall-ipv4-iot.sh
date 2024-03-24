@@ -58,6 +58,12 @@ set firewall ipv4 name iot-servers rule 60 description 'Rule: accept_plex_client
 set firewall ipv4 name iot-servers rule 60 destination group address-group 'k8s_jellyfin'
 set firewall ipv4 name iot-servers rule 60 source group address-group 'plex_clients'
 set firewall ipv4 name iot-servers rule 60 protocol 'tcp_udp'
+set firewall ipv4 name iot-servers rule 70 action 'accept'
+set firewall ipv4 name iot-servers rule 70 description 'Rule: accept_k8s_ingress'
+set firewall ipv4 name iot-servers rule 70 destination group address-group 'k8s_ingress'
+set firewall ipv4 name iot-servers rule 70 destination group port-group 'k8s_ingress'
+set firewall ipv4 name iot-servers rule 70 protocol 'tcp'
+set firewall ipv4 name iot-servers rule 70 source group address-group 'k8s_ingress_clients'
 set firewall ipv4 name iot-servers rule 999 action 'drop'
 set firewall ipv4 name iot-servers rule 999 description 'Rule: drop_invalid'
 set firewall ipv4 name iot-servers rule 999 state invalid

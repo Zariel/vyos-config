@@ -109,4 +109,4 @@ addAction("10.1.3.1/24", PoolAction("blocky"))      -- iot
 addAction("10.1.0.0/24", PoolAction("cloudflare"))  -- lan
 addAction("10.1.1.0/24", PoolAction("blocky"))      -- servers
 addAction("10.1.2.0/24", PoolAction("blocky"))      -- trusted
-ddAction("10.1.3.0/24", PoolAction("blocky"))       -- iot
+addAction("10.1.3.0/24", PoolAction("blocky"))      -- iot
