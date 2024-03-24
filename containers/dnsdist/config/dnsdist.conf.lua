@@ -51,7 +51,7 @@ newServer({
   address = "10.5.0.7",
   pool = "blocky",
   healthCheckMode = "lazy",
-  checkInterval = 10,
+  checkInterval = 1800,
   maxCheckFailures = 3,
   lazyHealthCheckFailedInterval = 30,
   rise = 2,
@@ -59,7 +59,7 @@ newServer({
   lazyHealthCheckSampleSize = 100,
   lazyHealthCheckMinSampleCount = 10,
   lazyHealthCheckMode = 'TimeoutOnly',
-  useClientSubnet = true,
+  useClientSubnet = true
 })
 -- Blocky will be given requester IP
 setECSSourcePrefixV4(32)
