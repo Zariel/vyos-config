@@ -20,14 +20,14 @@ set firewall group address-group k8s_nodes address '10.1.1.10-10.1.1.14' # Serve
 set firewall group address-group plex_clients address '10.1.3.16' # lounge-shield
 
 # k8s things
-set firewall group address-group k8s_plex address '10.42.0.20'
+set firewall group address-group k8s_plex address '10.45.0.20'
 set firewall group port-group k8s_plex_ports port '32400'
-set firewall group address-group k8s_jellyfin address '10.42.0.21'
+set firewall group address-group k8s_jellyfin address '10.45.0.21'
 set firewall group port-group k8s_jellyfin_ports port '8096'
 set firewall group port-group k8s_jellyfin_ports port '1900'
 set firewall group port-group k8s_jellyfin_ports port '7359'
 
-set firewall group address-group k8s_ingress address '10.42.0.10'
+set firewall group address-group k8s_ingress address '10.45.0.10'
 set firewall group port-group k8s_ingress port '443'
 
 set firewall group address-group k8s_ingress_clients address '10.1.3.16'

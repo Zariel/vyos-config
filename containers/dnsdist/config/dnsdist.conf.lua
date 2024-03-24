@@ -32,7 +32,7 @@ newServer({
 
 -- K8s Bind
 newServer({
-  address = "10.42.0.55",
+  address = "10.45.0.55",
   pool = "k8s",
   healthCheckMode="lazy",
   checkInterval=1,
