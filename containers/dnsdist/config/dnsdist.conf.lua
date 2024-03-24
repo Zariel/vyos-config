@@ -2,6 +2,7 @@
 setLocal("0.0.0.0:53", {})
 -- disable security status polling via DNS
 setSecurityPollSuffix("")
+setVerboseHealthChecks(true)
 
 -- enable prometheus
 webserver("0.0.0.0:8083")
