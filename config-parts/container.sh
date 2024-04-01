@@ -42,6 +42,19 @@ set container name dnsdist volume config source '/config/containers/dnsdist/conf
 set container name dnsdist volume config destination '/etc/dnsdist/dnsdist.conf'
 set container name dnsdist volume config mode 'ro'
 
+# dnist
+set container name dnist cap-add 'net-bind-service'
+set container name dnist environment TZ value 'Europe/London'
+set container name dnist environment DNIST_CONFIG value '/etc/dnist/dnist.yml'
+set container name dnist image 'ghcr.io/zariel/dnist:main'
+set container name dnist memory '0'
+set container name dnist network containers address '10.5.0.5'
+set container name dnist restart 'on-failure'
+set container name dnist shared-memory '0'
+set container name dnist volume config source '/config/containers/dnist/config/dnist.yml'
+set container name dnist volume config destination '/etc/dnist/dnist.yml'
+set container name dnist volume config mode 'ro'
+
 # blocky
 set container name blocky image 'ghcr.io/0xerr0r/blocky:v0.23'
 set container name blocky memory '0'
