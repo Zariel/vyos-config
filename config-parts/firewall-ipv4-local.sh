@@ -2,15 +2,19 @@
 
 # From LOCAL to GUEST
 set firewall ipv4 name local-guest default-action 'drop'
+set firewall ipv4 name local-guest default-log
 
 # From LOCAL to IOT
 set firewall ipv4 name local-iot default-action 'drop'
+set firewall ipv4 name local-iot default-log
 
 # From LOCAL to LAN
 set firewall ipv4 name local-lan default-action 'drop'
+set firewall ipv4 name local-lan default-log
 
 # From LOCAL to SERVERS
 set firewall ipv4 name local-servers default-action 'drop'
+set firewall ipv4 name local-servers default-log
 set firewall ipv4 name local-servers rule 40 action 'accept'
 set firewall ipv4 name local-servers rule 40 description 'Rule: accept_dns'
 set firewall ipv4 name local-servers rule 40 destination port 'domain,domain-s'
@@ -34,6 +38,7 @@ set firewall ipv4 name local-containers rule 40 protocol 'tcp_udp'
 
 # From LOCAL to TRUSTED
 set firewall ipv4 name local-trusted default-action 'drop'
+set firewall ipv4 name local-trusted default-log
 set firewall ipv4 name local-trusted rule 100 action 'accept'
 set firewall ipv4 name local-trusted rule 100 description 'Rule: accept_igmp'
 set firewall ipv4 name local-trusted rule 100 protocol '2'

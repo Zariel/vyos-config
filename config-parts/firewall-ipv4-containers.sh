@@ -2,15 +2,19 @@
 
 # From CONTAINERS to GUEST
 set firewall ipv4 name containers-guest default-action 'drop'
+set firewall ipv4 name containers-guest default-log
 
 # From CONTAINERS to IOT
 set firewall ipv4 name containers-iot default-action 'drop'
+set firewall ipv4 name containers-iot default-log
 
 # From CONTAINERS to LAN
 set firewall ipv4 name containers-lan default-action 'drop'
+set firewall ipv4 name containers-lan default-log
 
 # From CONTAINERS to LOCAL
 set firewall ipv4 name containers-local default-action 'drop'
+set firewall ipv4 name containers-local default-log
 set firewall ipv4 name containers-local rule 40 action 'accept'
 set firewall ipv4 name containers-local rule 40 description 'Rule: accept_dns'
 set firewall ipv4 name containers-local rule 40 destination port 'domain,domain-s'
@@ -30,6 +34,7 @@ set firewall ipv4 name containers-servers default-action 'accept'
 
 # From CONTAINERS to TRUSTED
 set firewall ipv4 name containers-trusted default-action 'drop'
+set firewall ipv4 name containers-trusted default-log
 
 # From CONTAINERS to WAN
 set firewall ipv4 name containers-wan default-action 'accept'
