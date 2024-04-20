@@ -5,6 +5,7 @@ set nat source rule 100 description 'LAN -> WAN'
 set nat source rule 100 destination address '0.0.0.0/0'
 set nat source rule 100 outbound-interface name 'eth2'
 set nat source rule 100 translation address 'masquerade'
+set nat source rule 100 protocol ip
 
 # Force DNS
 set nat destination rule 102 description 'Force DNS for IoT'

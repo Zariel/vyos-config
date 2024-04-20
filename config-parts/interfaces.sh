@@ -58,6 +58,7 @@ set interfaces ethernet eth2 offload tso
 set interfaces ethernet eth2 ring-buffer rx '4096'
 set interfaces ethernet eth2 ring-buffer tx '4096'
 
+set interfaces ethernet eth2 address 'dhcpv6'
 # TODO: ipv6 prefix delegation
 # set interfaces ethernet eth2 mtu '1500'
 

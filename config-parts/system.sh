@@ -5,7 +5,7 @@ set system host-name 'gateway'
 
 set system static-host-mapping host-name gateway inet '10.1.0.1'
 
-set system ipv6 disable-forwarding
+# set system ipv6 disable-forwarding
 
 set system login user vyos authentication public-keys personal key 'AAAAC3NzaC1lZDI1NTE5AAAAINiFPVXT03FdYS3BKuqNmgplaGrzNc6i++77vCI2AJ8c'
 set system login user vyos authentication public-keys personal type 'ssh-ed25519'
