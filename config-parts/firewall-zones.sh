@@ -1,8 +1,8 @@
 #!/bin/vbash
 
-for to in guest iot lan local servers containers trusted; do
+for to in guest iot lan local servers containers trusted wan; do
     set firewall zone $to default-action 'drop'
-    for from in guest iot lan local servers containers trusted; do
+    for from in guest iot lan local servers containers trusted wan; do
         if [ "$from" == "$to" ]; then
             continue
         fi
