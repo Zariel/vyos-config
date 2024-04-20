@@ -8,6 +8,17 @@ for to in guest iot lan local servers containers trusted wan; do
         fi
         set firewall zone $to from $from firewall name "${from}-${to}"
         set firewall zone $to from $from firewall ipv6-name "${from}-${to}"
+
+        set firewall ipv4 name $from-$to description 'From $from to $to'
+        set firewall ipv4 name $from-$to default-log
+        set firewall ipv4 name $from-$to rule 1 action 'accept'
+        set firewall ipv4 name $from-$to rule 1 description 'Rule: allow_related_established'
+        set firewall ipv4 name $from-$to rule 1 state related
+        set firewall ipv4 name $from-$to rule 1 state established
+        set firewall ipv4 name $from-$to rule 999 action 'drop'
+        set firewall ipv4 name $from-$to rule 999 description 'Rule: drop_invalid'
+        set firewall ipv4 name $from-$to rule 999 state invalid
+        set firewall ipv4 name $from-$to rule 999 log
   done
 done
 

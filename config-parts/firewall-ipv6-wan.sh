@@ -2,8 +2,6 @@
 
 # WAN to LOCAL
 set firewall ipv6 name wan-local default-action 'drop'
-set firewall ipv6 name wan-local description 'From WAN to LOCAL'
-set firewall ipv6 name wan-local default-log
 set firewall ipv6 name wan-local rule 10 action 'accept'
 set firewall ipv6 name wan-local rule 10 state established 
 set firewall ipv6 name wan-local rule 10 state related 
