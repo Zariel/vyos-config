@@ -59,6 +59,7 @@ set interfaces ethernet eth2 ring-buffer rx '4096'
 set interfaces ethernet eth2 ring-buffer tx '4096'
 
 set interfaces ethernet eth2 address 'dhcpv6'
+set interfaces ethernet eth2 dhcpv6-options rapid-commit
 set interfaces ethernet eth2 dhcpv6-options pd 0 length '56'
 set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0' address 1
 set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0' sla-id 0
