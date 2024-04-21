@@ -28,6 +28,8 @@ set service mdns repeater interface 'bond0.40'
 # TODO: enable when roon is in IOT
 # UDP Broadcast-Relay
 # set service broadcast-relay id 1 description 'ROON'
-# set service broadcast-relay id 1 interface 'bond.20'
-# set service broadcast-relay id 1 interface 'bond.40'
+# set service broadcast-relay id 1 interface 'bond0.20'
+# set service broadcast-relay id 1 interface 'bond0.40'
 # set service broadcast-relay id 1 port '9003'
+
+set service router-advert interface bond0 prefix ::/64
