@@ -16,6 +16,8 @@ setAPIWritable(false)
 newServer({
   address = "10.5.0.3",
   pool = "bind",
+  tcpOnly = true,
+  reconnectOnUp = true,
   healthCheckMode="lazy",
   checkInterval=1,
   lazyHealthCheckFailedInterval=30,
@@ -34,6 +36,8 @@ newServer({
 newServer({
   address = "10.45.0.55",
   pool = "k8s",
+  tcpOnly = true,
+  reconnectOnUp = true,
   healthCheckMode="lazy",
   checkInterval=1,
   lazyHealthCheckFailedInterval=30,
@@ -50,6 +54,8 @@ newServer({
 newServer({
   address = "10.5.0.7",
   pool = "blocky",
+  tcpOnly = true,
+  reconnectOnUp = true,
   healthCheckMode = "lazy",
   checkInterval = 1800,
   maxCheckFailures = 3,
@@ -68,6 +74,7 @@ setECSSourcePrefixV4(32)
 newServer({
   address = "1.1.1.1:853",
   tls = "openssl",
+  reconnectOnUp = true,
   subjectName = "cloudflare-dns.com",
   validateCertificates = true,
   checkInterval = 10,
@@ -77,6 +84,7 @@ newServer({
 newServer({
   address = "1.0.0.1:853",
   tls = "openssl",
+  reconnectOnUp = true,
   subjectName = "cloudflare-dns.com",
   validateCertificates = true,
   checkInterval = 10,
@@ -92,7 +100,7 @@ pc = newPacketCache(1000000, {
   staleTTL = 60,
   dontAge = false
 })
--- getPool("blocky"):setCache(pc)
+getPool("blocky"):setCache(pc)
 getPool("cloudflare"):setCache(pc)
 
 -- addAction(AllRule(), LogAction("", false, false, true, false, false))
