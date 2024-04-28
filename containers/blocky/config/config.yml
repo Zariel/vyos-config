@@ -10,9 +10,6 @@ upstreams:
       - tcp-tls:1.1.1.1:853
       - tcp-tls:1.0.0.1:853
 
-clientLookup:
-  upstream: 10.0.0.1
-
 ecs:
   useAsClient: true
 
@@ -28,6 +25,7 @@ blocking:
   blackLists:
     ads:
       - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+      - https://easylist.to/easylist/easylist.txt
     fakenews:
       - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-only/hosts
     gambling:
