@@ -35,6 +35,7 @@ blocking:
   whiteLists:
     ads:
       - https://raw.githubusercontent.com/Zariel/adlists/main/allowlist.txt
+      - https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt
       - |
         www.thrivingautistic.org
 
