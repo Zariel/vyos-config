@@ -28,6 +28,7 @@ blocking:
   blackLists:
     ads:
       - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+      - https://raw.githubusercontent.com/Zariel/adlists/main/blocklist.txt
     fakenews:
       - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-only/hosts
     gambling:
@@ -35,6 +36,7 @@ blocking:
 
   whiteLists:
     ads:
+      - https://raw.githubusercontent.com/Zariel/adlists/main/allowlist.txt
       - |
         www.thrivingautistic.org
 
