@@ -7,6 +7,11 @@ set firewall ipv4 name local-guest default-log
 # From LOCAL to IOT
 set firewall ipv4 name local-iot default-action 'drop'
 set firewall ipv4 name local-iot default-log
+set firewall ipv4 name local-iot rule 110 action 'accept'
+set firewall ipv4 name local-iot rule 110 description 'Rule: accept_mdns'
+set firewall ipv4 name local-iot rule 110 destination port 'mdns'
+set firewall ipv4 name local-iot rule 110 protocol 'udp'
+set firewall ipv4 name local-iot rule 110 source port 'mdns'
 
 # From LOCAL to LAN
 set firewall ipv4 name local-lan default-action 'drop'
@@ -42,6 +47,11 @@ set firewall ipv4 name local-trusted default-log
 set firewall ipv4 name local-trusted rule 100 action 'accept'
 set firewall ipv4 name local-trusted rule 100 description 'Rule: accept_igmp'
 set firewall ipv4 name local-trusted rule 100 protocol '2'
+set firewall ipv4 name local-trusted rule 110 action 'accept'
+set firewall ipv4 name local-trusted rule 110 description 'Rule: accept_mdns'
+set firewall ipv4 name local-trusted rule 110 destination port 'mdns'
+set firewall ipv4 name local-trusted rule 110 protocol 'udp'
+set firewall ipv4 name local-trusted rule 110 source port 'mdns'
 
 # From LOCAL to WAN
 set firewall ipv4 name local-wan default-action 'accept'

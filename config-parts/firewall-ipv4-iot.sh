@@ -26,6 +26,11 @@ set firewall ipv4 name iot-local rule 60 protocol 'udp'
 set firewall ipv4 name iot-local rule 100 action 'accept'
 set firewall ipv4 name iot-local rule 100 description 'Rule: accept_igmp'
 set firewall ipv4 name iot-local rule 100 protocol '2'
+set firewall ipv4 name iot-local rule 110 action 'accept'
+set firewall ipv4 name iot-local rule 110 description 'Rule: accept_mdns'
+set firewall ipv4 name iot-local rule 110 destination port 'mdns'
+set firewall ipv4 name iot-local rule 110 protocol 'udp'
+set firewall ipv4 name iot-local rule 110 source port 'mdns'
 
 # From IOT to SERVERS
 set firewall ipv4 name iot-servers default-action 'drop'
