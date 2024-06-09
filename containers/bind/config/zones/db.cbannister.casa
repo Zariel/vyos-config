@@ -27,5 +27,6 @@ nas                      IN  A  10.1.1.40
 postgres                 IN  A  10.1.1.41
 pikvm                    IN  A  10.1.1.50
 rock                     IN  A  10.1.2.60
+ropiee                   IN  A  10.1.2.61
 
 k8s                      IN  A  10.5.0.2
