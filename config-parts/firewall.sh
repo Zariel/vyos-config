@@ -31,3 +31,8 @@ set firewall group address-group k8s_ingress address '10.45.0.10'
 set firewall group port-group k8s_ingress port '443'
 
 set firewall group address-group k8s_ingress_clients address '10.1.3.16'
+
+# Apple devices
+set firewall group address-group apple_devices address '10.1.3.14' # LGTV
+
+set firewall group port-group apple_services_ports port '3722'
