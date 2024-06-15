@@ -66,5 +66,6 @@ set firewall ipv4 name iot-trusted default-log
 set firewall ipv4 name iot-trusted rule 200 action 'accept'
 set firewall ipv4 name iot-trusted rule 200 description 'Rule: accept_apple_services_ports'
 set firewall ipv4 name iot-trusted rule 200 destination group port-group 'apple_services_ports'
-set firewall ipv4 name iot-trusted rule 200 source group address-group 'apple_devices'
+set firewall ipv4 name iot-trusted rule 200 destination group address-group 'airplay_sources'
+set firewall ipv4 name iot-trusted rule 200 source group address-group 'airplay_targets'
 set firewall ipv4 name iot-trusted rule 200 protocol 'tcp_udp'

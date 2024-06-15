@@ -33,6 +33,10 @@ set firewall group port-group k8s_ingress port '443'
 set firewall group address-group k8s_ingress_clients address '10.1.3.16'
 
 # Apple devices
-set firewall group address-group apple_devices address '10.1.3.14' # LGTV
+set firewall group address-group airplay_targets address '10.1.3.14' # LGTV
+set firewall group address-group airplay_sources address '10.1.2.11' # chris-macbook
 
 set firewall group port-group apple_services_ports port '3722'
+set firewall group port-group apple_services_ports port '6002'
+set firewall group port-group apple_services_ports port '7000'
+set firewall group port-group apple_services_ports port '30000-65535'
