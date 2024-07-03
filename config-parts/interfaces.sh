@@ -36,7 +36,6 @@ set interfaces bonding bond0 vif 10 address '10.1.1.1/24'
 set interfaces bonding bond0 vif 10 description 'SERVERS'
 set interfaces bonding bond0 vif 20 address '10.1.2.1/24'
 set interfaces bonding bond0 vif 20 description 'TRUSTED'
-set interfaces bonding bond0 vif 20 ipv6 address autoconf
 set interfaces bonding bond0 vif 30 address '192.168.2.1/24'
 set interfaces bonding bond0 vif 30 description 'GUEST'
 set interfaces bonding bond0 vif 40 address '10.1.3.1/24'
