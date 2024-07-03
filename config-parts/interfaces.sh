@@ -36,6 +36,7 @@ set interfaces bonding bond0 vif 10 address '10.1.1.1/24'
 set interfaces bonding bond0 vif 10 description 'SERVERS'
 set interfaces bonding bond0 vif 20 address '10.1.2.1/24'
 set interfaces bonding bond0 vif 20 description 'TRUSTED'
+set interfaces bonding bond0 vif 20 ipv6 address autoconf
 set interfaces bonding bond0 vif 30 address '192.168.2.1/24'
 set interfaces bonding bond0 vif 30 description 'GUEST'
 set interfaces bonding bond0 vif 40 address '10.1.3.1/24'
@@ -63,6 +64,8 @@ set interfaces ethernet eth2 dhcpv6-options rapid-commit
 set interfaces ethernet eth2 dhcpv6-options pd 0 length '56'
 set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0' address 1
 set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0' sla-id 0
+set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0.20' address 1
+set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0.20' sla-id 20
 
 
 # TODO: ipv6 prefix delegation

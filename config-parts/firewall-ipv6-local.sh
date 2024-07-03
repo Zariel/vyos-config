@@ -2,3 +2,13 @@
 
 # From LOCAL to WAN
 set firewall ipv6 name local-wan default-action 'accept'
+
+# From LOCAL to TRUSTED
+set firewall ipv6 name local-trusted rule 20 description 'Rule: allow_icmpv6'
+set firewall ipv6 name local-trusted rule 20 action 'accept'
+set firewall ipv6 name local-trusted rule 20 protocol 'icmpv6'
+set firewall ipv6 name local-trusted rule 30 description 'Rule: allow_dhcpv6'
+set firewall ipv6 name local-trusted rule 30 action 'accept'
+set firewall ipv6 name local-trusted rule 30 destination port '546'
+set firewall ipv6 name local-trusted rule 30 protocol 'udp'
+set firewall ipv6 name local-trusted rule 30 source port '547'
