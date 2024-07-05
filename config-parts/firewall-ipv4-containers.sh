@@ -38,4 +38,3 @@ set firewall ipv4 name containers-trusted default-log
 
 # From CONTAINERS to WAN
 set firewall ipv4 name containers-wan default-action 'accept'
-set firewall ipv4 name containers-wan description 'From CONTAINERS to WAN'

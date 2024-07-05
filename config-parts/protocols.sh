@@ -2,7 +2,6 @@
 
 # needed to route traffic to WAN
 set protocols static route 0.0.0.0/0 dhcp-interface eth2
-set protocols static route6 ::/0 interface eth2
 
 set protocols bgp neighbor 10.1.1.10 address-family ipv4-unicast
 set protocols bgp neighbor 10.1.1.10 description 'k8s-0'
