@@ -40,3 +40,6 @@ set firewall group port-group apple_services_ports port '3722'
 set firewall group port-group apple_services_ports port '6002'
 set firewall group port-group apple_services_ports port '7000'
 set firewall group port-group apple_services_ports port '30000-65535'
+
+# roon
+set firewall group port-group roon_arc_ports port '59453'

@@ -34,3 +34,5 @@ set service mdns repeater interface 'bond0.40'
 
 set service router-advert interface bond0.20 default-preference 'high'
 set service router-advert interface bond0.20 prefix ::/64
+set service router-advert interface bond0.40 default-preference 'high'
+set service router-advert interface bond0.40 prefix ::/64

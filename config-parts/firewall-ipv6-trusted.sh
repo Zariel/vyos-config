@@ -13,3 +13,10 @@ set firewall ipv6 name trusted-local rule 400 destination port 'ssh'
 set firewall ipv6 name trusted-local rule 400 protocol 'tcp'
 set firewall ipv6 name trusted-local default-action 'drop'
 set firewall ipv6 name trusted-local default-log
+
+# From TRUSTED to CONTAINERS
+set firewall ipv6 name trusted-containers default-action 'accept'
+set firewall ipv6 name trusted-containers rule 40 action 'accept'
+set firewall ipv6 name trusted-containers rule 40 description 'Rule: accept_dns'
+set firewall ipv6 name trusted-containers rule 40 destination port 'domain,domain-s'
+set firewall ipv6 name trusted-containers rule 40 protocol 'tcp_udp'

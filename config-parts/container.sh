@@ -3,6 +3,7 @@
 # Container networks
 set container network containers description 'Network for VyOS containers'
 set container network containers prefix '10.5.0.0/24'
+set container network containers prefix fdc0:7ebe:7a3e:ff00::/64
 
 # haproxy-k8s-api
 set container name haproxy-k8s-api image 'docker.io/library/haproxy:2.9.6'
@@ -42,18 +43,19 @@ set container name dnsdist volume config source '/config/containers/dnsdist/conf
 set container name dnsdist volume config destination '/etc/dnsdist/dnsdist.conf'
 set container name dnsdist volume config mode 'ro'
 
-# dnist
-set container name dnist cap-add 'net-bind-service'
-set container name dnist environment TZ value 'Europe/London'
-set container name dnist environment DNIST_CONFIG value '/etc/dnist/dnist.yml'
-set container name dnist image 'ghcr.io/zariel/dnist:main'
-set container name dnist memory '0'
-set container name dnist network containers address '10.5.0.5'
-set container name dnist restart 'on-failure'
-set container name dnist shared-memory '0'
-set container name dnist volume config source '/config/containers/dnist/config/dnist.yml'
-set container name dnist volume config destination '/etc/dnist/dnist.yml'
-set container name dnist volume config mode 'ro'
+# dnsdist-v6
+set container name dnsdist6 cap-add 'net-bind-service'
+set container name dnsdist6 environment TZ value 'Europe/London'
+set container name dnsdist6 image 'docker.io/powerdns/dnsdist-18:1.8.3'
+set container name dnsdist6 arguments '--log-timestamps'
+set container name dnsdist6 memory '0'
+set container name dnsdist6 network containers address fdc0:7ebe:7a3e:ff00::53
+set container name dnsdist6 restart 'on-failure'
+set container name dnsdist6 shared-memory '0'
+set container name dnsdist6 volume config source '/config/containers/dnsdist/config/dnsdist.conf.lua'
+set container name dnsdist6 volume config destination '/etc/dnsdist/dnsdist.conf'
+set container name dnsdist6 volume config mode 'ro'
+
 
 # blocky
 set container name blocky image 'ghcr.io/0xerr0r/blocky:v0.23'

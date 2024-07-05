@@ -1,5 +1,6 @@
 -- udp/tcp dns listening
 setLocal("0.0.0.0:53", {})
+addLocal("[::]:53", {})
 -- disable security status polling via DNS
 setSecurityPollSuffix("")
 setVerboseHealthChecks(true)

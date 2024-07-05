@@ -49,7 +49,7 @@ set nat destination rule 303 translation address '10.1.3.1'
 set nat destination rule 303 translation port '123'
 
 set nat destination rule 400 description 'Forward port for Roon ARC'
-set nat destination rule 400 destination port '59453'
+set nat destination rule 400 destination group port-group 'roon_arc_ports'
 set nat destination rule 400 inbound-interface name 'eth2'
 set nat destination rule 400 protocol 'tcp'
 set nat destination rule 400 translation address '10.1.2.60'
