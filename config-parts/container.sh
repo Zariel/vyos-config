@@ -43,20 +43,6 @@ set container name dnsdist volume config source '/config/containers/dnsdist/conf
 set container name dnsdist volume config destination '/etc/dnsdist/dnsdist.conf'
 set container name dnsdist volume config mode 'ro'
 
-# dnsdist-v6
-set container name dnsdist6 cap-add 'net-bind-service'
-set container name dnsdist6 environment TZ value 'Europe/London'
-set container name dnsdist6 image 'docker.io/powerdns/dnsdist-18:1.8.3'
-set container name dnsdist6 arguments '--log-timestamps'
-set container name dnsdist6 memory '0'
-set container name dnsdist6 network containers address fdc0:7ebe:7a3e:ff00::53
-set container name dnsdist6 restart 'on-failure'
-set container name dnsdist6 shared-memory '0'
-set container name dnsdist6 volume config source '/config/containers/dnsdist/config/dnsdist.conf.lua'
-set container name dnsdist6 volume config destination '/etc/dnsdist/dnsdist.conf'
-set container name dnsdist6 volume config mode 'ro'
-
-
 # blocky
 set container name blocky image 'ghcr.io/0xerr0r/blocky:v0.23'
 set container name blocky memory '0'
