@@ -5,6 +5,8 @@ addLocal("[::]:53", {})
 setSecurityPollSuffix("")
 setVerboseHealthChecks(true)
 
+addACL('fdc0:7ebe:7a3e::/48')
+
 -- enable prometheus
 webserver("0.0.0.0:8083")
 setWebserverConfig({
