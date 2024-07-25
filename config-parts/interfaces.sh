@@ -82,5 +82,8 @@ set interfaces ethernet eth4 address '10.1.0.1/24'
 
 set interfaces wireguard wg01 address '10.0.11.1/24'
 set interfaces wireguard wg01 description 'WIREGUARD'
+set interfaces wireguard wg01 peer wall-e allowed-ips '10.0.11.4/32'
+set interfaces wireguard wg01 peer wall-e persistent-keepalive '15'
+set interfaces wireguard wg01 peer wall-e public-key '0wrH9QqKMRbcnMc41xzwEvLX9xyKY/mB1no94woOAhQ='
 set interfaces wireguard wg01 port '51820'
 set interfaces wireguard wg01 private-key "${SECRET_WIREGUARD_PRIVATE_KEY}"
