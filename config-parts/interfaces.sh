@@ -79,3 +79,8 @@ set interfaces ethernet eth3 hw-id 'a0:36:9f:a9:0d:3b'
 set interfaces ethernet eth4 hw-id '50:9a:4c:4b:f6:0c'
 set interfaces ethernet eth4 description 'MGMT'
 set interfaces ethernet eth4 address '10.1.0.1/24'
+
+set interfaces wireguard wg01 address '10.0.11.1/24'
+set interfaces wireguard wg01 description 'WIREGUARD'
+set interfaces wireguard wg01 port '51820'
+set interfaces wireguard wg01 private-key "${SECRET_WIREGUARD_PRIVATE_KEY}"

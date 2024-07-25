@@ -21,6 +21,20 @@ while getopts "c" options; do
   esac
 done
 
+# Load secrets into ENV vars
+if [[ -f "/config/secrets.sops.env" ]]; then
+  export SOPS_AGE_KEY_FILE=/config/secrets/age.key
+
+  mapfile environmentAsArray < <(
+    sops --decrypt "/config/secrets.sops.env" |
+      grep --invert-match '^#' |
+      grep --invert-match '^\s*$'
+  ) # Uses grep to remove commented and blank lines
+  for variableDeclaration in "${environmentAsArray[@]}"; do
+    export "${variableDeclaration//[$'\r\n']/}" # The substitution removes the line breaks
+  done
+fi
+
 # Apply environment to container (configuration) files
 restart_containers=""
 while IFS= read -r -d '' file

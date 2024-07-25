@@ -43,7 +43,10 @@ set firewall ipv4 name trusted-local rule 410 action 'accept'
 set firewall ipv4 name trusted-local rule 410 description 'Rule: accept_vyos_api'
 set firewall ipv4 name trusted-local rule 410 destination port '8443'
 set firewall ipv4 name trusted-local rule 410 protocol 'tcp'
-
+set firewall ipv4 name trusted-local rule 420 action 'accept'
+set firewall ipv4 name trusted-local rule 420 description 'Rule: accept_wireguard'
+set firewall ipv4 name trusted-local rule 420 destination port '51820'
+set firewall ipv4 name trusted-local rule 420 protocol 'udp'
 # From TRUSTED to SERVERS
 set firewall ipv4 name trusted-servers default-action 'accept'
 

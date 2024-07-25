@@ -62,6 +62,8 @@ set firewall ipv4 name local-trusted rule 110 description 'Rule: accept_mdns'
 set firewall ipv4 name local-trusted rule 110 destination port 'mdns'
 set firewall ipv4 name local-trusted rule 110 protocol 'udp'
 set firewall ipv4 name local-trusted rule 110 source port 'mdns'
-
+set firewall ipv4 name local-trusted rule 400 description 'Rule: accept_wireguard'
+set firewall ipv4 name local-trusted rule 400 source port '51820'
+set firewall ipv4 name local-trusted rule 400 protocol 'udp'
 # From LOCAL to WAN
 set firewall ipv4 name local-wan default-action 'accept'

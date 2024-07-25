@@ -16,6 +16,11 @@ set firewall ipv4 name wan-lan default-log
 set firewall ipv4 name wan-local default-action 'drop'
 set firewall ipv4 name wan-local default-log
 
+set firewall ipv4 name wan-local rule 100 action 'accept'
+set firewall ipv4 name wan-local rule 100 description 'Rule: accept_wireguard'
+set firewall ipv4 name wan-local rule 100 destination port '51820'
+set firewall ipv4 name wan-local rule 100 protocol 'udp'
+
 # From WAN to SERVERS
 set firewall ipv4 name wan-servers default-action 'drop'
 set firewall ipv4 name wan-servers default-log
