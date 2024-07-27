@@ -122,7 +122,7 @@ addAction("10.1.1.0/24", PoolAction("blocky"))     -- servers
 addAction("10.1.2.0/24", PoolAction("blocky"))     -- trusted
 addAction("10.1.3.0/24", PoolAction("blocky"))     -- iot
 
-addActions("10.0.11.0/24", PoolAction("blocky"))   -- wireguard
+addAction("10.0.11.0/24", PoolAction("blocky"))    -- wireguard
 
 -- log queries from unknown subnets
 addAction(AllRule(), LogAction('', false, false, false, false))
