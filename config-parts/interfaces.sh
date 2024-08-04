@@ -85,5 +85,8 @@ set interfaces wireguard wg01 description 'WIREGUARD'
 set interfaces wireguard wg01 peer wall-e allowed-ips '10.0.11.4/32'
 set interfaces wireguard wg01 peer wall-e persistent-keepalive '15'
 set interfaces wireguard wg01 peer wall-e public-key '0wrH9QqKMRbcnMc41xzwEvLX9xyKY/mB1no94woOAhQ='
+set interfaces wireguard wg01 peer chris-macbook allowed-ips '10.0.11.5/32'
+set interfaces wireguard wg01 peer chris-macbook public-key 'sDzF8+Jn7PHXkiHtWrkuY22FPlGsj0vBqzMu59G9J1w='
+set interfaces wireguard wg01 peer chris-macbook persistent-keepalive '15'
 set interfaces wireguard wg01 port '51820'
 set interfaces wireguard wg01 private-key "${SECRET_WIREGUARD_PRIVATE_KEY}"
