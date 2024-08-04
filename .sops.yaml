@@ -1,0 +1,6 @@
+---
+creation_rules:
+  - path_regex: .*\.sops\.env
+    # Personal, VyOS
+    age: >-
+      age122qkp0fzw7vva0eux7ncwjf2ct5vvuwckdj3zvwggr7eqryas3ysslc36f
