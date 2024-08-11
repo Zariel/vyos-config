@@ -88,5 +88,8 @@ set interfaces wireguard wg01 peer wall-e public-key '0wrH9QqKMRbcnMc41xzwEvLX9x
 set interfaces wireguard wg01 peer chris-macbook allowed-ips '10.0.11.5/32'
 set interfaces wireguard wg01 peer chris-macbook public-key 'sDzF8+Jn7PHXkiHtWrkuY22FPlGsj0vBqzMu59G9J1w='
 set interfaces wireguard wg01 peer chris-macbook persistent-keepalive '15'
+set interfaces wireguard wg01 peer chris-iphone allowed-ips '10.0.11.6/32'
+set interfaces wireguard wg01 peer chris-iphone public-key '8GJVX0GvW7BE8n+G1+Be/IlvJx5rMQyno5bG8iIK1EY='
+set interfaces wireguard wg01 peer chris-iphone persistent-keepalive '15'
 set interfaces wireguard wg01 port '51820'
 set interfaces wireguard wg01 private-key "${SECRET_WIREGUARD_PRIVATE_KEY}"
