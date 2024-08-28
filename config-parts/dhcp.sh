@@ -137,6 +137,8 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping chris-macbook mac-address '3c:22:fb:d4:ac:17'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping chris-watch ip-address '10.1.2.12'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping chris-watch mac-address 'e8:81:52:3d:f7:cd'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping chris-steam-deck ip-address '10.1.2.13'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping chris-steam-deck mac-address '14:D4:24:AE:D7:49'
 
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-iphone ip-address '10.1.2.20'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-iphone mac-address '88:a4:79:ec:70:56'
