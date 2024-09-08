@@ -17,7 +17,7 @@ set container name haproxy-k8s-api volume config mode 'ro'
 
 # bind
 set container name bind cap-add 'net-bind-service'
-set container name bind image 'docker.io/internetsystemsconsortium/bind9:9.21'
+set container name bind image 'docker.io/internetsystemsconsortium/bind9:9.19'
 set container name bind command '/usr/sbin/named -4 -f -c /etc/bind/named.conf -u bind'
 set container name bind memory '0'
 set container name bind network containers address '10.5.0.3'
