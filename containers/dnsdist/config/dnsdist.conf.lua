@@ -113,7 +113,6 @@ addAction("192.168.2.0/24", PoolAction("blocky")) -- guest vlan
 
 -- this will send this domain to the bind server
 addAction('unifi', PoolAction('bind'))
-addAction('plex.cbannister.xyz', SpoofAction('10.45.0.20'))
 addAction('cbannister.xyz', PoolAction('k8s'))
 addAction('cbannister.casa', PoolAction('bind'))
 
