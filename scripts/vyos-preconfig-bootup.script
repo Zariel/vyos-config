@@ -6,4 +6,4 @@
 # Fix for containers requiring a custom user/group id
 # and Vyos not preserving file perms on upgrade
 mkdir -p /tmp/bind/cache
-chown -R 104 /tmp/bind/cache
+chown -R 100 /tmp/bind/cache
