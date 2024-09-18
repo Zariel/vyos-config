@@ -146,6 +146,8 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-macbook mac-address 'bc:d0:74:32:06:e6'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-watch ip-address '10.1.2.22'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-watch mac-address 'd2:42:bf:f2:c5:26'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-ipad ip-address '10.1.2.23'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-ipad mac-address 'b6:64:b5:1f:d4:a9'
 
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping lounge-homepod ip-address '10.1.2.30'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping lounge-homepod mac-address 'd4:a3:3d:61:d4:76'
