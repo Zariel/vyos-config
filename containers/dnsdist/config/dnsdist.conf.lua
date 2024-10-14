@@ -111,6 +111,8 @@ getPool("cloudflare"):setCache(pc)
 
 addAction("192.168.2.0/24", PoolAction("blocky")) -- guest vlan
 
+addAction('test.cbannister.xyz', SpoofAction('10.45.0.20'))
+
 -- this will send this domain to the bind server
 addAction('unifi', PoolAction('bind'))
 addAction('cbannister.xyz', PoolAction('k8s'))
