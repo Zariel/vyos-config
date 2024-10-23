@@ -91,7 +91,7 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-0 mac-address '58:47:ca:78:d2:42'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-0 static-mapping-parameters 'option host-name k8s-0;'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 ip-address '10.1.1.11'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 mac-address '48:21:0b:60:1a:3f'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 mac-address '58:47:ca:78:d7:fc'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 static-mapping-parameters 'option host-name k8s-1;'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 ip-address '10.1.1.12'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 mac-address 'ec:8e:b5:70:f6:59'
