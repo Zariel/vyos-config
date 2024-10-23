@@ -24,6 +24,12 @@ set firewall ipv4 name wan-local rule 100 protocol 'udp'
 # From WAN to SERVERS
 set firewall ipv4 name wan-servers default-action 'drop'
 set firewall ipv4 name wan-servers default-log
+set firewall ipv4 name wan-servers rule 100 description 'Rule: qbittorrent'
+set firewall ipv4 name wan-servers rule 100 destination port '50413'
+set firewall ipv4 name wan-servers rule 100 destination address '10.45.0.24'
+set firewall ipv4 name wan-servers rule 100 protocol 'tcp'
+set firewall ipv4 name wan-servers rule 100 action 'accept'
+
 
 # From WAN to CONTAINERS
 set firewall ipv4 name wan-containers default-action 'drop'
