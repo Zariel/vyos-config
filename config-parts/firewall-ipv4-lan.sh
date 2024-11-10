@@ -20,6 +20,10 @@ set firewall ipv4 name lan-local rule 60 action 'accept'
 set firewall ipv4 name lan-local rule 60 description 'Rule: accept_ntp'
 set firewall ipv4 name lan-local rule 60 destination port 'ntp'
 set firewall ipv4 name lan-local rule 60 protocol 'udp'
+set firewall ipv4 name lan-local rule 400 action 'accept'
+set firewall ipv4 name lan-local rule 400 description 'Rule: accept_ssh'
+set firewall ipv4 name lan-local rule 400 destination port 'ssh'
+set firewall ipv4 name lan-local rule 400 protocol 'tcp'
 
 # From LAN to SERVERS
 set firewall ipv4 name lan-servers default-action 'drop'
