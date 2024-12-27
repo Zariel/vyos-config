@@ -22,7 +22,7 @@ blocking:
     downloads:
       timeout: 4m
 
-  blackLists:
+  denylists:
     ads:
       - https://raw.githubusercontent.com/Zariel/adlists/main/blocklist.txt
       - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
@@ -34,7 +34,7 @@ blocking:
     gambling:
       - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-only/hosts
 
-  whiteLists:
+  allowlists:
     ads:
       - https://raw.githubusercontent.com/Zariel/adlists/main/allowlist.txt
       - https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt
