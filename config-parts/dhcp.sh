@@ -44,8 +44,6 @@ set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mappin
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping xbox-series-x mac-address '4c:3b:df:27:f4:00'
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping lounge-harmony-hub ip-address '10.1.3.18'
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping lounge-harmony-hub mac-address 'c8:db:26:10:c4:a7'
-set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping office-printer ip-address '10.1.3.19'
-set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 static-mapping office-printer mac-address 'd4:6a:6a:7c:40:86'
 
 # LAN
 set service dhcp-server shared-network-name LAN authoritative
@@ -171,3 +169,6 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping ropiee mac-address 'dc:a6:32:e9:d2:4b'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bluesound-node2i ip-address '10.1.2.63'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bluesound-node2i mac-address '90:56:82:41:62:8e'
+
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-printer ip-address '10.1.2.70'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-printer mac-address 'd4:6a:6a:7c:40:86'
