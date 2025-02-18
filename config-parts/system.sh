@@ -24,3 +24,10 @@ set system syslog host 10.45.0.2 format 'octet-counted'
 set system time-zone 'Europe/London'
 
 set system option kernel disable-mitigations
+
+set system sysctl parameter net.core.rmem_max value '67108864'
+set system sysctl parameter net.core.wmem_max value '67108864'
+set system sysctl parameter net.ipv4.tcp_rmem value '4096 87380 33554432'
+set system sysctl parameter net.ipv4.tcp_wmem value '4096 87380 33554432'
+set system sysctl parameter net.ipv4.tcp_mtu_probing value '1'
+set system sysctl parameter net.ipv4.tcp_window_scaling value '1'
