@@ -57,6 +57,12 @@ set firewall ipv4 name servers-containers rule 100 source group address-group 'k
 # From SERVERS to TRUSTED
 set firewall ipv4 name servers-trusted default-action 'drop'
 set firewall ipv4 name servers-trusted default-log
+set firewall ipv4 name servers-trusted rule 100 action 'accept'
+set firewall ipv4 name servers-trusted rule 100 description 'Rule: accept_node_exporter_from_k8s_nodes'
+set firewall ipv4 name servers-trusted rule 100 destination port '9100'
+set firewall ipv4 name servers-trusted rule 100 destination address '10.1.2.54'
+set firewall ipv4 name servers-trusted rule 100 protocol 'tcp'
+set firewall ipv4 name servers-trusted rule 100 source group address-group 'k8s_nodes'
 
 # From SERVERS to WAN
 set firewall ipv4 name servers-wan default-action 'accept'
