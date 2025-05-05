@@ -97,7 +97,7 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 mac-address '58:47:ca:78:d8:42'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 static-mapping-parameters 'option host-name k8s-2;'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-3 ip-address '10.1.1.13'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-3 mac-address 'f6:45:04:c6:96:e0'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-3 mac-address 'b8:59:9f:cf:ff:b2'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-3 static-mapping-parameters 'option host-name k8s-3;'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-4 ip-address '10.1.1.14'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-4 mac-address '48:21:0b:56:ac:6c'
@@ -110,7 +110,7 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 
 # vms
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping nas ip-address '10.1.1.40'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping nas mac-address '2e:d2:2d:d2:34:cd'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping nas mac-address 'b8:59:9f:cf:ff:b3'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping postgres ip-address '10.1.1.41'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping postgres mac-address '52:f0:87:82:1f:2c'
 
