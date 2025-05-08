@@ -103,7 +103,7 @@ pc = newPacketCache(1000000, {
     staleTTL = 60,
     dontAge = false
 })
-getPool("blocky"):setCache(pc)
+-- getPool("blocky"):setCache(pc)
 getPool("cloudflare"):setCache(pc)
 
 -- addAction(AllRule(), LogAction("", false, false, true, false, false))
