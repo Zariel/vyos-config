@@ -11,7 +11,7 @@ addACL('fdc0:7ebe:7a3e::/48')
 webserver("0.0.0.0:8083")
 setWebserverConfig({
     statsRequireAuthentication = false,
-    acl = "10.42.0.0/16, 127.0.0.0/8"
+    acl = "10.0.0.0/8, 127.0.0.0/8"
 })
 setAPIWritable(false)
 
