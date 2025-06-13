@@ -8,8 +8,8 @@ set interfaces ethernet eth0 offload rfs
 set interfaces ethernet eth0 offload rps
 set interfaces ethernet eth0 offload sg
 set interfaces ethernet eth0 offload tso
-set interfaces ethernet eth0 ring-buffer rx '4096'
-set interfaces ethernet eth0 ring-buffer tx '4096'
+set interfaces ethernet eth0 ring-buffer rx '8192'
+set interfaces ethernet eth0 ring-buffer tx '8192'
 
 delete interfaces ethernet eth0 address
 
@@ -21,14 +21,14 @@ set interfaces ethernet eth1 offload rfs
 set interfaces ethernet eth1 offload rps
 set interfaces ethernet eth1 offload sg
 set interfaces ethernet eth1 offload tso
-set interfaces ethernet eth1 ring-buffer rx '4096'
-set interfaces ethernet eth1 ring-buffer tx '4096'
+set interfaces ethernet eth1 ring-buffer rx '8192'
+set interfaces ethernet eth1 ring-buffer tx '8192'
 
 delete interfaces ethernet eth1 address
 
 set interfaces bonding bond0 description 'LAN'
 set interfaces bonding bond0 mode '802.3ad'
-set interfaces bonding bond0 hash-policy 'layer2+3'
+set interfaces bonding bond0 hash-policy 'layer3+4'
 set interfaces bonding bond0 lacp-rate 'fast'
 set interfaces bonding bond0 mac '08:c0:eb:0f:e4:30'
 set interfaces bonding bond0 mtu 9000
