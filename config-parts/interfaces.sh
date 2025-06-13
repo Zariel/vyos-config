@@ -60,7 +60,6 @@ set interfaces ethernet eth2 description 'WAN'
 set interfaces ethernet eth2 address 'dhcp'
 set interfaces ethernet eth2 offload gro
 set interfaces ethernet eth2 offload gso
-set interfaces ethernet eth2 offload lro
 set interfaces ethernet eth2 offload rfs
 set interfaces ethernet eth2 offload rps
 set interfaces ethernet eth2 offload sg
