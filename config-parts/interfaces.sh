@@ -66,6 +66,7 @@ set interfaces ethernet eth2 offload sg
 set interfaces ethernet eth2 offload tso
 set interfaces ethernet eth2 ring-buffer rx '4096'
 set interfaces ethernet eth2 ring-buffer tx '4096'
+set interfaces ethernet eth2 disable-flow-control
 
 set interfaces ethernet eth2 address 'dhcpv6'
 set interfaces ethernet eth2 dhcpv6-options rapid-commit
