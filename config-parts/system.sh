@@ -34,3 +34,9 @@ set system sysctl parameter net.ipv4.tcp_window_scaling value '1'
 set system sysctl parameter net.ipv4.tcp_fastopen value '3'
 set system sysctl parameter net.ipv4.tcp_congestion_control value 'bbr'
 set system sysctl parameter net.core.default_qdisc value 'fq'
+set system sysctl parameter net.core.netdev_budget value 1200
+set system sysctl parameter net.core.netdev_budget_usecs value 8000
+set system sysctl parameter net.netfilter.nf_conntrack_max value 2097152
+set system sysctl parameter net.netfilter.nf_conntrack_buckets value 524288
+set system sysctl parameter net.netfilter.nf_conntrack_tcp_timeout_established value 3600
+set system sysctl parameter net.netfilter.nf_conntrack_tcp_timeout_time_wait value 30
