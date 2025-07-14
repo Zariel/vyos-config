@@ -42,12 +42,10 @@ set interfaces bonding bond0 vif 45 mtu 9000
 set interfaces bonding bond0 vif 20 address '10.1.2.1/24'
 set interfaces bonding bond0 vif 20 description 'TRUSTED'
 set interfaces bonding bond0 vif 20 mtu 1500
-set interfaces bonding bond0 vif 20 ipv6 address eui64 fdc0:7ebe:7a3e:20::/64
 set interfaces bonding bond0 vif 30 address '192.168.2.1/24'
 set interfaces bonding bond0 vif 30 description 'GUEST'
 set interfaces bonding bond0 vif 30 mtu 1500
 set interfaces bonding bond0 vif 40 address '10.1.3.1/24'
-set interfaces bonding bond0 vif 40 ipv6 address eui64 fdc0:7ebe:7a3e:40::/64
 set interfaces bonding bond0 vif 40 description 'IOT'
 set interfaces bonding bond0 vif 40 mtu 1500
 
@@ -67,17 +65,6 @@ set interfaces ethernet eth2 offload tso
 set interfaces ethernet eth2 ring-buffer rx '4096'
 set interfaces ethernet eth2 ring-buffer tx '4096'
 set interfaces ethernet eth2 disable-flow-control
-
-set interfaces ethernet eth2 address 'dhcpv6'
-set interfaces ethernet eth2 dhcpv6-options rapid-commit
-set interfaces ethernet eth2 dhcpv6-options pd 0 length '56'
-set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0' address 1
-set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0' sla-id 0
-set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0.20' address 1
-set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0.20' sla-id 20
-set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0.40' address 1
-set interfaces ethernet eth2 dhcpv6-options pd 0 interface 'bond0.40' sla-id 40
-
 
 # TODO: ipv6 prefix delegation
 # set interfaces ethernet eth2 mtu '1500'
