@@ -36,13 +36,12 @@ set firewall ipv4 name servers-local rule 100 action 'accept'
 set firewall ipv4 name servers-local rule 100 description 'Rule: accept_node_exporter_from_k8s_nodes_and_pods'
 set firewall ipv4 name servers-local rule 100 destination port '9100'
 set firewall ipv4 name servers-local rule 100 protocol 'tcp'
-set firewall ipv4 name servers-local rule 100 source group address-group 'k8s_nodes'
 set firewall ipv4 name servers-local rule 100 source group network-group 'k8s_pods'
 set firewall ipv4 name servers-local rule 110 action 'accept'
 set firewall ipv4 name servers-local rule 110 description 'Rule: accept_speedtest_exporter_from_k8s_nodes'
 set firewall ipv4 name servers-local rule 110 destination port '9798'
 set firewall ipv4 name servers-local rule 110 protocol 'tcp'
-set firewall ipv4 name servers-local rule 110 source group address-group 'k8s_nodes'
+set firewall ipv4 name servers-local rule 110 source group network-group 'k8s_pods'
 
 # From SERVERS to CONTAINERS
 set firewall ipv4 name servers-containers default-action 'accept'
@@ -53,7 +52,7 @@ set firewall ipv4 name servers-containers rule 40 protocol 'tcp_udp'
 set firewall ipv4 name servers-containers rule 100 action 'accept'
 set firewall ipv4 name servers-containers rule 100 description 'Rule: accept_k8s_nodes'
 set firewall ipv4 name servers-containers rule 100 protocol 'tcp'
-set firewall ipv4 name servers-containers rule 100 source group address-group 'k8s_nodes'
+set firewall ipv4 name servers-containers rule 100 source group network-group 'k8s_pods'
 
 # From SERVERS to TRUSTED
 set firewall ipv4 name servers-trusted default-action 'drop'
@@ -63,7 +62,6 @@ set firewall ipv4 name servers-trusted rule 100 description 'Rule: accept_node_e
 set firewall ipv4 name servers-trusted rule 100 destination port '9100'
 set firewall ipv4 name servers-trusted rule 100 destination address '10.1.2.54'
 set firewall ipv4 name servers-trusted rule 100 protocol 'tcp'
-set firewall ipv4 name servers-trusted rule 100 source group address-group 'k8s_nodes'
 set firewall ipv4 name servers-trusted rule 100 source group network-group 'k8s_pods'
 
 # From SERVERS to WAN

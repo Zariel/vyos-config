@@ -42,7 +42,7 @@ set firewall ipv4 name local-servers rule 210 action 'accept'
 set firewall ipv4 name local-servers rule 210 description 'Rule: accept_k8s_api'
 set firewall ipv4 name local-servers rule 210 protocol 'tcp'
 set firewall ipv4 name local-servers rule 210 destination port '6443'
-set firewall ipv4 name local-servers rule 210 destination group address-group 'k8s_nodes'
+set firewall ipv4 name local-servers rule 210 destination group network-group 'k8s_pods'
 
 # From LOCAL to CONTAINERS
 set firewall ipv4 name local-containers default-action 'accept'
