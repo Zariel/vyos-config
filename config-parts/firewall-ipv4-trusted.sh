@@ -49,6 +49,11 @@ set firewall ipv4 name trusted-local rule 420 destination port '51820'
 set firewall ipv4 name trusted-local rule 420 protocol 'udp'
 # From TRUSTED to SERVERS
 set firewall ipv4 name trusted-servers default-action 'accept'
+set firewall ipv4 name trusted-servers rule 90 action 'drop'
+set firewall ipv4 name trusted-servers rule 90 description 'Rule: block_pod_cidr'
+set firewall ipv4 name trusted-servers rule 90 destination address '10.42.0.0/16'
+set firewall ipv4 name trusted-servers rule 90 log
+
 
 # From TRUSTED to CONTAINERS
 set firewall ipv4 name trusted-containers default-action 'accept'
