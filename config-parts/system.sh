@@ -25,18 +25,18 @@ set system time-zone 'Europe/London'
 
 set system option kernel disable-mitigations
 
+set system sysctl parameter net.core.default_qdisc value 'fq'
+set system sysctl parameter net.core.netdev_budget value '1200'
+set system sysctl parameter net.core.netdev_budget_usecs value '8000'
+set system sysctl parameter net.core.netdev_max_backlog value '30000'
 set system sysctl parameter net.core.rmem_max value '67108864'
 set system sysctl parameter net.core.wmem_max value '67108864'
-set system sysctl parameter net.ipv4.tcp_rmem value '4096 87380 33554432'
-set system sysctl parameter net.ipv4.tcp_wmem value '4096 87380 33554432'
-set system sysctl parameter net.ipv4.tcp_mtu_probing value '1'
-set system sysctl parameter net.ipv4.tcp_window_scaling value '1'
-set system sysctl parameter net.ipv4.tcp_fastopen value '3'
+set system sysctl parameter net.ipv4.ip_forward_use_pmtu value '1'
 set system sysctl parameter net.ipv4.tcp_congestion_control value 'bbr'
-set system sysctl parameter net.core.default_qdisc value 'fq'
-set system sysctl parameter net.core.netdev_budget value 1200
-set system sysctl parameter net.core.netdev_budget_usecs value 8000
-set system sysctl parameter net.netfilter.nf_conntrack_max value 2097152
-set system sysctl parameter net.netfilter.nf_conntrack_buckets value 524288
-set system sysctl parameter net.netfilter.nf_conntrack_tcp_timeout_established value 3600
-set system sysctl parameter net.netfilter.nf_conntrack_tcp_timeout_time_wait value 30
+set system sysctl parameter net.ipv4.tcp_moderate_rcvbuf value '1'
+set system sysctl parameter net.ipv4.tcp_mtu_probing value '1'
+set system sysctl parameter net.ipv4.tcp_no_metrics_save value '1'
+set system sysctl parameter net.ipv4.tcp_rmem value '4096 87380 33554432'
+set system sysctl parameter net.ipv4.tcp_slow_start_after_idle value '0'
+set system sysctl parameter net.ipv4.tcp_window_scaling value '1'
+set system sysctl parameter net.ipv4.tcp_wmem value '4096 87380 33554432'
