@@ -117,9 +117,6 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping postgres ip-address '10.1.1.41'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping postgres mac-address '52:f0:87:82:1f:2c'
 
-
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pikvm ip-address '10.1.1.50'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pikvm mac-address 'e4:5f:01:f4:9d:97'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm ip-address '10.1.1.51'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm mac-address '38:3b:26:7f:32:12'
 
@@ -169,6 +166,9 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping mrx740 mac-address '50:1e:2d:3e:39:48'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping coreelec ip-address '10.1.2.54'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping coreelec mac-address '90:0e:b3:fd:a1:46'
+# pikvm, cant set it to 9000 mtu so
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping pikvm ip-address '10.1.2.55'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping pikvm mac-address 'e4:5f:01:f4:9d:97'
 
 # roon
 # todo: move roon to IOT vlan and ensure it all works, need to forward ports and enable UDP Broadcast-Relay
@@ -181,3 +181,4 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-printer ip-address '10.1.2.70'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-printer mac-address 'd4:6a:6a:7c:40:86'
+
