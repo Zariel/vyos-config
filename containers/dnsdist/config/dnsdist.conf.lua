@@ -127,7 +127,7 @@ addAction("10.1.2.0/24", PoolAction("blocky"))     -- trusted
 addAction("10.1.3.0/24", PoolAction("blocky"))     -- iot
 
 addAction("10.0.11.0/24", PoolAction("blocky"))    -- wireguard
-addAction({'10.42.0.0/16', '10.43.0.0/16'}, PoolAction('cloudflare'))
+addAction({'10.42.0.0/16', '172.20.0.0/16'}, PoolAction('cloudflare'))
 
 -- log queries from unknown subnets
 addAction(AllRule(), LogAction('', false, false, false, false))

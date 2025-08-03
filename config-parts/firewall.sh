@@ -16,9 +16,11 @@ set firewall group ipv6-address-group router-addresses-ipv6 address ::1
 
 # k8s nodes
 set firewall group address-group k8s_nodes address '10.1.1.10-10.1.1.14' # Servers vlan
+set firewall group address-group k8s_nodes address '10.1.8.10-10.1.8.13' # k8s vlan
 
 # k8s pods
 set firewall group network-group k8s_pods network '10.42.0.0/16'
+set firewall group network-group k8s_pods network '172.20.0.0/16'
 
 set firewall group address-group plex_clients address '10.1.3.16' # lounge-shield
 

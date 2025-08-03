@@ -36,9 +36,6 @@ set interfaces bonding bond0 mtu 9000
 set interfaces bonding bond0 vif 10 address '10.1.1.1/24'
 set interfaces bonding bond0 vif 10 description 'SERVERS'
 set interfaces bonding bond0 vif 10 mtu 9000
-set interfaces bonding bond0 vif 45 address '10.45.0.1/24'
-set interfaces bonding bond0 vif 45 description 'INGRES'
-set interfaces bonding bond0 vif 45 mtu 9000
 set interfaces bonding bond0 vif 20 address '10.1.2.1/24'
 set interfaces bonding bond0 vif 20 description 'TRUSTED'
 set interfaces bonding bond0 vif 20 mtu 1500
@@ -48,6 +45,9 @@ set interfaces bonding bond0 vif 30 mtu 1500
 set interfaces bonding bond0 vif 40 address '10.1.3.1/24'
 set interfaces bonding bond0 vif 40 description 'IOT'
 set interfaces bonding bond0 vif 40 mtu 1500
+set interfaces bonding bond0 vif 80 address '10.1.8.1/24'
+set interfaces bonding bond0 vif 80 description "K8S"
+set interfaces bonding bond0 vif 80 mtu 9000
 
 set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1
