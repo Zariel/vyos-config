@@ -122,6 +122,7 @@ addAction('cbannister.casa', PoolAction('bind'))
 
 addAction("10.1.3.1/24", PoolAction("blocky"))     -- iot
 addAction("10.1.0.0/24", PoolAction("cloudflare")) -- lan
+addAction("10.1.8.0/24", PoolAction("cloudflare"))
 addAction("10.1.1.0/24", PoolAction("blocky"))     -- servers
 addAction("10.1.2.0/24", PoolAction("blocky"))     -- trusted
 addAction("10.1.3.0/24", PoolAction("blocky"))     -- iot
