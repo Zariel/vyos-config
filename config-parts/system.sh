@@ -40,3 +40,18 @@ set system sysctl parameter net.ipv4.tcp_rmem value '4096 87380 33554432'
 set system sysctl parameter net.ipv4.tcp_slow_start_after_idle value '0'
 set system sysctl parameter net.ipv4.tcp_window_scaling value '1'
 set system sysctl parameter net.ipv4.tcp_wmem value '4096 87380 33554432'
+
+# Pod traffic coming back from vlan10 will be asymmetric as the k8s nodes
+# have direct L2 access to vlan10 so return traffic will come through the router
+# and get dropped as invalid as its not in conntrack.
+#
+# Ignore conntrack for traffic from VLAN 10 servers to pod networks
+set system conntrack ignore ipv4 rule 10 destination address 172.20.0.0/16
+set system conntrack ignore ipv4 rule 10 source address 10.1.1.0/24
+set system conntrack ignore ipv4 rule 10 protocol tcp
+
+# Ignore conntrack for traffic from pod networks to VLAN 10 servers
+set system conntrack ignore ipv4 rule 20 destination address 10.1.1.0/24
+set system conntrack ignore ipv4 rule 20 source address 172.20.0.0/16
+set system conntrack ignore ipv4 rule 20 protocol tcp
+
