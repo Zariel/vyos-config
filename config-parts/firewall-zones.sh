@@ -34,7 +34,6 @@ done
 set firewall zone wan interface 'eth2'
 set firewall zone lan interface 'bond0'
 set firewall zone servers interface 'bond0.10'
-set firewall zone servers interface 'bond0.80'
 set firewall zone trusted interface 'bond0.20'
 set firewall zone trusted interface 'wg01'
 set firewall zone guest interface 'bond0.30'

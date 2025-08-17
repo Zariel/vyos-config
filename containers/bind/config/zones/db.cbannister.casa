@@ -16,10 +16,10 @@ $ORIGIN cbannister.casa.
 gateway                  IN  A  10.1.0.1
 
 ; servers
-k8s-0                    IN  A  10.1.8.10
-k8s-1                    IN  A  10.1.8.11
-k8s-2                    IN  A  10.1.8.12
-k8s-3                    IN  A  10.1.8.13
+k8s-0                    IN  A  10.1.1.10
+k8s-1                    IN  A  10.1.1.11
+k8s-2                    IN  A  10.1.1.12
+k8s-3                    IN  A  10.1.1.13
 ipmi.pve                 IN  A  10.1.1.30
 pve                      IN  A  10.1.1.31
 nas                      IN  A  10.1.1.40
