@@ -203,5 +203,5 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping bluesound-node2i mac-address '90:56:82:41:62:8e'
 
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-printer ip-address '10.1.2.70'
-set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-printer mac-address 'd4:6a:6a:7c:40:86'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-printer mac-address '94:dd:f8:6c:f5:6a'
 
