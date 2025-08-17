@@ -1,7 +1,7 @@
 #!/bin/vbash
 
 # needed to route traffic to WAN
-set protocols static route 0.0.0.0/0 dhcp-interface eth2
+set protocols static route 0.0.0.0/0 dhcp-interface bond0.99
 
 set protocols bgp peer-group k8s graceful-restart enable
 set protocols bgp peer-group k8s remote-as '64513'

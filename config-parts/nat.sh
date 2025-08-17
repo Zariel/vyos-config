@@ -3,7 +3,7 @@
 # LAN -> WAN masquerade
 set nat source rule 100 description 'LAN -> WAN'
 set nat source rule 100 destination address '0.0.0.0/0'
-set nat source rule 100 outbound-interface name 'eth2'
+set nat source rule 100 outbound-interface name 'bond0.99'
 set nat source rule 100 translation address 'masquerade'
 
 # Force DNS
@@ -58,14 +58,14 @@ set nat destination rule 304 translation port '123'
 
 set nat destination rule 400 description 'Forward port for Roon ARC'
 set nat destination rule 400 destination group port-group 'roon_arc_ports'
-set nat destination rule 400 inbound-interface name 'eth2'
+set nat destination rule 400 inbound-interface name 'bond0.99'
 set nat destination rule 400 protocol 'tcp'
 set nat destination rule 400 translation address '10.1.2.60'
 set nat destination rule 400 translation port '59453'
 
 set nat destination rule 401 description 'Forward port for qbittorrent'
 set nat destination rule 401 destination port '50413'
-set nat destination rule 401 inbound-interface name 'eth2'
+set nat destination rule 401 inbound-interface name 'bond0.99'
 set nat destination rule 401 protocol 'tcp'
 set nat destination rule 401 translation address '10.45.0.24'
 set nat destination rule 401 translation port '50413'

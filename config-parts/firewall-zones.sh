@@ -32,6 +32,7 @@ for to in guest iot lan local servers containers trusted wan; do
 done
 
 set firewall zone wan interface 'eth2'
+set firewall zone wan interface 'bond0.99'
 set firewall zone lan interface 'bond0'
 set firewall zone servers interface 'bond0.10'
 set firewall zone trusted interface 'bond0.20'
