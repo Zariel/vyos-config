@@ -32,6 +32,10 @@ set firewall ipv4 name lan-local rule 400 protocol 'tcp'
 # From LAN to SERVERS
 set firewall ipv4 name lan-servers default-action 'drop'
 set firewall ipv4 name lan-servers default-log
+set firewall ipv4 name lan-servers rule 100 action 'accept'
+set firewall ipv4 name lan-servers rule 100 description 'Rule: accept_snmp'
+set firewall ipv4 name lan-servers rule 100 destination port '161,162'
+set firewall ipv4 name lan-servers rule 100 protocol 'tcp_udp'
 
 # From LAN to CONTAINERS
 set firewall ipv4 name lan-containers default-action 'accept'

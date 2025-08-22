@@ -11,10 +11,10 @@ set firewall ipv4 name servers-iot default-log
 # From SERVERS to LAN
 set firewall ipv4 name servers-lan default-action 'drop'
 set firewall ipv4 name servers-lan default-log
-set firewall ipv4 name servers-local rule 100 action 'accept'
-set firewall ipv4 name servers-local rule 100 description 'Rule: accept_snmp'
-set firewall ipv4 name servers-local rule 100 destination port '161'
-set firewall ipv4 name servers-local rule 100 protocol 'udp'
+set firewall ipv4 name servers-lan rule 100 action 'accept'
+set firewall ipv4 name servers-lan rule 100 description 'Rule: accept_snmp'
+set firewall ipv4 name servers-lan rule 100 destination port '161'
+set firewall ipv4 name servers-lan rule 100 protocol 'udp'
 
 # From SERVERS to LOCAL
 set firewall ipv4 name servers-local default-action 'drop'
