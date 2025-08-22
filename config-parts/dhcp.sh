@@ -70,6 +70,10 @@ set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mappin
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping ap02 ip-address '10.1.0.22'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping ap02 mac-address '0c:ea:14:e6:16:d5'
 
+# pikvm, static IP
+set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pikvm ip-address '10.1.0.100'
+set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24  static-mapping pikvm mac-address 'e4:5f:01:f4:9d:97'
+
 # Servers VLAN
 set service dhcp-server shared-network-name SERVERS authoritative
 set service dhcp-server shared-network-name SERVERS ping-check
@@ -189,9 +193,6 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping mrx740 mac-address '50:1e:2d:3e:39:48'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping coreelec ip-address '10.1.2.54'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping coreelec mac-address '90:0e:b3:fd:a1:46'
-# pikvm, cant set it to 9000 mtu so
-set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping pikvm ip-address '10.1.2.55'
-set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping pikvm mac-address 'e4:5f:01:f4:9d:97'
 
 # roon
 # todo: move roon to IOT vlan and ensure it all works, need to forward ports and enable UDP Broadcast-Relay

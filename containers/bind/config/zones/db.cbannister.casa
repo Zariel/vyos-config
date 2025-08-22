@@ -14,6 +14,7 @@ $ORIGIN cbannister.casa.
 
 ; LAN
 gateway                  IN  A  10.1.0.1
+pikvm                    IN  A  10.1.0.100
 
 ; servers
 k8s-0                    IN  A  10.1.1.10
@@ -24,7 +25,7 @@ ipmi.pve                 IN  A  10.1.1.30
 pve                      IN  A  10.1.1.31
 nas                      IN  A  10.1.1.40
 postgres                 IN  A  10.1.1.41
-pikvm                    IN  A  10.1.2.55
+
 am6b                     IN  A  10.1.2.54
 rock                     IN  A  10.1.2.60
 ropiee                   IN  A  10.1.2.61
