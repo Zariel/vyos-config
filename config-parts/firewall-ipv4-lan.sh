@@ -36,6 +36,12 @@ set firewall ipv4 name lan-servers rule 100 action 'accept'
 set firewall ipv4 name lan-servers rule 100 description 'Rule: accept_snmp'
 set firewall ipv4 name lan-servers rule 100 destination port '161,162'
 set firewall ipv4 name lan-servers rule 100 protocol 'tcp_udp'
+set firewall ipv4 name lan-servers rule 110 action 'accept'
+set firewall ipv4 name lan-servers rule 110 description 'Rule: accept_pikvm_tesmart'
+set firewall ipv4 name lan-servers rule 110 destination port '5000'
+set firewall ipv4 name lan-servers rule 110 destination address '10.1.1.51'
+set firewall ipv4 name lan-servers rule 110 source address '10.1.0.100'
+set firewall ipv4 name lan-servers rule 110 protocol 'tcp_udp'
 
 # From LAN to CONTAINERS
 set firewall ipv4 name lan-containers default-action 'accept'
