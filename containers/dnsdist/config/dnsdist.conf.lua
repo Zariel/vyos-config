@@ -120,6 +120,16 @@ addAction('unifi', PoolAction('bind'))
 addAction('cbannister.xyz', PoolAction('k8s'))
 addAction('cbannister.casa', PoolAction('bind'))
 
+-- Reverse DNS zones to bind
+addAction({
+    '0.1.10.in-addr.arpa',    -- LAN reverse
+    '1.1.10.in-addr.arpa',    -- SERVERS reverse
+    '2.1.10.in-addr.arpa',    -- TRUSTED reverse
+    '3.1.10.in-addr.arpa',    -- IOT reverse
+    '8.1.10.in-addr.arpa',    -- K8S reverse
+    '2.168.192.in-addr.arpa'  -- GUEST reverse
+}, PoolAction('bind'))
+
 addAction("10.1.3.1/24", PoolAction("blocky"))     -- iot
 addAction("10.1.0.0/24", PoolAction("cloudflare")) -- lan
 addAction("10.1.8.0/24", PoolAction("cloudflare"))
