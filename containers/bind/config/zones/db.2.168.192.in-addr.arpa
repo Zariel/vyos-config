@@ -1,0 +1,17 @@
+; Reverse DNS Zone for 192.168.2.0/24 (GUEST)
+$TTL 1h
+$ORIGIN 2.168.192.in-addr.arpa.
+@ IN SOA gateway.cbannister.casa. gateway.cbannister.casa. (
+  1708606198       ; serial number
+  2h               ; refresh period
+  1h               ; retry period
+  14d              ; expire time
+  1h               ; minimum ttl
+)
+
+; NS Records
+@                        IN  NS gateway.cbannister.casa.
+
+; PTR Records for GUEST (192.168.2.0/24)
+11   IN  PTR  chris-ably-laptop-eth.cbannister.casa.
+12   IN  PTR  chris-ably-laptop-wifi.cbannister.casa.

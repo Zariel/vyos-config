@@ -1,0 +1,19 @@
+; Reverse DNS Zone for 10.1.8.0/24 (K8S)
+$TTL 1h
+$ORIGIN 8.1.10.in-addr.arpa.
+@ IN SOA gateway.cbannister.casa. gateway.cbannister.casa. (
+  1708606198       ; serial number
+  2h               ; refresh period
+  1h               ; retry period
+  14d              ; expire time
+  1h               ; minimum ttl
+)
+
+; NS Records
+@                        IN  NS gateway.cbannister.casa.
+
+; PTR Records for K8S (10.1.8.0/24)
+10   IN  PTR  k8s-0.cbannister.casa.
+11   IN  PTR  k8s-1.cbannister.casa.
+12   IN  PTR  k8s-2.cbannister.casa.
+13   IN  PTR  k8s-3.cbannister.casa.

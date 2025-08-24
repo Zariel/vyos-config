@@ -1,0 +1,23 @@
+; Reverse DNS Zone for 10.1.3.0/24 (IOT)
+$TTL 1h
+$ORIGIN 3.1.10.in-addr.arpa.
+@ IN SOA gateway.cbannister.casa. gateway.cbannister.casa. (
+  1708606198       ; serial number
+  2h               ; refresh period
+  1h               ; retry period
+  14d              ; expire time
+  1h               ; minimum ttl
+)
+
+; NS Records
+@                        IN  NS gateway.cbannister.casa.
+
+; PTR Records for IOT (10.1.3.0/24)
+11   IN  PTR  dyson-fan-office.cbannister.casa.
+12   IN  PTR  bluray-player.cbannister.casa.
+13   IN  PTR  sky-stream.cbannister.casa.
+14   IN  PTR  lounge-tv.cbannister.casa.
+15   IN  PTR  fridge.cbannister.casa.
+16   IN  PTR  lounge-shield.cbannister.casa.
+17   IN  PTR  xbox-series-x.cbannister.casa.
+18   IN  PTR  lounge-harmony-hub.cbannister.casa.

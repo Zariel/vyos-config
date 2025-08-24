@@ -30,4 +30,4 @@ am6b                     IN  A  10.1.2.54
 rock                     IN  A  10.1.2.60
 ropiee                   IN  A  10.1.2.61
 
-k8s                      IN  A  10.45.0.2
+k8s                      IN  A  10.45.0.100
