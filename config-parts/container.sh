@@ -3,7 +3,7 @@
 # Container networks
 set container network containers description 'Network for VyOS containers'
 set container network containers prefix '10.5.0.0/24'
-set container network containers prefix fdc0:7ebe:7a3e:ff00::/64
+set container network containers prefix 'fd00:db9:5::/64'
 
 # haproxy-k8s-api
 set container name haproxy-k8s-api image 'docker.io/library/haproxy:2.9.6'
@@ -37,6 +37,7 @@ set container name dnsdist image 'docker.io/powerdns/dnsdist-19:1.9.10'
 set container name dnsdist arguments '--log-timestamps'
 set container name dnsdist memory '0'
 set container name dnsdist network containers address '10.5.0.4'
+set container name dnsdist network containers address 'fd00:db9:5::4'
 set container name dnsdist restart 'on-failure'
 set container name dnsdist shared-memory '0'
 set container name dnsdist volume config source '/config/containers/dnsdist/config/dnsdist.conf.lua'
