@@ -5,7 +5,7 @@ addLocal("[::]:53", {})
 setSecurityPollSuffix("")
 setVerboseHealthChecks(true)
 
-addACL('fdc0:7ebe:7a3e::/48')
+addACL('fd74:f571:d3bd::/48')
 
 -- enable prometheus
 webserver("0.0.0.0:8083")
@@ -134,7 +134,7 @@ addAction("10.1.3.1/24", PoolAction("blocky"))     -- iot
 addAction("10.1.0.0/24", PoolAction("cloudflare")) -- lan
 addAction("10.1.8.0/24", PoolAction("cloudflare"))
 addAction("10.1.1.0/24", PoolAction("blocky"))     -- servers
-addAction("10.1.2.0/24", PoolAction("blocky"))     -- trusted
+addAction({"10.1.2.0/24", "fd74:f571:d3bd:0:20::/64"}, PoolAction("blocky"))     -- trusted
 addAction("10.1.3.0/24", PoolAction("blocky"))     -- iot
 
 addAction("10.0.11.0/24", PoolAction("blocky"))    -- wireguard

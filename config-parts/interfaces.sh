@@ -38,7 +38,7 @@ set interfaces bonding bond0 vif 10 description 'SERVERS'
 set interfaces bonding bond0 vif 10 mtu 9000
 
 set interfaces bonding bond0 vif 20 address '10.1.2.1/24'
-set interfaces bonding bond0 vif 20 address 'fd00:db9:20::1/64'
+set interfaces bonding bond0 vif 20 address 'fd74:f571:d3bd:0:20::/64'
 set interfaces bonding bond0 vif 20 ipv6 address autoconf
 set interfaces bonding bond0 vif 20 description 'TRUSTED'
 set interfaces bonding bond0 vif 20 mtu 1500
