@@ -79,7 +79,7 @@ set firewall ipv4 name servers-trusted rule 100 source group network-group 'k8s_
 set firewall ipv4 name servers-trusted rule 101 action 'accept'
 set firewall ipv4 name servers-trusted rule 101 description 'Rule: accept_node_exporter_from_k8s_nodes'
 set firewall ipv4 name servers-trusted rule 101 destination port '9100'
-set firewall ipv4 name servers-trusted rule 101 destination address '10.1.2.54'
+set firewall ipv4 name servers-trusted rule 101 destination group address-group 'node_exporter_targets'
 set firewall ipv4 name servers-trusted rule 101 protocol 'tcp'
 set firewall ipv4 name servers-trusted rule 101 source group address-group 'k8s_nodes'
 

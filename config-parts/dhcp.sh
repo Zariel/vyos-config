@@ -72,7 +72,7 @@ set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mappin
 
 # pikvm, static IP
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pikvm ip-address '10.1.0.100'
-set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24  static-mapping pikvm mac-address 'e4:5f:01:f4:9d:97'
+set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pikvm mac-address 'e4:5f:01:f4:9d:97'
 
 # Servers VLAN
 set service dhcp-server shared-network-name SERVERS authoritative
@@ -95,13 +95,13 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 subnet-pa
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 subnet-parameters '}'
 
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-0 ip-address '10.1.1.10'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-0 mac-address '58:47:ca:78:d2:42'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-0 mac-address '58:47:ca:78:d2:43'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-0 static-mapping-parameters 'option host-name k8s-0;'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 ip-address '10.1.1.11'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 mac-address '58:47:ca:78:d7:fa'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 mac-address '58:47:ca:78:d7:fb'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 static-mapping-parameters 'option host-name k8s-1;'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 ip-address '10.1.1.12'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 mac-address '58:47:ca:78:d8:42'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 mac-address '58:47:ca:78:d8:43'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 static-mapping-parameters 'option host-name k8s-2;'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-3 ip-address '10.1.1.13'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-3 mac-address 'b8:59:9f:cf:ff:b2'
@@ -112,8 +112,8 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj-ipmi ip-address '10.1.1.30'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj-ipmi mac-address 'ac:1f:6b:e5:bb:5e'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj ip-address '10.1.1.31'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj mac-address 'ac:1f:6b:e5:be:42' # bond
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pve ip-address '10.1.1.31'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pve mac-address 'ac:1f:6b:e5:be:42' # bond
 
 # vms
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping nas ip-address '10.1.1.40'
@@ -168,6 +168,8 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping chris-steam-deck mac-address '14:D4:24:AE:D7:49'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping chris-macbook-lounge-dock ip-address '10.1.2.14'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping chris-macbook-lounge-dock mac-address '64:4b:f0:13:15:0c'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping gamingvm ip-address '10.1.2.15'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping gamingvm mac-address 'BC:24:11:76:51:F4'
 
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-iphone ip-address '10.1.2.20'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-iphone mac-address '88:a4:79:ec:70:56'

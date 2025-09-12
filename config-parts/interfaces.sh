@@ -45,6 +45,10 @@ set interfaces bonding bond0 vif 30 mtu 1500
 set interfaces bonding bond0 vif 40 address '10.1.3.1/24'
 set interfaces bonding bond0 vif 40 description 'IOT'
 set interfaces bonding bond0 vif 40 mtu 1500
+set interfaces bonding bond0 vif 50 address '10.1.5.1/24'
+set interfaces bonding bond0 vif 50 description 'UNIFI'
+set interfaces bonding bond0 vif 50 mtu 1500
+
 set interfaces bonding bond0 vif 99 address 'dhcp'
 set interfaces bonding bond0 vif 99 description 'WAN'
 set interfaces bonding bond0 vif 99 mtu 1500

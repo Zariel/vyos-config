@@ -39,5 +39,6 @@ set firewall zone trusted interface 'bond0.20'
 set firewall zone trusted interface 'wg01'
 set firewall zone guest interface 'bond0.30'
 set firewall zone iot interface 'bond0.40'
+set firewall zone video interface 'bind0.50'
 set firewall zone containers interface 'pod-containers'
 set firewall zone local local-zone

@@ -49,3 +49,6 @@ set firewall group port-group apple_services_ports port '30000-65535'
 
 # roon
 set firewall group port-group roon_arc_ports port '59453'
+
+set firewall group address-group node_exporter_targets address '10.1.2.54' # am6b
+set firewall group address-group node_exporter_targets address '10.1.2.15' # gamiing
