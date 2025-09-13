@@ -4,9 +4,6 @@
 set firewall ipv6 name trusted-wan default-action 'accept'
 
 # From TRUSTED to LOCAL
-set firewall ipv6 name trusted-local rule 20 description 'Rule: allow_icmpv6'
-set firewall ipv6 name trusted-local rule 20 action 'accept'
-set firewall ipv6 name trusted-local rule 20 protocol 'icmpv6'
 set firewall ipv6 name trusted-local rule 110 action 'accept'
 set firewall ipv6 name trusted-local rule 110 description 'Rule: accept_mdns'
 set firewall ipv6 name trusted-local rule 110 destination port 'mdns'

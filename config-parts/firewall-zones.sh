@@ -1,5 +1,16 @@
 #!/bin/vbash
 
+set firewall zone wan interface 'bond0.99'
+set firewall zone lan interface 'bond0'
+set firewall zone servers interface 'bond0.10'
+set firewall zone trusted interface 'bond0.20'
+set firewall zone trusted interface 'wg01'
+set firewall zone guest interface 'bond0.30'
+set firewall zone iot interface 'bond0.40'
+set firewall zone video interface 'bind0.50'
+set firewall zone containers interface 'pod-containers'
+set firewall zone local local-zone
+
 for to in guest iot lan local servers containers trusted wan; do
     set firewall zone $to default-action 'drop'
     for from in guest iot lan local servers containers trusted wan; do
@@ -31,14 +42,39 @@ for to in guest iot lan local servers containers trusted wan; do
   done
 done
 
-set firewall zone wan interface 'eth2'
-set firewall zone wan interface 'bond0.99'
-set firewall zone lan interface 'bond0'
-set firewall zone servers interface 'bond0.10'
-set firewall zone trusted interface 'bond0.20'
-set firewall zone trusted interface 'wg01'
-set firewall zone guest interface 'bond0.30'
-set firewall zone iot interface 'bond0.40'
-set firewall zone video interface 'bind0.50'
-set firewall zone containers interface 'pod-containers'
-set firewall zone local local-zone
+for to in guest iot lan local servers containers trusted; do
+    for from in guest iot lan local servers containers trusted; do
+        if [ "$from" == "$to" ]; then
+            continue
+        fi
+        set firewall ipv6 name $from-$to rule 20 description 'Rule: allow_icmpv6'
+        set firewall ipv6 name $from-$to rule 20 action 'accept'
+        set firewall ipv6 name $from-$to rule 20 protocol 'icmpv6'
+    done
+done
+
+for to in guest iot lan local servers containers trusted; do
+    # ICMPv6: Destination Unreachable
+    set firewall ipv6 name wan-$to rule 20 action 'accept'
+    set firewall ipv6 name wan-$to rule 20 protocol 'icmpv6'
+    set firewall ipv6 name wan-$to rule 20 icmpv6 type-name 'destination-unreachable'
+    set firewall ipv6 name wan-$to rule 20 description 'Allow ICMPv6 Destination Unreachable'
+
+    # ICMPv6: Packet Too Big
+    set firewall ipv6 name wan-$to rule 21 action 'accept'
+    set firewall ipv6 name wan-$to rule 21 protocol 'icmpv6'
+    set firewall ipv6 name wan-$to rule 21 icmpv6 type-name 'packet-too-big'
+    set firewall ipv6 name wan-$to rule 21 description 'Allow ICMPv6 Packet Too Big'
+
+    # ICMPv6: Time Exceeded
+    set firewall ipv6 name wan-$to rule 22 action 'accept'
+    set firewall ipv6 name wan-$to rule 22 protocol 'icmpv6'
+    set firewall ipv6 name wan-$to rule 22 icmpv6 type-name 'time-exceeded'
+    set firewall ipv6 name wan-$to rule 22 description 'Allow ICMPv6 Time Exceeded'
+
+    # ICMPv6: Parameter Problem
+    set firewall ipv6 name wan-$to rule 23 action 'accept'
+    set firewall ipv6 name wan-$to rule 23 protocol 'icmpv6'
+    set firewall ipv6 name wan-$to rule 23 icmpv6 type-name 'parameter-problem'
+    set firewall ipv6 name wan-$to rule 23 description 'Allow ICMPv6 Parameter Problem'
+done
