@@ -33,10 +33,12 @@ set service mdns repeater interface 'bond0.40'
 # set service broadcast-relay id 1 port '9003'
 
 # set service router-advert interface bond0.20 default-preference 'high'
-# set service router-advert interface bond0.20 prefix ::/64
 # set service router-advert interface bond0.40 default-preference 'high'
 # set service router-advert interface bond0.40 prefix ::/64
 
+# set service router-advert interface bond0.20 prefix ::/64
 # ULA
+set service router-advert interface bond0.20 prefix fd74:f571:d3bd:0020::/64
 set service router-advert interface bond0.20 route fd74:f571:d3bd::/48
-
+set service router-advert interface bond0.20 name-server fd74:f571:d3bd:1005::4
+set service router-advert interface bond0.20 default-preference 'high'
