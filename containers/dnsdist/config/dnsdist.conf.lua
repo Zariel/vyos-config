@@ -111,6 +111,10 @@ getPool("cloudflare"):setCache(pc)
 
 addAction("192.168.2.0/24", PoolAction("blocky")) -- guest vlan
 
+-- block responding to this so that downstream clients cant discover upstream resolvers
+-- that bypass blocky.
+addAction(QNameSuffixRule('resolver.arpa'), ERCodeAction(DNSRCode.NXDOMAIN))
+
 -- send anything from k8s to cloudflare
 
 addAction('plex.cbannister.xyz', SpoofAction('10.45.0.20'))
@@ -134,8 +138,8 @@ addAction("10.1.3.1/24", PoolAction("blocky"))     -- iot
 addAction("10.1.0.0/24", PoolAction("cloudflare")) -- lan
 addAction("10.1.8.0/24", PoolAction("cloudflare"))
 addAction("10.1.1.0/24", PoolAction("blocky"))     -- servers
-addAction({"10.1.2.0/24", "fd74:f571:d3bd:0:20::/64"}, PoolAction("blocky"))     -- trusted
-addAction("10.1.3.0/24", PoolAction("blocky"))     -- iot
+addAction({"10.1.2.0/24", "fd74:f571:d3bd:20::/64"}, PoolAction("blocky"))     -- trusted
+addAction({"10.1.3.0/24", "fd74:f571:d3bd:40::/64"}, PoolAction("blocky"))     -- iot
 
 addAction("10.0.11.0/24", PoolAction("blocky"))    -- wireguard
 addAction({'10.42.0.0/16', '172.20.0.0/16'}, PoolAction('cloudflare'))
