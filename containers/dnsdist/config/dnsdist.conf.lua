@@ -114,6 +114,8 @@ addAction("192.168.2.0/24", PoolAction("blocky")) -- guest vlan
 -- block responding to this so that downstream clients cant discover upstream resolvers
 -- that bypass blocky.
 addAction(QNameSuffixRule('resolver.arpa'), ERCodeAction(DNSRCode.NXDOMAIN))
+addAction(QNameSuffixRule('mask.icloud.com'), ERCodeAction(DNSRCode.NXDOMAIN))
+addAction(QNameSuffixRule('mask-h2.icloud.com'), ERCodeAction(DNSRCode.NXDOMAIN))
 
 -- send anything from k8s to cloudflare
 
