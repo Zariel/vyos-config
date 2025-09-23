@@ -49,9 +49,12 @@ set interfaces bonding bond0 vif 20 mtu 1500
 set interfaces bonding bond0 vif 30 address '192.168.2.1/24'
 set interfaces bonding bond0 vif 30 description 'GUEST'
 set interfaces bonding bond0 vif 30 mtu 1500
+
 set interfaces bonding bond0 vif 40 address '10.1.3.1/24'
+set interfaces bonding bond0 vif 40 address 'fd74:f571:d3bd:40::1/64'
 set interfaces bonding bond0 vif 40 description 'IOT'
 set interfaces bonding bond0 vif 40 mtu 1500
+
 set interfaces bonding bond0 vif 50 address '10.1.5.1/24'
 set interfaces bonding bond0 vif 50 description 'UNIFI'
 set interfaces bonding bond0 vif 50 mtu 1500
