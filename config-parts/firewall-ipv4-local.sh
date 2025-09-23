@@ -69,3 +69,16 @@ set firewall ipv4 name local-trusted rule 400 action 'accept'
 
 # From LOCAL to WAN
 set firewall ipv4 name local-wan default-action 'accept'
+
+# From LOCAL to TRANSIT
+set firewall ipv4 name local-transit default-action 'drop'
+set firewall ipv4 name local-transit default-log
+# Allow OSPF from OSPF zone to local (router itself)
+set firewall ipv4 name local-transit rule 10 action accept
+set firewall ipv4 name local-transit rule 10 protocol ospf
+set firewall ipv4 name local-transit rule 10 description 'Allow OSPF'
+
+# Allow ICMP for ping testing
+set firewall ipv4 name local-transit rule 20 action accept
+set firewall ipv4 name local-transit rule 20 protocol icmp
+set firewall ipv4 name local-transit rule 20 description 'Allow ICMP'

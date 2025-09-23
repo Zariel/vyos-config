@@ -10,10 +10,11 @@ set firewall zone iot interface 'bond0.40'
 set firewall zone video interface 'bind0.50'
 set firewall zone containers interface 'pod-containers'
 set firewall zone local local-zone
+set firewall zone transit interface 'bond0.5'
 
-for to in guest iot lan local servers containers trusted wan; do
+for to in guest iot lan local servers containers trusted transit wan; do
     set firewall zone $to default-action 'drop'
-    for from in guest iot lan local servers containers trusted wan; do
+    for from in guest iot lan local servers containers trusted transit wan; do
         if [ "$from" == "$to" ]; then
             continue
         fi
