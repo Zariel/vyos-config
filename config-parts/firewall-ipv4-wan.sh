@@ -16,21 +16,6 @@ set firewall ipv4 name wan-lan default-log
 set firewall ipv4 name wan-local default-action 'drop'
 set firewall ipv4 name wan-local default-log
 
-set firewall ipv4 name wan-local rule 10 action 'drop'
-set firewall ipv4 name wan-local rule 10 source address '10.0.0.0/8'
-set firewall ipv4 name wan-local rule 10 log
-set firewall ipv4 name wan-local rule 10 description 'Block RFC1918 Class A'
-
-set firewall ipv4 name wan-local rule 11 action 'drop'
-set firewall ipv4 name wan-local rule 11 source address '172.16.0.0/12'
-set firewall ipv4 name wan-local rule 11 log
-set firewall ipv4 name wan-local rule 11 description 'Block RFC1918 Class B'
-
-set firewall ipv4 name wan-local rule 12 action 'drop'
-set firewall ipv4 name wan-local rule 12 source address '192.168.0.0/16'
-set firewall ipv4 name wan-local rule 12 log
-set firewall ipv4 name wan-local rule 12 description 'Block RFC1918 Class C'
-
 set firewall ipv4 name wan-local rule 100 action 'accept'
 set firewall ipv4 name wan-local rule 100 description 'Rule: accept_wireguard'
 set firewall ipv4 name wan-local rule 100 destination port '51820'
