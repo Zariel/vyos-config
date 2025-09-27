@@ -22,17 +22,18 @@ set firewall ipv4 name transit-local rule 110 source group address-group k8s_nod
 set firewall ipv4 name transit-local rule 110 protocol tcp
 
 # From TRANSIT to CONTAINER
-set firewall ipv4 name transit-container rule 10 action accept
-set firewall ipv4 name transit-container rule 10 description 'Allow DNS'
-set firewall ipv4 name transit-container rule 10 destination port 53
-set firewall ipv4 name transit-container rule 10 protocol tcp_udp
+set firewall ipv4 name transit-containers rule 10 action accept
+set firewall ipv4 name transit-containers rule 10 description 'Allow DNS'
+set firewall ipv4 name transit-containers rule 10 destination port 53
+set firewall ipv4 name transit-containers rule 10 destination address 10.5.0.4
+set firewall ipv4 name transit-containers rule 10 protocol tcp_udp
 
-set firewall ipv4 name transit-container rule 100 action accept
-set firewall ipv4 name transit-container rule 100 description 'Allow access to haproxy k8s control plane'
-set firewall ipv4 name transit-container rule 100 destination port 6443
-set firewall ipv4 name transit-container rule 100 destination address 10.5.0.2
-set firewall ipv4 name transit-container rule 100 source group address-group k8s_nodes
-set firewall ipv4 name transit-container rule 100 protocol tcp
+set firewall ipv4 name transit-containers rule 100 action accept
+set firewall ipv4 name transit-containers rule 100 description 'Allow access to haproxy k8s control plane'
+set firewall ipv4 name transit-containers rule 100 destination port 6443
+set firewall ipv4 name transit-containers rule 100 destination address 10.5.0.2
+set firewall ipv4 name transit-containers rule 100 source group address-group k8s_nodes
+set firewall ipv4 name transit-containers rule 100 protocol tcp
 
 # From TRANSIT to WAN
 set firewall ipv4 name transit-wan default-action drop
