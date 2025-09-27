@@ -27,11 +27,13 @@ set firewall ipv4 name transit-wan rule 100 action accept
 set firewall ipv4 name transit-wan rule 100 description 'Allow K8S to access HTTP'
 set firewall ipv4 name transit-wan rule 100 source address-group PROD_K8S
 set firewall ipv4 name transit-wan rule 100 destination port 80,443
+set firewall ipv4 name transit-wan rule 100 protocol tcp
 
 set firewall ipv4 name transit-wan rule 110 action accept
 set firewall ipv4 name transit-wan rule 110 description 'Allow truenas to access HTTP'
 set firewall ipv4 name transit-wan rule 110 source address-group STORAGE
 set firewall ipv4 name transit-wan rule 110 destination port 80,443
+set firewall ipv4 name transit-wan rule 110 protocol tcp
 
 set firewall ipv4 name transit-wan rule 120 action accept
 set firewall ipv4 name transit-wan rule 120 description 'Allow pods to access internet'
