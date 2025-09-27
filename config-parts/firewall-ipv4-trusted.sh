@@ -71,3 +71,6 @@ set firewall ipv4 name trusted-transit rule 100 action accept
 set firewall ipv4 name trusted-transit rule 100 destination group network-group L3_SERVERS
 set firewall ipv4 name trusted-transit rule 100 description 'Trusted to Servers'
 
+set firewall ipv4 name trusted-transit rule 110 action accept
+set firewall ipv4 name trusted-transit rule 110 destination group network-group LB_IPS
+set firewall ipv4 name trusted-transit rule 110 description 'Trusted to LBs'

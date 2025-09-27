@@ -18,7 +18,7 @@ set firewall ipv4 name transit-local rule 30 protocol udp
 set firewall ipv4 name transit-local rule 110 action accept
 set firewall ipv4 name transit-local rule 110 description 'Allow access to node_exporter'
 set firewall ipv4 name transit-local rule 110 destination port 9100
-set firewall ipv4 name transit-local rule 110 source group address-group k8s_nodes
+set firewall ipv4 name transit-local rule 110 source group network-group POD_NETS
 set firewall ipv4 name transit-local rule 110 protocol tcp
 
 # From TRANSIT to CONTAINER

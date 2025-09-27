@@ -39,9 +39,16 @@ set firewall ipv4 name containers-trusted default-log
 # From CONTAINERS to WAN
 set firewall ipv4 name containers-wan default-action 'accept'
 
+# From CONTAINERS to TRANSIT
 set firewall ipv4 name containers-transit default-action 'drop'
 set firewall ipv4 name containers-transit rule 100 action 'accept'
 set firewall ipv4 name containers-transit rule 100 description 'Rule: allow haproxy to access talos'
 set firewall ipv4 name containers-transit rule 100 destination group address-group 'k8s_nodes'
-set firewall ipv4 name containers-transit rule 100 destination port '6443'
+set firewall ipv4 name containers-transit rule 100 destination port '6443,50000'
 set firewall ipv4 name containers-transit rule 100 protocol 'tcp'
+
+set firewall ipv4 name containers-transit rule 110 action 'accept'
+set firewall ipv4 name containers-transit rule 110 description 'Rule: allow dnsdist to access in cluster bind'
+set firewall ipv4 name containers-transit rule 110 destination address 10.45.0.55
+set firewall ipv4 name containers-transit rule 110 destination port '53'
+set firewall ipv4 name containers-transit rule 110 protocol 'tcp_udp'
