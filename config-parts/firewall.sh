@@ -16,6 +16,9 @@ set firewall group ipv6-address-group router-addresses-ipv6 address ::1
 
 # k8s nodes
 set firewall group address-group k8s_nodes address '10.1.1.10-10.1.1.13' # Servers vlan
+set firewall group address-group k8s_nodes address 10.254.1.1
+set firewall group address-group k8s_nodes address 10.254.1.3
+set firewall group address-group k8s_nodes address 10.254.1.5
 
 # k8s pods
 set firewall group network-group k8s_pods network '10.42.0.0/16'
@@ -52,9 +55,6 @@ set firewall group port-group roon_arc_ports port '59453'
 set firewall group address-group node_exporter_targets address '10.1.2.54' # am6b
 set firewall group address-group node_exporter_targets address '10.1.2.15' # gamiing
 
-set firewall group address-group PROD_K8S address 10.254.1.1
-set firewall group address-group PROD_K8S address 10.254.1.3
-set firewall group address-group PROD_K8S address 10.254.1.5
 set firewall group address-group STORAGE address 10.254.1.101
 
 # Network groups

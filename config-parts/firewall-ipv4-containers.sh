@@ -38,3 +38,10 @@ set firewall ipv4 name containers-trusted default-log
 
 # From CONTAINERS to WAN
 set firewall ipv4 name containers-wan default-action 'accept'
+
+set firewall ipv4 name containers-transit default-action 'drop'
+set firewall ipv4 name containers-transit rule 100 action 'accept'
+set firewall ipv4 name containers-transit rule 100 description 'Rule: allow haproxy to access talos'
+set firewall ipv4 name containers-transit rule 100 destination group address-group k8s_nodes '6443'
+set firewall ipv4 name containers-transit rule 100 destination port '6443'
+set firewall ipv4 name containers-transit rule 100 protocol 'tcp'

@@ -15,11 +15,25 @@ set firewall ipv4 name transit-local rule 30 description 'Allow NTP'
 set firewall ipv4 name transit-local rule 30 destination port 123
 set firewall ipv4 name transit-local rule 30 protocol udp
 
+set firewall ipv4 name transit-local rule 110 action accept
+set firewall ipv4 name transit-local rule 110 description 'Allow access to node_exporter'
+set firewall ipv4 name transit-local rule 110 destination port 9100
+set firewall ipv4 name transit-local rule 110 source address-group k8s_nodes
+set firewall ipv4 name transit-local rule 110 protocol tcp
+
 # From TRANSIT to CONTAINER
 set firewall ipv4 name transit-container rule 10 action accept
 set firewall ipv4 name transit-container rule 10 description 'Allow DNS'
 set firewall ipv4 name transit-container rule 10 destination port 53
 set firewall ipv4 name transit-container rule 10 protocol tcp_udp
+
+set firewall ipv4 name transit-container rule 100 action accept
+set firewall ipv4 name transit-container rule 100 description 'Allow access to haproxy k8s control plane'
+set firewall ipv4 name transit-container rule 100 destination port 6443
+set firewall ipv4 name transit-container rule 100 destination address 10.5.0.2
+set firewall ipv4 name transit-container rule 100 source address-group k8s_nodes
+set firewall ipv4 name transit-container rule 100 protocol tcp
+
 
 # From TRANSIT to WAN
 set firewall ipv4 name transit-wan default-action drop

@@ -17,14 +17,14 @@ gateway                  IN  A  10.1.0.1
 pikvm                    IN  A  10.1.0.100
 
 ; servers
-k8s-0                    IN  A  10.1.1.10
-k8s-1                    IN  A  10.1.1.11
-k8s-2                    IN  A  10.1.1.12
-k8s-3                    IN  A  10.1.1.13
 ipmi.pve                 IN  A  10.1.1.30
 pve                      IN  A  10.1.1.31
-nas                      IN  A  10.1.1.40
 postgres                 IN  A  10.1.1.41
+
+k8s-0                    IN  A  10.254.1.1
+k8s-1                    IN  A  10.254.1.3
+k8s-2                    IN  A  10.254.1.5
+nas                      IN  A  10.254.1.101
 
 am6b                     IN  A  10.1.2.54
 rock                     IN  A  10.1.2.60
