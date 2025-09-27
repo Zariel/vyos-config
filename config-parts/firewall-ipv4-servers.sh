@@ -90,12 +90,12 @@ set firewall ipv4 name servers-wan default-action 'accept'
 set firewall ipv4 name server-transit default-action 'drop'
 set firewall ipv4 name server-transit rule 100 action accept
 set firewall ipv4 name server-transit rule 100 description 'Allow legacy K8S to access TrueNAS NFS'
-set firewall ipv4 name server-transit rule 100 source address-group k8s_nodes
+set firewall ipv4 name server-transit rule 100 source group address-group k8s_nodes
 set firewall ipv4 name server-transit rule 100 destination port 2049
 set firewall ipv4 name server-transit rule 100 protocol tcp
 
 set firewall ipv4 name server-transit rule 110 action accept
 set firewall ipv4 name server-transit rule 110 description 'Allow legacy K8S to access TrueNAS monitoring'
-set firewall ipv4 name server-transit rule 110 source address-group k8s_nodes
+set firewall ipv4 name server-transit rule 110 source group address-group k8s_nodes
 set firewall ipv4 name server-transit rule 110 destination port '9100,9633'
 set firewall ipv4 name server-transit rule 110 protocol 'tcp'
