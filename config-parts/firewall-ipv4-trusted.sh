@@ -51,13 +51,9 @@ set firewall ipv4 name trusted-local rule 420 action 'accept'
 set firewall ipv4 name trusted-local rule 420 description 'Rule: accept_wireguard'
 set firewall ipv4 name trusted-local rule 420 destination port '51820'
 set firewall ipv4 name trusted-local rule 420 protocol 'udp'
+
 # From TRUSTED to SERVERS
 set firewall ipv4 name trusted-servers default-action 'accept'
-set firewall ipv4 name trusted-servers rule 90 action 'drop'
-set firewall ipv4 name trusted-servers rule 90 description 'Rule: block_pod_cidr'
-set firewall ipv4 name trusted-servers rule 90 destination address '10.42.0.0/16'
-set firewall ipv4 name trusted-servers rule 90 log
-
 
 # From TRUSTED to CONTAINERS
 set firewall ipv4 name trusted-containers default-action 'accept'
@@ -68,3 +64,10 @@ set firewall ipv4 name trusted-containers rule 40 protocol 'tcp_udp'
 
 # From TRUSTED to WAN
 set firewall ipv4 name trusted-wan default-action 'accept'
+
+# From TRUSTED to TRANSIT
+set firewall ipv4 name trusted-transit default-action 'drop'
+set firewall ipv4 name trusted-transit rule 100 action accept
+set firewall ipv4 name trusted-transit rule 100 destination group network-group L3_SERVERS
+set firewall ipv4 name trusted-transit rule 100 description 'Trusted to Servers'
+

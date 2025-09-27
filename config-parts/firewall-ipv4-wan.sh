@@ -43,3 +43,11 @@ set firewall ipv4 name wan-trusted rule 100 destination group port-group 'roon_a
 set firewall ipv4 name wan-trusted rule 100 destination address '10.1.2.60'
 set firewall ipv4 name wan-trusted rule 100 protocol 'tcp'
 set firewall ipv4 name wan-trusted rule 100 action 'accept'
+
+# From WAN to TRANSIT
+set firewall ipv4 name wan-transit rule 100 action accept
+set firewall ipv4 name wan-transit rule 100 description 'Rule: qbittorrent'
+set firewall ipv4 name wan-transit rule 100 destination port '50413'
+set firewall ipv4 name wan-transit rule 100 destination address '10.45.0.24'
+set firewall ipv4 name wan-transit rule 100 protocol 'tcp'
+
