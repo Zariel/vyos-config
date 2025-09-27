@@ -38,7 +38,7 @@ set firewall ipv4 name transit-container rule 100 protocol tcp
 set firewall ipv4 name transit-wan default-action drop
 set firewall ipv4 name transit-wan rule 100 action accept
 set firewall ipv4 name transit-wan rule 100 description 'Allow K8S to access HTTP'
-set firewall ipv4 name transit-wan rule 100 source group address-group PROD_K8S
+set firewall ipv4 name transit-wan rule 100 source group address-group k8s_nodes
 set firewall ipv4 name transit-wan rule 100 destination port 80,443
 set firewall ipv4 name transit-wan rule 100 protocol tcp
 
