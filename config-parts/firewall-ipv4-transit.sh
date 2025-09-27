@@ -18,7 +18,7 @@ set firewall ipv4 name transit-local rule 30 protocol udp
 set firewall ipv4 name transit-local rule 110 action accept
 set firewall ipv4 name transit-local rule 110 description 'Allow access to node_exporter'
 set firewall ipv4 name transit-local rule 110 destination port 9100
-set firewall ipv4 name transit-local rule 110 source address-group k8s_nodes
+set firewall ipv4 name transit-local rule 110 source group address-group k8s_nodes
 set firewall ipv4 name transit-local rule 110 protocol tcp
 
 # From TRANSIT to CONTAINER
@@ -31,27 +31,26 @@ set firewall ipv4 name transit-container rule 100 action accept
 set firewall ipv4 name transit-container rule 100 description 'Allow access to haproxy k8s control plane'
 set firewall ipv4 name transit-container rule 100 destination port 6443
 set firewall ipv4 name transit-container rule 100 destination address 10.5.0.2
-set firewall ipv4 name transit-container rule 100 source address-group k8s_nodes
+set firewall ipv4 name transit-container rule 100 source group address-group k8s_nodes
 set firewall ipv4 name transit-container rule 100 protocol tcp
-
 
 # From TRANSIT to WAN
 set firewall ipv4 name transit-wan default-action drop
 set firewall ipv4 name transit-wan rule 100 action accept
 set firewall ipv4 name transit-wan rule 100 description 'Allow K8S to access HTTP'
-set firewall ipv4 name transit-wan rule 100 source address-group PROD_K8S
+set firewall ipv4 name transit-wan rule 100 source group address-group PROD_K8S
 set firewall ipv4 name transit-wan rule 100 destination port 80,443
 set firewall ipv4 name transit-wan rule 100 protocol tcp
 
 set firewall ipv4 name transit-wan rule 110 action accept
 set firewall ipv4 name transit-wan rule 110 description 'Allow truenas to access HTTP'
-set firewall ipv4 name transit-wan rule 110 source address-group STORAGE
+set firewall ipv4 name transit-wan rule 110 source group address-group STORAGE
 set firewall ipv4 name transit-wan rule 110 destination port 80,443
 set firewall ipv4 name transit-wan rule 110 protocol tcp
 
 set firewall ipv4 name transit-wan rule 120 action accept
 set firewall ipv4 name transit-wan rule 120 description 'Allow pods to access internet'
-set firewall ipv4 name transit-wan rule 120 source network-group POD_NETS
+set firewall ipv4 name transit-wan rule 120 source group network-group POD_NETS
 
 
 # From TRANSIT to TRUSTED
