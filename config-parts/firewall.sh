@@ -54,6 +54,8 @@ set firewall group port-group roon_arc_ports port '59453'
 
 set firewall group address-group node_exporter_targets address '10.1.2.54' # am6b
 set firewall group address-group node_exporter_targets address '10.1.2.15' # gamiing
+set firewall group address-group node_exporter_targets address '10.1.1.31' # pve
+set firewall group address-group node_exporter_targets address '10.1.0.1' # gateway
 
 set firewall group address-group STORAGE address 10.254.1.101
 

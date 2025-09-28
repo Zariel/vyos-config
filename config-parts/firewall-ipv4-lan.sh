@@ -53,6 +53,11 @@ set firewall ipv4 name lan-containers rule 40 protocol 'tcp_udp'
 # From LAN to TRUSTED
 set firewall ipv4 name lan-trusted default-action 'drop'
 set firewall ipv4 name lan-trusted default-log
+set firewall ipv4 name lan-trusted rule 100 action 'accept'
+set firewall ipv4 name lan-trusted rule 100 description 'Rule: allow sflow'
+set firewall ipv4 name lan-trusted rule 100 destination port '6343'
+set firewall ipv4 name lan-trusted rule 100 destination address 10.1.2.14
+set firewall ipv4 name lan-trusted rule 100 protocol 'udp'
 
 # From LAN to WAN
 set firewall ipv4 name lan-wan default-action 'accept'

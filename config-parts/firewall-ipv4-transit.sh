@@ -20,8 +20,9 @@ set firewall ipv4 name transit-local rule 110 description 'Allow access to node_
 set firewall ipv4 name transit-local rule 110 destination port 9100
 set firewall ipv4 name transit-local rule 110 source group network-group POD_NETS
 set firewall ipv4 name transit-local rule 110 protocol tcp
+set firewall ipv4 name transit-local rule 110 destination group address-group node_exporter_targets
 
-# From TRANSIT to CONTAINER
+# From TRANSIT to CONTAINERS
 set firewall ipv4 name transit-containers rule 10 action accept
 set firewall ipv4 name transit-containers rule 10 description 'Allow DNS'
 set firewall ipv4 name transit-containers rule 10 destination port 53
@@ -54,6 +55,19 @@ set firewall ipv4 name transit-wan rule 120 source group network-group POD_NETS
 
 # From TRANSIT to TRUSTED
 set firewall ipv4 name transit-trusted default-action drop
+set firewall ipv4 name transit-trusted rule 100 action accept
+set firewall ipv4 name transit-trusted rule 100 description 'Allow access to node_exporter and smartctl_exporter'
+set firewall ipv4 name transit-trusted rule 100 source group address-group POD_NETS
+set firewall ipv4 name transit-trusted rule 100 destination port 9100,9633
+set firewall ipv4 name transit-trusted rule 100 destination group address-group node_exporter_targets
 
 # From TRANSIT to IOT
 set firewall ipv4 name transit-iot default-action drop
+
+# From TRANSIT to SERVERS
+set firewall ipv4 name transit-servers default-action drop
+set firewall ipv4 name transit-servers rule 100 action accept
+set firewall ipv4 name transit-servers rule 100 description 'Allow access to node_exporter and smartctl_exporter'
+set firewall ipv4 name transit-servers rule 100 source group address-group POD_NETS
+set firewall ipv4 name transit-servers rule 100 destination port 9100,9633
+set firewall ipv4 name transit-servers rule 100 destination group address-group node_exporter_targets
