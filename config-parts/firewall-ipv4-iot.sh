@@ -69,3 +69,11 @@ set firewall ipv4 name iot-trusted rule 200 destination group port-group 'apple_
 set firewall ipv4 name iot-trusted rule 200 destination group address-group 'airplay_sources'
 set firewall ipv4 name iot-trusted rule 200 source group address-group 'airplay_targets'
 set firewall ipv4 name iot-trusted rule 200 protocol 'tcp_udp'
+
+# From IOT to TRANSIT
+set firewall ipv4 name iot-transit rule 100 action 'accept'
+set firewall ipv4 name iot-transit rule 100 description 'Rule: accept_plex_clients_to_plex'
+set firewall ipv4 name iot-transit rule 100 destination group address-group 'k8s_plex'
+set firewall ipv4 name iot-transit rule 100 destination port '32400'
+set firewall ipv4 name iot-transit rule 100 protocol tcp
+set firewall ipv4 name iot-transit rule 100 source group address-group 'plex_clients'
