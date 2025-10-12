@@ -68,7 +68,7 @@ set firewall ipv4 name transit-wan rule 120 source group network-group POD_NETS
 
 set firewall ipv4 name transit-wan rule 200 action accept
 set firewall ipv4 name transit-wan rule 200 description 'Allow dns to access internet'
-set firewall ipv4 name transit-wan rule 200 source network 10.1.53.0/24
+set firewall ipv4 name transit-wan rule 200 source group network-group DNS_SERVERS
 
 # From TRANSIT to TRUSTED
 set firewall ipv4 name transit-trusted default-action drop

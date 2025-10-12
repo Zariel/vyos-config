@@ -68,4 +68,5 @@ set firewall group port-group nfs_ports port 111
 set firewall group network-group L3_SERVERS network 10.254.1.0/24
 set firewall group network-group POD_NETS network 172.20.0.0/16
 set firewall group network-group LB_IPS network 10.45.0.0/24
+set firewall group network-group DNS_SERVERS network 10.1.53.0/24
 
