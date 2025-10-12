@@ -33,7 +33,7 @@ set firewall ipv4 name transit-containers rule 100 action accept
 set firewall ipv4 name transit-containers rule 100 description 'Allow access to haproxy k8s control plane'
 set firewall ipv4 name transit-containers rule 100 destination port 6443,50000
 set firewall ipv4 name transit-containers rule 100 destination address 10.5.0.2
-set firewall ipv4 name transit-containers rule 100 source group address-group POD_NETS
+set firewall ipv4 name transit-containers rule 100 source group network-group POD_NETS
 set firewall ipv4 name transit-containers rule 100 protocol tcp
 
 set firewall ipv4 name transit-containers rule 110 action accept
