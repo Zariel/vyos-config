@@ -66,6 +66,11 @@ set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.20 addre
 set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.40 sla-id 40
 set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.40 address 1
 
+
+set interfaces bonding bond0 vif 100 address '10.1.0.1/24'
+set interfaces bonding bond0 vif 100 description 'management'
+
+
 set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1
 
