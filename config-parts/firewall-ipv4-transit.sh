@@ -33,21 +33,21 @@ set firewall ipv4 name transit-containers rule 100 action accept
 set firewall ipv4 name transit-containers rule 100 description 'Allow access to haproxy k8s control plane'
 set firewall ipv4 name transit-containers rule 100 destination port 6443,50000
 set firewall ipv4 name transit-containers rule 100 destination address 10.5.0.2
-set firewall ipv4 name transit-containers rule 100 source group address-group k8s_nodes
+set firewall ipv4 name transit-containers rule 100 source group address-group POD_NETS
 set firewall ipv4 name transit-containers rule 100 protocol tcp
 
 set firewall ipv4 name transit-containers rule 110 action accept
 set firewall ipv4 name transit-containers rule 110 description 'Allow access to scrape dnsdist'
 set firewall ipv4 name transit-containers rule 110 destination port 8083
 set firewall ipv4 name transit-containers rule 110 destination address 10.5.0.4
-set firewall ipv4 name transit-containers rule 110 source group network-group POD_NODES
+set firewall ipv4 name transit-containers rule 110 source group network-group POD_NETS
 set firewall ipv4 name transit-containers rule 110 protocol tcp
 
 set firewall ipv4 name transit-containers rule 120 action accept
 set firewall ipv4 name transit-containers rule 120 description 'Allow access to scrape blocky'
 set firewall ipv4 name transit-containers rule 120 destination port 4000
 set firewall ipv4 name transit-containers rule 120 destination address 10.5.0.7
-set firewall ipv4 name transit-containers rule 120 source group network-group POD_NODES
+set firewall ipv4 name transit-containers rule 120 source group network-group POD_NETS
 set firewall ipv4 name transit-containers rule 120 protocol tcp
 
 # From TRANSIT to WAN
@@ -68,7 +68,7 @@ set firewall ipv4 name transit-wan rule 120 source group network-group POD_NETS
 
 set firewall ipv4 name transit-wan rule 200 action accept
 set firewall ipv4 name transit-wan rule 200 description 'Allow dns to access internet'
-set firewall ipv4 name transit-wan rule 200 source address 10.1.53.0/24
+set firewall ipv4 name transit-wan rule 200 source network 10.1.53.0/24
 
 # From TRANSIT to TRUSTED
 set firewall ipv4 name transit-trusted default-action drop
