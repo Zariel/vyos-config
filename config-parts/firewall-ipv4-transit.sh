@@ -94,5 +94,5 @@ set firewall ipv4 name transit-servers rule 100 protocol tcp
 set firewall ipv4 name transit-servers rule 110 action accept
 set firewall ipv4 name transit-servers rule 110 description 'Allow access to nix cache'
 set firewall ipv4 name transit-servers rule 110 destination port 5000
-set firewall ipv4 name transit-servers rule 110 destination address 10.1.1.155/24
+set firewall ipv4 name transit-servers rule 110 destination address 10.1.1.155
 set firewall ipv4 name transit-servers rule 110 protocol tcp
