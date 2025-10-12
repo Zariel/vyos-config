@@ -33,3 +33,7 @@ set protocols ospf redistribute connected metric '10'
 set protocols ospf redistribute static metric '10'
 set protocols ospf log-adjacency-changes detail
 set protocols ospf parameters router-id '10.1.0.1'
+
+set protocols ospfv3 parameters router-id 10.1.0.1
+set protocols ospfv3 interface bond0.5 area 0
+

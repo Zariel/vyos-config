@@ -87,15 +87,17 @@ set firewall ipv4 name servers-trusted rule 101 source group address-group 'k8s_
 set firewall ipv4 name servers-wan default-action 'accept'
 
 # From SERVERS to TRANSIT
-set firewall ipv4 name server-transit default-action 'drop'
-set firewall ipv4 name server-transit rule 100 action accept
-set firewall ipv4 name server-transit rule 100 description 'Allow legacy K8S to access TrueNAS NFS'
-set firewall ipv4 name server-transit rule 100 source group address-group k8s_nodes
-set firewall ipv4 name server-transit rule 100 destination port 2049
-set firewall ipv4 name server-transit rule 100 protocol tcp
+set firewall ipv4 name servers-transit default-action 'drop'
 
-set firewall ipv4 name server-transit rule 110 action accept
-set firewall ipv4 name server-transit rule 110 description 'Allow legacy K8S to access TrueNAS monitoring'
-set firewall ipv4 name server-transit rule 110 source group address-group k8s_nodes
-set firewall ipv4 name server-transit rule 110 destination port '9100,9633'
-set firewall ipv4 name server-transit rule 110 protocol 'tcp'
+set firewall ipv4 name servers-transit rule 10 action accept
+set firewall ipv4 name servers-transit rule 10 description 'Allow access to DNS'
+set firewall ipv4 name servers-transit rule 10 destination port '53'
+set firewall ipv4 name servers-transit rule 10 destination address '172.53.53.53'
+set firewall ipv4 name servers-transit rule 10 protocol 'tcp_udp'
+
+set firewall ipv4 name servers-transit rule 130 action accept
+set firewall ipv4 name servers-transit rule 130 description 'Allow acces to TrueNAS NFS'
+set firewall ipv4 name servers-transit rule 130 source group address-group nfs_clients
+set firewall ipv4 name servers-transit rule 130 destination group port-group nfs_ports
+set firewall ipv4 name servers-transit rule 130 destination group address-group STORAGE
+set firewall ipv4 name servers-transit rule 130 protocol tcp_udp

@@ -66,6 +66,9 @@ set firewall ipv4 name transit-wan rule 120 action accept
 set firewall ipv4 name transit-wan rule 120 description 'Allow pods to access internet'
 set firewall ipv4 name transit-wan rule 120 source group network-group POD_NETS
 
+set firewall ipv4 name transit-wan rule 200 action accept
+set firewall ipv4 name transit-wan rule 200 description 'Allow dns to access internet'
+set firewall ipv4 name transit-wan rule 200 source address 10.1.53.0/24
 
 # From TRANSIT to TRUSTED
 set firewall ipv4 name transit-trusted default-action drop
@@ -87,3 +90,9 @@ set firewall ipv4 name transit-servers rule 100 source group network-group POD_N
 set firewall ipv4 name transit-servers rule 100 destination port 9100,9633
 set firewall ipv4 name transit-servers rule 100 destination group address-group node_exporter_targets
 set firewall ipv4 name transit-servers rule 100 protocol tcp
+
+set firewall ipv4 name transit-servers rule 110 action accept
+set firewall ipv4 name transit-servers rule 110 description 'Allow access to nix cache'
+set firewall ipv4 name transit-servers rule 110 destination port 5000
+set firewall ipv4 name transit-servers rule 110 destination address 10.1.1.155/24
+set firewall ipv4 name transit-servers rule 110 protocol tcp

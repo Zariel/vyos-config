@@ -34,6 +34,7 @@ set interfaces bonding bond0 mac '08:c0:eb:0f:e4:30'
 set interfaces bonding bond0 mtu 9000
 
 set interfaces bonding bond0 vif 5 address 10.254.255.0/31
+set interfaces bonding bond0 vif 5 address fd74:f571:d3bd:5::0/127
 set interfaces bonding bond0 vif 5 description 'TRANSIT'
 set interfaces bonding bond0 vif 5 mtu 9000
 
@@ -55,10 +56,6 @@ set interfaces bonding bond0 vif 40 address 'fd74:f571:d3bd:40::1/64'
 set interfaces bonding bond0 vif 40 description 'IOT'
 set interfaces bonding bond0 vif 40 mtu 1500
 
-set interfaces bonding bond0 vif 50 address '10.1.5.1/24'
-set interfaces bonding bond0 vif 50 description 'UNIFI'
-set interfaces bonding bond0 vif 50 mtu 1500
-
 set interfaces bonding bond0 vif 99 address 'dhcp'
 set interfaces bonding bond0 vif 99 description 'WAN'
 set interfaces bonding bond0 vif 99 mtu 1500
@@ -71,7 +68,6 @@ set interfaces bonding bond0 vif 99 dhcpv6-options pd 0 interface bond0.40 addre
 
 set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1
-set interfaces bonding bond0 address '10.1.0.1/24'
 
 set interfaces ethernet eth2 hw-id 'a0:36:9f:a9:0d:3a'
 

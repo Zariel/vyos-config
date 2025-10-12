@@ -74,3 +74,7 @@ set firewall ipv4 name trusted-transit rule 100 description 'Trusted to Servers'
 set firewall ipv4 name trusted-transit rule 110 action accept
 set firewall ipv4 name trusted-transit rule 110 destination group network-group LB_IPS
 set firewall ipv4 name trusted-transit rule 110 description 'Trusted to LBs'
+
+set firewall ipv4 name trusted-transit rule 120 action accept
+set firewall ipv4 name trusted-transit rule 120 destination address 10.1.53.0/24
+set firewall ipv4 name trusted-transit rule 120 description 'Trusted to dns'

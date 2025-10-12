@@ -15,7 +15,6 @@ set firewall group ipv6-address-group router-addresses-ipv6 address fe80::e63a:6
 set firewall group ipv6-address-group router-addresses-ipv6 address ::1
 
 # k8s nodes
-set firewall group address-group k8s_nodes address '10.1.1.10-10.1.1.13' # Servers vlan
 set firewall group address-group k8s_nodes address 10.254.1.1
 set firewall group address-group k8s_nodes address 10.254.1.3
 set firewall group address-group k8s_nodes address 10.254.1.5
@@ -58,6 +57,12 @@ set firewall group address-group node_exporter_targets address '10.1.1.31' # pve
 set firewall group address-group node_exporter_targets address '10.1.0.1' # gateway
 
 set firewall group address-group STORAGE address 10.254.1.101
+
+set firewall group address-group nfs_clients address 10.1.1.31
+set firewall group address-group nfs_clients address 10.1.1.41
+
+set firewall group port-group nfs_ports port 2049
+set firewall group port-group nfs_ports port 111
 
 # Network groups
 set firewall group network-group L3_SERVERS network 10.254.1.0/24

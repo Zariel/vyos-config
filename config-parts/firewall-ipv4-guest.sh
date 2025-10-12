@@ -35,3 +35,13 @@ set firewall ipv4 name guest-servers default-log
 # From GUEST to TRUSTED
 set firewall ipv4 name guest-trusted default-action 'drop'
 set firewall ipv4 name guest-trusted default-log
+
+# From GUEST to TRANSIT
+set firewall ipv4 name guest-trusted default-action 'drop'
+set firewall ipv4 name guest-trusted default-log
+
+set firewall ipv4 name guest-transit rule 10 action accept
+set firewall ipv4 name guest-transit rule 10 description 'Allow access to DNS'
+set firewall ipv4 name guest-transit rule 10 destination port '53'
+set firewall ipv4 name guest-transit rule 10 destination address '172.53.53.53'
+set firewall ipv4 name guest-transit rule 10 protocol 'tcp_udp'

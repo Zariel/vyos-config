@@ -7,7 +7,6 @@ set firewall zone trusted interface 'bond0.20'
 set firewall zone trusted interface 'wg01'
 set firewall zone guest interface 'bond0.30'
 set firewall zone iot interface 'bond0.40'
-set firewall zone video interface 'bind0.50'
 set firewall zone containers interface 'pod-containers'
 set firewall zone local local-zone
 set firewall zone transit interface 'bond0.5'
@@ -43,8 +42,8 @@ for to in guest iot lan local servers containers trusted transit wan; do
   done
 done
 
-for to in guest iot lan local servers containers trusted; do
-    for from in guest iot lan local servers containers trusted; do
+for to in guest iot lan local servers containers trusted transit; do
+    for from in guest iot lan local servers containers trustedtransit ; do
         if [ "$from" == "$to" ]; then
             continue
         fi
@@ -54,7 +53,7 @@ for to in guest iot lan local servers containers trusted; do
     done
 done
 
-for to in guest iot lan local servers containers trusted; do
+for to in guest iot lan local servers containers trusted transit; do
     # ICMPv6: Destination Unreachable
     set firewall ipv6 name wan-$to rule 20 action 'accept'
     set firewall ipv6 name wan-$to rule 20 protocol 'icmpv6'

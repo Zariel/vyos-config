@@ -71,6 +71,12 @@ set firewall ipv4 name iot-trusted rule 200 source group address-group 'airplay_
 set firewall ipv4 name iot-trusted rule 200 protocol 'tcp_udp'
 
 # From IOT to TRANSIT
+set firewall ipv4 name iot-transit rule 10 action accept
+set firewall ipv4 name iot-transit rule 10 description 'Allow access to DNS'
+set firewall ipv4 name iot-transit rule 10 destination port '53'
+set firewall ipv4 name iot-transit rule 10 destination address '172.53.53.53'
+set firewall ipv4 name iot-transit rule 10 protocol 'tcp_udp'
+
 set firewall ipv4 name iot-transit rule 100 action 'accept'
 set firewall ipv4 name iot-transit rule 100 description 'Rule: accept_plex_clients_to_plex'
 set firewall ipv4 name iot-transit rule 100 destination group address-group 'k8s_plex'
