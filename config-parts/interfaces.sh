@@ -57,9 +57,9 @@ set interfaces bonding bond0 vif 40 description 'IOT'
 set interfaces bonding bond0 vif 40 mtu 1500
 
 set interfaces bonding bond0 vif 99 address 'dhcp'
+set interfaces bonding bond0 vif 99 address 'dhcpv6'
 set interfaces bonding bond0 vif 99 description 'WAN'
 set interfaces bonding bond0 vif 99 mtu 1500
-set interfaces bonding bond0 vif 99 ipv6 address autoconf
 set interfaces bonding bond0 vif 99 dhcpv6-options rapid-commit
 set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 length 56
 set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.20 sla-id 20
