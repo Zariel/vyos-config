@@ -37,8 +37,8 @@ set firewall ipv4 name guest-trusted default-action 'drop'
 set firewall ipv4 name guest-trusted default-log
 
 # From GUEST to TRANSIT
-set firewall ipv4 name guest-trusted default-action 'drop'
-set firewall ipv4 name guest-trusted default-log
+set firewall ipv4 name guest-transit default-action 'drop'
+set firewall ipv4 name guest-transit default-log
 
 set firewall ipv4 name guest-transit rule 10 action accept
 set firewall ipv4 name guest-transit rule 10 description 'Allow access to DNS'
