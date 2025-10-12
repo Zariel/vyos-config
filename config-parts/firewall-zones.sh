@@ -43,7 +43,7 @@ for to in guest iot lan local servers containers trusted transit wan; do
 done
 
 for to in guest iot lan local servers containers trusted transit; do
-    for from in guest iot lan local servers containers trustedtransit ; do
+    for from in guest iot lan local servers containers trusted transit ; do
         if [ "$from" == "$to" ]; then
             continue
         fi
