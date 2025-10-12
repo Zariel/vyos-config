@@ -21,6 +21,6 @@ set firewall ipv6 name local-iot rule 110 destination port 'mdns'
 set firewall ipv6 name local-iot rule 110 protocol 'udp'
 set firewall ipv6 name local-iot rule 110 source port 'mdns'
 
-set firewall ipv6 name loca-transit rule 10 action accept
-set firewall ipv6 name loca-transit rule 10 protocol ospf
-set firewall ipv6 name loca-transit rule 10 description 'Allow OSPF'
+set firewall ipv6 name local-transit rule 10 action accept
+set firewall ipv6 name local-transit rule 10 protocol ospf
+set firewall ipv6 name local-transit rule 10 description 'Allow OSPF'
