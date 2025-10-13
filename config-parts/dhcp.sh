@@ -24,7 +24,7 @@ set service dhcp-server shared-network-name IOT ping-check
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 default-router '10.1.3.1'
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 domain-name 'cbannister.casa'
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 lease '28800'
-set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 name-server '10.5.0.4'
+set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 name-server '172.53.53.53'
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 range 0 start '10.1.3.200'
 set service dhcp-server shared-network-name IOT subnet 10.1.3.0/24 range 0 stop '10.1.3.254'
 
@@ -153,7 +153,7 @@ set service dhcp-server shared-network-name TRUSTED ping-check
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 default-router '10.1.2.1'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 domain-name 'cbannister.casa'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 lease '28800'
-set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 name-server '10.5.0.4'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 name-server '172.53.53.53'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 ntp-server '10.1.0.1'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 range 0 start '10.1.2.200'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 range 0 stop '10.1.2.254'
