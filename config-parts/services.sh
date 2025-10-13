@@ -40,10 +40,10 @@ set service router-advert interface bond0.20 prefix ::/64
 # ULA
 set service router-advert interface bond0.20 prefix fd74:f571:d3bd:20::/64
 set service router-advert interface bond0.20 route fd74:f571:d3bd::/48
-set service router-advert interface bond0.20 name-server fd74:f571:d3bd:1005::4
+set service router-advert interface bond0.20 name-server fd74:f571:d3bd:53::53
 set service router-advert interface bond0.20 default-preference 'high'
 
 set service router-advert interface bond0.40 prefix fd74:f571:d3bd:40::/64
 set service router-advert interface bond0.40 route fd74:f571:d3bd::/48
-set service router-advert interface bond0.40 name-server fd74:f571:d3bd:1005::4
+set service router-advert interface bond0.40 name-server fd74:f571:d3bd:53::53
 set service router-advert interface bond0.40 default-preference 'high'
