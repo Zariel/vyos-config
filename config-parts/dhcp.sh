@@ -94,22 +94,6 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 subnet-pa
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 subnet-parameters 'filename &quot;ipxe.efi&quot;;'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 subnet-parameters '}'
 
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-0 ip-address '10.1.1.10'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-0 mac-address '58:47:ca:78:d2:43'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-0 static-mapping-parameters 'option host-name k8s-0;'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 ip-address '10.1.1.11'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 mac-address '58:47:ca:78:d7:fb'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-1 static-mapping-parameters 'option host-name k8s-1;'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 ip-address '10.1.1.12'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 mac-address '58:47:ca:78:d8:43'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 static-mapping-parameters 'option host-name k8s-2;'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-3 ip-address '10.1.1.13'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-3 mac-address 'b8:59:9f:cf:ff:b2'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-3 static-mapping-parameters 'option host-name k8s-3;'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-4 ip-address '10.1.1.14'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-4 mac-address '48:21:0b:56:ac:6c'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-4 static-mapping-parameters 'option host-name k8s-4;'
-
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj-ipmi ip-address '10.1.1.30'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj-ipmi mac-address 'ac:1f:6b:e5:bb:5e'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pve ip-address '10.1.1.31'
@@ -123,29 +107,6 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm ip-address '10.1.1.51'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm mac-address '38:3b:26:7f:32:12'
-
-# K8S VLAN
-set service dhcp-server shared-network-name K8S authoritative
-set service dhcp-server shared-network-name K8S ping-check
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 default-router '10.1.8.1'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 lease '28800'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 name-server '10.5.0.4'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 ntp-server '10.1.0.1'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 range 0 start '10.1.8.200'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 range 0 stop '10.1.8.254'
-
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-0 ip-address '10.1.8.10'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-0 mac-address '58:47:ca:78:d2:42'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-0 static-mapping-parameters 'option host-name k8s-0;'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-1 ip-address '10.1.8.11'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-1 mac-address '58:47:ca:78:d7:fa'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-1 static-mapping-parameters 'option host-name k8s-1;'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-2 ip-address '10.1.8.12'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-2 mac-address '58:47:ca:78:d8:42'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-2 static-mapping-parameters 'option host-name k8s-2;'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-3 ip-address '10.1.8.13'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-3 mac-address 'b8:59:9f:cf:ff:b2'
-set service dhcp-server shared-network-name K8S subnet 10.1.8.0/24 static-mapping k8s-3 static-mapping-parameters 'option host-name k8s-3;'
 
 # Trusted VLAN
 set service dhcp-server shared-network-name TRUSTED authoritative
