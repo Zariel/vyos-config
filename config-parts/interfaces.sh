@@ -71,6 +71,10 @@ set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.40 addre
 set interfaces bonding bond0 vif 100 address '10.1.0.1/24'
 set interfaces bonding bond0 vif 100 description 'management'
 
+set interfaces bonding bond0 vif 140 address '10.1.140.1/24'
+set interfaces bonding bond0 vif 140 description 'VPN'
+set interfaces bonding bond0 vif 140 mtu 1500
+set interfaces bonding bond0 vif 140 vrf 'vpn-vlan'
 
 set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1
@@ -99,3 +103,14 @@ set interfaces wireguard wg01 peer chris-iphone public-key '8GJVX0GvW7BE8n+G1+Be
 set interfaces wireguard wg01 peer chris-iphone persistent-keepalive '15'
 set interfaces wireguard wg01 port '51820'
 set interfaces wireguard wg01 private-key "${SECRET_WIREGUARD_PRIVATE_KEY}"
+
+set interfaces wireguard wg02 address '10.131.102.130/32'
+set interfaces wireguard wg02 description 'VPN_CLIENT_AIRVPN'
+set interfaces wireguard wg02 mtu '1320'
+set interfaces wireguard wg02 vrf 'vpn-vlan'
+set interfaces wireguard wg02 private-key "${SECRET_AIRVPN_PRIVATE_KEY}"
+set interfaces wireguard wg02 peer airvpn-nl3 endpoint 'nl3.vpn.airdns.org:1637'
+set interfaces wireguard wg02 peer airvpn-nl3 allowed-ips '0.0.0.0/0'
+set interfaces wireguard wg02 peer airvpn-nl3 persistent-keepalive '15'
+set interfaces wireguard wg02 peer airvpn-nl3 public-key 'PyLCXAQT8KkM4T+dUsOQfn+Ub3pGxfGlxkIApuig+hk='
+set interfaces wireguard wg02 peer airvpn-nl3 preshared-key "${SECRET_AIRVPN_PRESHARED_KEY}"

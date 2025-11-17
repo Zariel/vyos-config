@@ -169,3 +169,12 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-printer ip-address '10.1.2.70'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping office-printer mac-address '94:dd:f8:6c:f5:6a'
 
+# VPN VLAN (for K8s pods with Multus CNI)
+set service dhcp-server shared-network-name VPN authoritative
+set service dhcp-server shared-network-name VPN ping-check
+set service dhcp-server shared-network-name VPN subnet 10.1.140.0/24 default-router '10.1.140.1'
+set service dhcp-server shared-network-name VPN subnet 10.1.140.0/24 lease '86400'
+set service dhcp-server shared-network-name VPN subnet 10.1.140.0/24 name-server '10.128.0.1'
+set service dhcp-server shared-network-name VPN subnet 10.1.140.0/24 range 0 start '10.1.140.100'
+set service dhcp-server shared-network-name VPN subnet 10.1.140.0/24 range 0 stop '10.1.140.200'
+

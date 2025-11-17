@@ -82,3 +82,15 @@ set firewall ipv4 name local-transit rule 10 description 'Allow OSPF'
 set firewall ipv4 name local-transit rule 20 action accept
 set firewall ipv4 name local-transit rule 20 protocol icmp
 set firewall ipv4 name local-transit rule 20 description 'Allow ICMP'
+
+# From LOCAL to VPN
+set firewall ipv4 name local-vpn default-action 'drop'
+set firewall ipv4 name local-vpn default-log
+set firewall ipv4 name local-vpn rule 10 action 'accept'
+set firewall ipv4 name local-vpn rule 10 description 'Allow DNS responses'
+set firewall ipv4 name local-vpn rule 10 protocol 'udp'
+set firewall ipv4 name local-vpn rule 10 source port '53'
+set firewall ipv4 name local-vpn rule 11 action 'accept'
+set firewall ipv4 name local-vpn rule 11 description 'Allow DHCP responses'
+set firewall ipv4 name local-vpn rule 11 protocol 'udp'
+set firewall ipv4 name local-vpn rule 11 source port '67'
