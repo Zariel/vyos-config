@@ -40,4 +40,4 @@ set protocols ospfv3 interface bond0.5 network 'point-to-point'
 set protocols ospfv3 redistribute connected
 
 # VRF-specific default route for VPN VLAN - keeps traffic inside vpn-vlan VRF
-set protocols static vrf vpn-vlan route 0.0.0.0/0 interface wg02
+set vrf vpn-vlan protocols static route 0.0.0.0/0 interface wg02
