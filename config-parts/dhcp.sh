@@ -70,6 +70,9 @@ set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mappin
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping ap02 ip-address '10.1.0.22'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping ap02 mac-address '0c:ea:14:e6:16:d5'
 
+set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pdu01 ip-address '10.1.0.31'
+set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pdu01 mac-address '00:0d:5d:09:27:b7'
+
 # pikvm, static IP
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pikvm ip-address '10.1.0.100'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pikvm mac-address 'e4:5f:01:f4:9d:97'
