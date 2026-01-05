@@ -72,3 +72,9 @@ set firewall group network-group L3_SERVERS network 10.254.0.0/16
 set firewall group network-group POD_NETS network 172.20.0.0/16
 set firewall group network-group LB_IPS network 10.45.0.0/24
 set firewall group network-group DNS_SERVERS network 10.254.53.0/24
+
+
+# brocade 
+set firewall group address-group snmp_targets address 10.1.0.10
+# pdu 
+set firewall group address-group snmp_targets address 10.1.0.31
