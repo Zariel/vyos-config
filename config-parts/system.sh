@@ -25,7 +25,7 @@ set system time-zone 'Europe/London'
 
 set system option kernel disable-mitigations
 
-set system sysctl parameter net.core.default_qdisc value 'fq'
+set system sysctl parameter net.core.default_qdisc value 'fq_codel'
 set system sysctl parameter net.core.netdev_budget value '1200'
 set system sysctl parameter net.core.netdev_budget_usecs value '8000'
 set system sysctl parameter net.core.netdev_max_backlog value '30000'
