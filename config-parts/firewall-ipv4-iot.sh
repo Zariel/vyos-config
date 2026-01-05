@@ -35,6 +35,9 @@ set firewall ipv4 name iot-local rule 110 protocol 'udp'
 # From IOT to SERVERS
 set firewall ipv4 name iot-servers default-action 'drop'
 set firewall ipv4 name iot-servers default-log
+set firewall ipv4 name iot-servers rule 20 action 'accept'
+set firewall ipv4 name iot-servers rule 20 description 'Rule: allow_icmp'
+set firewall ipv4 name iot-servers rule 20 protocol 'icmp'
 set firewall ipv4 name iot-servers rule 50 action 'accept'
 set firewall ipv4 name iot-servers rule 50 description 'Rule: accept_plex_clients_to_plex'
 set firewall ipv4 name iot-servers rule 50 destination group address-group 'k8s_plex'
@@ -63,6 +66,9 @@ set firewall ipv4 name iot-containers rule 40 protocol 'tcp_udp'
 # From IOT to TRUSTED
 set firewall ipv4 name iot-trusted default-action 'drop'
 set firewall ipv4 name iot-trusted default-log
+set firewall ipv4 name iot-trusted rule 20 action 'accept'
+set firewall ipv4 name iot-trusted rule 20 description 'Rule: allow_icmp'
+set firewall ipv4 name iot-trusted rule 20 protocol 'icmp'
 set firewall ipv4 name iot-trusted rule 200 action 'accept'
 set firewall ipv4 name iot-trusted rule 200 description 'Rule: accept_apple_services_ports'
 set firewall ipv4 name iot-trusted rule 200 destination group port-group 'apple_services_ports'
@@ -76,6 +82,10 @@ set firewall ipv4 name iot-transit rule 10 description 'Allow access to DNS'
 set firewall ipv4 name iot-transit rule 10 destination port '53'
 set firewall ipv4 name iot-transit rule 10 destination address '172.53.53.53'
 set firewall ipv4 name iot-transit rule 10 protocol 'tcp_udp'
+
+set firewall ipv4 name iot-transit rule 15 action accept
+set firewall ipv4 name iot-transit rule 15 description 'Allow ICMP'
+set firewall ipv4 name iot-transit rule 15 protocol icmp
 
 set firewall ipv4 name iot-transit rule 100 action 'accept'
 set firewall ipv4 name iot-transit rule 100 description 'Rule: accept_plex_clients_to_plex'

@@ -6,6 +6,9 @@ set firewall ipv4 name trusted-guest default-log
 
 # From TRUSTED to IOT
 set firewall ipv4 name trusted-iot default-action 'accept'
+set firewall ipv4 name trusted-iot rule 10 action 'accept'
+set firewall ipv4 name trusted-iot rule 10 description 'Rule: allow_icmp'
+set firewall ipv4 name trusted-iot rule 10 protocol 'icmp'
 
 # From TRUSTED to LAN
 set firewall ipv4 name trusted-lan default-action 'accept'
@@ -54,6 +57,9 @@ set firewall ipv4 name trusted-local rule 420 protocol 'udp'
 
 # From TRUSTED to SERVERS
 set firewall ipv4 name trusted-servers default-action 'accept'
+set firewall ipv4 name trusted-servers rule 10 action 'accept'
+set firewall ipv4 name trusted-servers rule 10 description 'Rule: allow_icmp'
+set firewall ipv4 name trusted-servers rule 10 protocol 'icmp'
 
 # From TRUSTED to CONTAINERS
 set firewall ipv4 name trusted-containers default-action 'accept'
@@ -67,6 +73,9 @@ set firewall ipv4 name trusted-wan default-action 'accept'
 
 # From TRUSTED to TRANSIT
 set firewall ipv4 name trusted-transit default-action 'drop'
+set firewall ipv4 name trusted-transit rule 15 action accept
+set firewall ipv4 name trusted-transit rule 15 description 'Allow ICMP'
+set firewall ipv4 name trusted-transit rule 15 protocol icmp
 set firewall ipv4 name trusted-transit rule 20 action accept
 set firewall ipv4 name trusted-transit rule 20 destination address 172.53.53.53
 set firewall ipv4 name trusted-transit rule 20 description 'Trusted to dns VIP'

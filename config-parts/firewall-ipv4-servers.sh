@@ -7,6 +7,9 @@ set firewall ipv4 name servers-guest default-log
 # From SERVERS to IOT
 set firewall ipv4 name servers-iot default-action 'drop'
 set firewall ipv4 name servers-iot default-log
+set firewall ipv4 name servers-iot rule 20 action 'accept'
+set firewall ipv4 name servers-iot rule 20 description 'Rule: allow_icmp'
+set firewall ipv4 name servers-iot rule 20 protocol 'icmp'
 
 # From SERVERS to LAN
 set firewall ipv4 name servers-lan default-action 'drop'
@@ -70,6 +73,9 @@ set firewall ipv4 name servers-containers rule 101 source group address-group 'k
 # From SERVERS to TRUSTED
 set firewall ipv4 name servers-trusted default-action 'drop'
 set firewall ipv4 name servers-trusted default-log
+set firewall ipv4 name servers-trusted rule 20 action 'accept'
+set firewall ipv4 name servers-trusted rule 20 description 'Rule: allow_icmp'
+set firewall ipv4 name servers-trusted rule 20 protocol 'icmp'
 set firewall ipv4 name servers-trusted rule 100 action 'accept'
 set firewall ipv4 name servers-trusted rule 100 description 'Rule: accept_node_exporter_from_k8s_pods'
 set firewall ipv4 name servers-trusted rule 100 destination port '9100'
@@ -94,6 +100,10 @@ set firewall ipv4 name servers-transit rule 10 description 'Allow access to DNS'
 set firewall ipv4 name servers-transit rule 10 destination port '53'
 set firewall ipv4 name servers-transit rule 10 destination address '172.53.53.53'
 set firewall ipv4 name servers-transit rule 10 protocol 'tcp_udp'
+
+set firewall ipv4 name servers-transit rule 15 action accept
+set firewall ipv4 name servers-transit rule 15 description 'Allow ICMP'
+set firewall ipv4 name servers-transit rule 15 protocol icmp
 
 set firewall ipv4 name servers-transit rule 130 action accept
 set firewall ipv4 name servers-transit rule 130 description 'Allow acces to TrueNAS NFS'

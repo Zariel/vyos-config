@@ -54,6 +54,9 @@ set firewall ipv4 name local-containers rule 40 protocol 'tcp_udp'
 # From LOCAL to TRUSTED
 set firewall ipv4 name local-trusted default-action 'drop'
 set firewall ipv4 name local-trusted default-log
+set firewall ipv4 name local-trusted rule 20 action accept
+set firewall ipv4 name local-trusted rule 20 protocol icmp
+set firewall ipv4 name local-trusted rule 20 description 'Allow ICMP'
 set firewall ipv4 name local-trusted rule 100 action 'accept'
 set firewall ipv4 name local-trusted rule 100 description 'Rule: accept_igmp'
 set firewall ipv4 name local-trusted rule 100 protocol '2'
