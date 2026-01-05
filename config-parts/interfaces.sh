@@ -37,29 +37,39 @@ set interfaces bonding bond0 vif 5 address 10.254.255.0/31
 set interfaces bonding bond0 vif 5 address fd74:f571:d3bd:5::0/127
 set interfaces bonding bond0 vif 5 description 'TRANSIT'
 set interfaces bonding bond0 vif 5 mtu 9000
+set interfaces bonding bond0 vif 5 ip adjust-mss 'clamp-mss-to-pmtu'
+set interfaces bonding bond0 vif 5 ipv6 adjust-mss 'clamp-mss-to-pmtu'
 
 set interfaces bonding bond0 vif 10 address '10.1.1.1/24'
 set interfaces bonding bond0 vif 10 description 'SERVERS'
 set interfaces bonding bond0 vif 10 mtu 9000
+set interfaces bonding bond0 vif 10 ip adjust-mss 'clamp-mss-to-pmtu'
 
 set interfaces bonding bond0 vif 20 address '10.1.2.1/24'
 set interfaces bonding bond0 vif 20 address 'fd74:f571:d3bd:20::1/64'
 set interfaces bonding bond0 vif 20 description 'TRUSTED'
 set interfaces bonding bond0 vif 20 mtu 1500
+set interfaces bonding bond0 vif 20 ip adjust-mss 'clamp-mss-to-pmtu'
+set interfaces bonding bond0 vif 20 ipv6 adjust-mss 'clamp-mss-to-pmtu'
 
 set interfaces bonding bond0 vif 30 address '192.168.2.1/24'
 set interfaces bonding bond0 vif 30 description 'GUEST'
 set interfaces bonding bond0 vif 30 mtu 1500
+set interfaces bonding bond0 vif 30 ip adjust-mss 'clamp-mss-to-pmtu'
 
 set interfaces bonding bond0 vif 40 address '10.1.3.1/24'
 set interfaces bonding bond0 vif 40 address 'fd74:f571:d3bd:40::1/64'
 set interfaces bonding bond0 vif 40 description 'IOT'
 set interfaces bonding bond0 vif 40 mtu 1500
+set interfaces bonding bond0 vif 40 ip adjust-mss 'clamp-mss-to-pmtu'
+set interfaces bonding bond0 vif 40 ipv6 adjust-mss 'clamp-mss-to-pmtu'
 
 set interfaces bonding bond0 vif 99 address 'dhcp'
 set interfaces bonding bond0 vif 99 address 'dhcpv6'
 set interfaces bonding bond0 vif 99 description 'WAN'
 set interfaces bonding bond0 vif 99 mtu 1500
+set interfaces bonding bond0 vif 99 ip adjust-mss 'clamp-mss-to-pmtu'
+set interfaces bonding bond0 vif 99 ipv6 adjust-mss 'clamp-mss-to-pmtu'
 set interfaces bonding bond0 vif 99 dhcpv6-options rapid-commit
 set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 length 56
 set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.20 sla-id 20
@@ -70,6 +80,7 @@ set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.40 addre
 
 set interfaces bonding bond0 vif 100 address '10.1.0.1/24'
 set interfaces bonding bond0 vif 100 description 'management'
+set interfaces bonding bond0 vif 100 ip adjust-mss 'clamp-mss-to-pmtu'
 
 set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1
