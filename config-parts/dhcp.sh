@@ -104,6 +104,9 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 ip-address '10.1.1.12'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping k8s-2 mac-address '58:47:ca:78:d8:44'
 
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping matchbox ip-address '10.1.1.20'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping matchbox mac-address 'bc:24:11:92:32:57'
+
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj-ipmi ip-address '10.1.1.30'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj-ipmi mac-address 'ac:1f:6b:e5:bb:5e'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pve ip-address '10.1.1.31'
@@ -117,6 +120,7 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm ip-address '10.1.1.51'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm mac-address '38:3b:26:7f:32:12'
+
 
 # Trusted VLAN
 set service dhcp-server shared-network-name TRUSTED authoritative
