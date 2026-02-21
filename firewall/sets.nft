@@ -1,0 +1,132 @@
+# Reusable IPv4 sets translated from config-parts/firewall.sh.
+
+# Router addresses
+set router_addresses {
+  type ipv4_addr
+  elements = { 10.1.0.1, 127.0.0.1 }
+}
+
+# Kubernetes and services
+set k8s_nodes {
+  type ipv4_addr
+  elements = { 10.254.1.1, 10.254.1.3, 10.254.1.5 }
+}
+
+set k8s_pods {
+  type ipv4_addr
+  flags interval
+  elements = { 10.42.0.0/16, 172.20.0.0/16 }
+}
+
+set plex_clients {
+  type ipv4_addr
+  elements = { 10.1.3.16 }
+}
+
+set k8s_plex {
+  type ipv4_addr
+  elements = { 10.45.0.20 }
+}
+
+set k8s_jellyfin {
+  type ipv4_addr
+  elements = { 10.45.0.21 }
+}
+
+set k8s_ingress {
+  type ipv4_addr
+  elements = { 10.45.0.10 }
+}
+
+set k8s_ingress_clients {
+  type ipv4_addr
+  elements = { 10.1.3.16 }
+}
+
+# Apple devices
+set airplay_targets {
+  type ipv4_addr
+  elements = { 10.1.3.14 }
+}
+
+set airplay_sources {
+  type ipv4_addr
+  elements = { 10.1.2.11, 10.1.2.14 }
+}
+
+# Monitoring / infra
+set node_exporter_targets {
+  type ipv4_addr
+  elements = { 10.1.2.54, 10.1.2.15, 10.1.2.16, 10.1.1.31, 10.1.1.41, 10.1.0.1, 10.1.1.155 }
+}
+
+set storage {
+  type ipv4_addr
+  elements = { 10.254.1.101 }
+}
+
+set nfs_clients {
+  type ipv4_addr
+  elements = { 10.1.1.31, 10.1.1.41 }
+}
+
+set snmp_targets {
+  type ipv4_addr
+  elements = { 10.1.0.10, 10.1.0.31 }
+}
+
+# Network groups
+set l3_servers {
+  type ipv4_addr
+  flags interval
+  elements = { 10.254.0.0/16 }
+}
+
+set pod_nets {
+  type ipv4_addr
+  flags interval
+  elements = { 172.20.0.0/16 }
+}
+
+set lb_ips {
+  type ipv4_addr
+  flags interval
+  elements = { 10.45.0.0/24 }
+}
+
+set dns_servers {
+  type ipv4_addr
+  flags interval
+  elements = { 10.254.53.0/24 }
+}
+
+# Port groups
+set k8s_plex_ports {
+  type inet_service
+  elements = { 32400 }
+}
+
+set k8s_jellyfin_ports {
+  type inet_service
+  elements = { 8096, 1900, 7359 }
+}
+
+set k8s_ingress_ports {
+  type inet_service
+  elements = { 443 }
+}
+
+set apple_services_ports {
+  type inet_service
+  elements = { 3722, 6002, 7000, 30000-65535 }
+}
+
+set roon_arc_ports {
+  type inet_service
+  elements = { 59453 }
+}
+
+set nfs_ports {
+  type inet_service
+  elements = { 111, 2049 }
+}

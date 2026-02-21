@@ -1,0 +1,344 @@
+# Zone direction chains. Names are FROM-TO.
+# Rule order: explicit allows, then invalid drop log, then terminal action.
+
+chain CONTAINERS-LOCAL {
+  meta l4proto { tcp, udp } th dport { 53, 853 } counter accept comment "allow DNS to local"
+  udp sport { 67, 68 } udp dport { 67, 68 } counter accept comment "allow DHCP to local"
+  udp dport 123 counter accept comment "allow NTP to local"
+  ct state invalid counter log prefix "[CONTAINERS-LOCAL-invalid-D] " drop
+  counter log prefix "[CONTAINERS-LOCAL-default-D] " drop
+}
+
+chain CONTAINERS-SERVERS {
+  counter accept comment "default-action accept"
+}
+
+chain CONTAINERS-WAN {
+  counter accept comment "default-action accept"
+}
+
+chain CONTAINERS-TRANSIT {
+  tcp dport { 6443, 50000 } ip daddr @k8s_nodes counter accept comment "allow haproxy to access talos"
+  meta l4proto { tcp, udp } th dport 53 ip daddr 10.45.0.55 counter accept comment "allow dnsdist to access in cluster bind"
+  ct state invalid counter log prefix "[CONTAINERS-TRANSIT-invalid-D] " drop
+  counter log prefix "[CONTAINERS-TRANSIT-default-D] " drop
+}
+
+chain GUEST-WAN {
+  counter accept comment "default-action accept"
+}
+
+chain GUEST-LOCAL {
+  udp sport { 67, 68 } udp dport { 67, 68 } counter accept comment "allow DHCP to local"
+  ct state invalid counter log prefix "[GUEST-LOCAL-invalid-D] " drop
+  counter log prefix "[GUEST-LOCAL-default-D] " drop
+}
+
+chain GUEST-CONTAINERS {
+  meta l4proto { tcp, udp } th dport { 53, 853 } counter accept comment "allow DNS to containers"
+  ct state invalid counter log prefix "[GUEST-CONTAINERS-invalid-D] " drop
+  counter log prefix "[GUEST-CONTAINERS-default-D] " drop
+}
+
+chain GUEST-TRANSIT {
+  meta l4proto { tcp, udp } th dport 53 ip daddr 172.53.53.53 counter accept comment "allow DNS"
+  ct state invalid counter log prefix "[GUEST-TRANSIT-invalid-D] " drop
+  counter log prefix "[GUEST-TRANSIT-default-D] " drop
+}
+
+chain IOT-WAN {
+  counter accept comment "default-action accept"
+}
+
+chain IOT-LOCAL {
+  udp sport { 67, 68 } udp dport { 67, 68 } counter accept comment "allow DHCP to local"
+  udp dport 123 counter accept comment "allow NTP to local"
+  ip protocol igmp counter accept comment "allow IGMP"
+  udp dport 5353 ip daddr 224.0.0.251 counter accept comment "allow mDNS"
+  ct state invalid counter log prefix "[IOT-LOCAL-invalid-D] " drop
+  counter log prefix "[IOT-LOCAL-default-D] " drop
+}
+
+chain IOT-SERVERS {
+  ip protocol icmp counter accept comment "allow ICMP"
+  tcp dport 32400 ip saddr @plex_clients ip daddr @k8s_plex counter accept comment "allow plex clients to plex"
+  meta l4proto { tcp, udp } ip saddr @plex_clients ip daddr @k8s_jellyfin counter accept comment "allow plex clients to jellyfin"
+  tcp dport @k8s_ingress_ports ip saddr @k8s_ingress_clients ip daddr @k8s_ingress counter accept comment "allow k8s ingress"
+  ct state invalid counter log prefix "[IOT-SERVERS-invalid-D] " drop
+  counter log prefix "[IOT-SERVERS-default-D] " drop
+}
+
+chain IOT-CONTAINERS {
+  meta l4proto { tcp, udp } th dport { 53, 853 } counter accept comment "allow DNS to containers"
+  counter accept comment "default-action accept"
+}
+
+chain IOT-TRUSTED {
+  ip protocol icmp counter accept comment "allow ICMP"
+  meta l4proto { tcp, udp } th dport @apple_services_ports ip saddr @airplay_targets ip daddr @airplay_sources counter accept comment "allow Apple services"
+  ct state invalid counter log prefix "[IOT-TRUSTED-invalid-D] " drop
+  counter log prefix "[IOT-TRUSTED-default-D] " drop
+}
+
+chain IOT-TRANSIT {
+  meta l4proto { tcp, udp } th dport 53 ip daddr 172.53.53.53 counter accept comment "allow DNS"
+  ip protocol icmp counter accept comment "allow ICMP"
+  tcp dport 32400 ip saddr @plex_clients ip daddr @k8s_plex counter accept comment "allow plex clients to plex"
+  ct state invalid counter log prefix "[IOT-TRANSIT-invalid-D] " drop
+  counter log prefix "[IOT-TRANSIT-default-D] " drop
+}
+
+chain LAN-LOCAL {
+  udp sport { 67, 68 } udp dport { 67, 68 } counter accept comment "allow DHCP to local"
+  udp dport 123 counter accept comment "allow NTP to local"
+  udp dport 69 counter accept comment "allow TFTP to local"
+  tcp dport 9100 ip saddr @k8s_pods counter accept comment "allow node_exporter from k8s pods"
+  tcp dport 22 counter accept comment "allow SSH to local"
+  ct state invalid counter log prefix "[LAN-LOCAL-invalid-D] " drop
+  counter log prefix "[LAN-LOCAL-default-D] " drop
+}
+
+chain LAN-SERVERS {
+  meta l4proto { tcp, udp } th dport { 161, 162 } counter accept comment "allow SNMP"
+  meta l4proto { tcp, udp } th dport 5000 ip saddr 10.1.0.100 ip daddr 10.1.1.51 counter accept comment "allow pikvm tesmart"
+  ct state invalid counter log prefix "[LAN-SERVERS-invalid-D] " drop
+  counter log prefix "[LAN-SERVERS-default-D] " drop
+}
+
+chain LAN-CONTAINERS {
+  meta l4proto { tcp, udp } th dport { 53, 853 } counter accept comment "allow DNS to containers"
+  counter accept comment "default-action accept"
+}
+
+chain LAN-TRUSTED {
+  udp dport 6343 ip daddr 10.1.2.14 counter accept comment "allow sflow"
+  ct state invalid counter log prefix "[LAN-TRUSTED-invalid-D] " drop
+  counter log prefix "[LAN-TRUSTED-default-D] " drop
+}
+
+chain LAN-TRANSIT {
+  meta l4proto { tcp, udp } th dport 53 ip daddr 172.53.53.53 counter accept comment "allow DNS"
+  ct state invalid counter log prefix "[LAN-TRANSIT-invalid-D] " drop
+  counter log prefix "[LAN-TRANSIT-default-D] " drop
+}
+
+chain LAN-WAN {
+  counter accept comment "default-action accept"
+}
+
+chain LOCAL-IOT {
+  udp sport 5353 udp dport 5353 counter accept comment "allow mDNS"
+  ct state invalid counter log prefix "[LOCAL-IOT-invalid-D] " drop
+  counter log prefix "[LOCAL-IOT-default-D] " drop
+}
+
+chain LOCAL-SERVERS {
+  meta l4proto { tcp, udp } th dport { 53, 853 } counter accept comment "allow DNS"
+  tcp dport 179 counter accept comment "allow BGP"
+  meta l4proto udp counter log prefix "[LOCAL-SERVERS-pxe-A] " accept comment "allow PXE (TODO: narrow this)"
+  tcp dport 6001 ip daddr 10.45.0.2 counter accept comment "allow syslog vector"
+  tcp dport 6443 ip daddr @k8s_nodes counter accept comment "allow k8s API"
+  ct state invalid counter log prefix "[LOCAL-SERVERS-invalid-D] " drop
+  counter log prefix "[LOCAL-SERVERS-default-D] " drop
+}
+
+chain LOCAL-CONTAINERS {
+  meta l4proto { tcp, udp } th dport { 53, 853 } counter accept comment "allow DNS to containers"
+  counter accept comment "default-action accept"
+}
+
+chain LOCAL-TRUSTED {
+  ip protocol icmp counter accept comment "allow ICMP"
+  ip protocol igmp counter accept comment "allow IGMP"
+  udp sport 5353 udp dport 5353 counter accept comment "allow mDNS"
+  udp sport 51820 counter accept comment "allow WireGuard sourced traffic"
+  ct state invalid counter log prefix "[LOCAL-TRUSTED-invalid-D] " drop
+  counter log prefix "[LOCAL-TRUSTED-default-D] " drop
+}
+
+chain LOCAL-WAN {
+  counter accept comment "default-action accept"
+}
+
+chain LOCAL-TRANSIT {
+  ip protocol ospf counter accept comment "allow OSPF"
+  ip protocol icmp counter accept comment "allow ICMP"
+  ct state invalid counter log prefix "[LOCAL-TRANSIT-invalid-D] " drop
+  counter log prefix "[LOCAL-TRANSIT-default-D] " drop
+}
+
+chain SERVERS-IOT {
+  ip protocol icmp counter accept comment "allow ICMP"
+  ct state invalid counter log prefix "[SERVERS-IOT-invalid-D] " drop
+  counter log prefix "[SERVERS-IOT-default-D] " drop
+}
+
+chain SERVERS-LAN {
+  udp dport 161 counter accept comment "allow SNMP"
+  ct state invalid counter log prefix "[SERVERS-LAN-invalid-D] " drop
+  counter log prefix "[SERVERS-LAN-default-D] " drop
+}
+
+chain SERVERS-LOCAL {
+  udp sport { 67, 68 } udp dport { 67, 68 } counter accept comment "allow DHCP to local"
+  udp dport 123 counter accept comment "allow NTP to local"
+  tcp dport 179 counter accept comment "allow BGP"
+  udp dport 69 counter accept comment "allow TFTP to local"
+  tcp dport 9100 ip saddr @k8s_pods counter accept comment "allow node_exporter from k8s pods"
+  tcp dport 9100 ip saddr @k8s_nodes counter accept comment "allow node_exporter from k8s nodes"
+  tcp dport 9798 ip saddr @k8s_pods counter accept comment "allow speedtest_exporter from k8s pods"
+  ct state invalid counter log prefix "[SERVERS-LOCAL-invalid-D] " drop
+  counter log prefix "[SERVERS-LOCAL-default-D] " drop
+}
+
+chain SERVERS-CONTAINERS {
+  meta l4proto { tcp, udp } th dport { 53, 853 } counter accept comment "allow DNS to containers"
+  meta l4proto tcp ip saddr @k8s_pods counter accept comment "allow k8s pods"
+  meta l4proto tcp ip saddr @k8s_nodes counter accept comment "allow k8s nodes"
+  counter accept comment "default-action accept"
+}
+
+chain SERVERS-TRUSTED {
+  ip protocol icmp counter accept comment "allow ICMP"
+  tcp dport 9100 ip saddr @k8s_pods ip daddr 10.1.2.54 counter accept comment "allow node_exporter from k8s pods"
+  tcp dport 9100 ip saddr @k8s_nodes ip daddr @node_exporter_targets counter accept comment "allow node_exporter from k8s nodes"
+  ct state invalid counter log prefix "[SERVERS-TRUSTED-invalid-D] " drop
+  counter log prefix "[SERVERS-TRUSTED-default-D] " drop
+}
+
+chain SERVERS-WAN {
+  counter accept comment "default-action accept"
+}
+
+chain SERVERS-TRANSIT {
+  meta l4proto { tcp, udp } th dport 53 ip daddr 172.53.53.53 counter accept comment "allow DNS"
+  ip protocol icmp counter accept comment "allow ICMP"
+  meta l4proto { tcp, udp } th dport @nfs_ports ip saddr @nfs_clients ip daddr @storage counter accept comment "allow access to TrueNAS NFS"
+  ct state invalid counter log prefix "[SERVERS-TRANSIT-invalid-D] " drop
+  counter log prefix "[SERVERS-TRANSIT-default-D] " drop
+}
+
+chain TRANSIT-LOCAL {
+  ip protocol ospf counter accept comment "allow OSPF"
+  ip protocol icmp counter accept comment "allow ICMP"
+  udp dport 123 counter accept comment "allow NTP"
+  tcp dport 9100 ip saddr @pod_nets ip daddr @node_exporter_targets counter accept comment "allow access to node_exporter"
+  ct state invalid counter log prefix "[TRANSIT-LOCAL-invalid-D] " drop
+  counter log prefix "[TRANSIT-LOCAL-default-D] " drop
+}
+
+chain TRANSIT-CONTAINERS {
+  meta l4proto { tcp, udp } th dport 53 ip daddr 10.5.0.4 counter accept comment "allow DNS"
+  tcp dport { 6443, 50000 } ip saddr @pod_nets ip daddr 10.5.0.2 counter accept comment "allow access to haproxy k8s control plane"
+  tcp dport 8083 ip saddr @pod_nets ip daddr 10.5.0.4 counter accept comment "allow scrape dnsdist"
+  tcp dport 4000 ip saddr @pod_nets ip daddr 10.5.0.7 counter accept comment "allow scrape blocky"
+  ct state invalid counter log prefix "[TRANSIT-CONTAINERS-invalid-D] " drop
+  counter log prefix "[TRANSIT-CONTAINERS-default-D] " drop
+}
+
+chain TRANSIT-WAN {
+  ip saddr @k8s_nodes counter accept comment "allow k8s to access WAN"
+  tcp dport { 80, 443 } ip saddr @storage counter accept comment "allow truenas HTTP/S"
+  ip saddr @pod_nets counter accept comment "allow pods internet access"
+  ip saddr @dns_servers counter accept comment "allow DNS servers internet access"
+  ct state invalid counter log prefix "[TRANSIT-WAN-invalid-D] " drop
+  counter log prefix "[TRANSIT-WAN-default-D] " drop
+}
+
+chain TRANSIT-TRUSTED {
+  ip protocol icmp counter accept comment "allow ICMP"
+  tcp dport { 9100, 9633 } ip saddr @pod_nets ip daddr @node_exporter_targets counter accept comment "allow node_exporter and smartctl_exporter"
+  ct state invalid counter log prefix "[TRANSIT-TRUSTED-invalid-D] " drop
+  counter log prefix "[TRANSIT-TRUSTED-default-D] " drop
+}
+
+chain TRANSIT-IOT {
+  ip protocol icmp counter accept comment "allow ICMP"
+  ct state invalid counter log prefix "[TRANSIT-IOT-invalid-D] " drop
+  counter log prefix "[TRANSIT-IOT-default-D] " drop
+}
+
+chain TRANSIT-SERVERS {
+  ip protocol icmp counter accept comment "allow ICMP"
+  tcp dport { 9100, 9633, 9290 } ip saddr @pod_nets ip daddr @node_exporter_targets counter accept comment "allow exporters"
+  tcp dport 5000 ip daddr 10.1.1.155 counter accept comment "allow nix cache"
+  ct state invalid counter log prefix "[TRANSIT-SERVERS-invalid-D] " drop
+  counter log prefix "[TRANSIT-SERVERS-default-D] " drop
+}
+
+chain TRANSIT-LAN {
+  tcp dport { 161, 162 } ip saddr @pod_nets ip daddr @snmp_targets counter accept comment "allow SNMP scraping"
+  ct state invalid counter log prefix "[TRANSIT-LAN-invalid-D] " drop
+  counter log prefix "[TRANSIT-LAN-default-D] " drop
+}
+
+chain TRUSTED-IOT {
+  ip protocol icmp counter accept comment "allow ICMP"
+  counter accept comment "default-action accept"
+}
+
+chain TRUSTED-LAN {
+  counter accept comment "default-action accept"
+}
+
+chain TRUSTED-LOCAL {
+  udp sport { 67, 68 } udp dport { 67, 68 } counter accept comment "allow DHCP to local"
+  udp dport 123 counter accept comment "allow NTP"
+  icmp type echo-request counter accept comment "allow ICMP echo-request"
+  ip protocol igmp counter accept comment "allow IGMP"
+  udp dport 5353 ip daddr 224.0.0.251 counter accept comment "allow mDNS multicast"
+  udp dport 9 ip daddr 255.255.255.255 counter accept comment "allow WoL broadcast"
+  tcp dport 22 counter accept comment "allow SSH"
+  tcp dport 8443 counter accept comment "allow API"
+  udp dport 51820 counter accept comment "allow WireGuard"
+  ct state invalid counter log prefix "[TRUSTED-LOCAL-invalid-D] " drop
+  counter log prefix "[TRUSTED-LOCAL-default-D] " drop
+}
+
+chain TRUSTED-SERVERS {
+  ip protocol icmp counter accept comment "allow ICMP"
+  counter accept comment "default-action accept"
+}
+
+chain TRUSTED-CONTAINERS {
+  meta l4proto { tcp, udp } th dport { 53, 853 } counter accept comment "allow DNS"
+  counter accept comment "default-action accept"
+}
+
+chain TRUSTED-WAN {
+  counter accept comment "default-action accept"
+}
+
+chain TRUSTED-TRANSIT {
+  ip protocol icmp counter accept comment "allow ICMP"
+  udp dport 53 ip daddr 172.53.53.53 counter accept comment "trusted to DNS VIP"
+  ip daddr @l3_servers counter accept comment "trusted to servers"
+  ip daddr @lb_ips counter accept comment "trusted to load balancers"
+  ip daddr @dns_servers counter accept comment "trusted to DNS"
+  ct state invalid counter log prefix "[TRUSTED-TRANSIT-invalid-D] " drop
+  counter log prefix "[TRUSTED-TRANSIT-default-D] " drop
+}
+
+chain WAN-LOCAL {
+  udp dport 51820 counter accept comment "allow WireGuard"
+  ct state invalid counter log prefix "[WAN-LOCAL-invalid-D] " drop
+  counter log prefix "[WAN-LOCAL-default-D] " drop
+}
+
+chain WAN-SERVERS {
+  meta l4proto { tcp, udp } th dport 50413 ip daddr 10.45.0.24 counter accept comment "allow qbittorrent"
+  ct state invalid counter log prefix "[WAN-SERVERS-invalid-D] " drop
+  counter log prefix "[WAN-SERVERS-default-D] " drop
+}
+
+chain WAN-TRUSTED {
+  tcp dport @roon_arc_ports ip daddr 10.1.2.60 counter accept comment "allow roon arc"
+  ct state invalid counter log prefix "[WAN-TRUSTED-invalid-D] " drop
+  counter log prefix "[WAN-TRUSTED-default-D] " drop
+}
+
+chain WAN-TRANSIT {
+  tcp dport 50413 ip daddr 10.45.0.24 counter accept comment "allow qbittorrent"
+  ct state invalid counter log prefix "[WAN-TRANSIT-invalid-D] " drop
+  counter log prefix "[WAN-TRANSIT-default-D] " drop
+}

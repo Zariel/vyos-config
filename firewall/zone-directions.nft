@@ -1,0 +1,191 @@
+# Base chains and zone dispatch.
+
+chain input {
+  type filter hook input priority 0; policy drop;
+
+  iifname "lo" counter accept comment "allow loopback"
+  ct state { established, related } counter accept comment "allow related and established"
+  ct state invalid counter log prefix "[INPUT-invalid-D] " drop
+
+  jump dispatch-input
+}
+
+chain forward {
+  type filter hook forward priority 0; policy drop;
+  jump ZONE_FORWARD
+}
+
+chain output {
+  type filter hook output priority 0; policy drop;
+
+  oifname "lo" counter accept comment "allow loopback"
+  ct state { established, related } counter accept comment "allow related and established"
+  ct state invalid counter log prefix "[OUTPUT-invalid-D] " drop
+
+  jump dispatch-output
+}
+
+chain dispatch-input {
+  iifname "bond0.30" jump GUEST-LOCAL
+  iifname "bond0.40" jump IOT-LOCAL
+  iifname "bond0.100" jump LAN-LOCAL
+  iifname "bond0.10" jump SERVERS-LOCAL
+  iifname "bond0.20" jump TRUSTED-LOCAL
+  iifname "wg01" jump TRUSTED-LOCAL
+  iifname "pod-containers" jump CONTAINERS-LOCAL
+  iifname "bond0.5" jump TRANSIT-LOCAL
+  iifname "bond0.99" jump WAN-LOCAL
+
+  counter log prefix "[INPUT-dispatch-miss-D] " drop
+}
+
+chain dispatch-output {
+  oifname "bond0.30" counter log prefix "[LOCAL-GUEST-default-D] " drop
+  oifname "bond0.40" jump LOCAL-IOT
+  oifname "bond0.100" counter log prefix "[LOCAL-LAN-default-D] " drop
+  oifname "bond0.10" jump LOCAL-SERVERS
+  oifname "bond0.20" jump LOCAL-TRUSTED
+  oifname "wg01" jump LOCAL-TRUSTED
+  oifname "pod-containers" jump LOCAL-CONTAINERS
+  oifname "bond0.5" jump LOCAL-TRANSIT
+  oifname "bond0.99" jump LOCAL-WAN
+
+  counter log prefix "[OUTPUT-dispatch-miss-D] " drop
+}
+
+chain ZONE_FORWARD {
+  ct state { established, related } counter accept comment "allow related and established"
+  ct state invalid counter log prefix "[FORWARD-invalid-D] " drop
+
+  oifname "bond0.30" counter jump ZONE_TO_GUEST
+  oifname "bond0.40" counter jump ZONE_TO_IOT
+  oifname "bond0.100" counter jump ZONE_TO_LAN
+  oifname "bond0.10" counter jump ZONE_TO_SERVERS
+  oifname "bond0.20" counter jump ZONE_TO_TRUSTED
+  oifname "wg01" counter jump ZONE_TO_TRUSTED
+  oifname "pod-containers" counter jump ZONE_TO_CONTAINERS
+  oifname "bond0.5" counter jump ZONE_TO_TRANSIT
+  oifname "bond0.99" counter jump ZONE_TO_WAN
+
+  counter log prefix "[FORWARD-dispatch-miss-D] " drop
+}
+
+chain ZONE_TO_GUEST {
+  iifname "bond0.30" counter return
+
+  iifname "bond0.40" counter log prefix "[IOT-GUEST-default-D] " drop
+  iifname "bond0.100" counter log prefix "[LAN-GUEST-default-D] " drop
+  iifname "bond0.10" counter log prefix "[SERVERS-GUEST-default-D] " drop
+  iifname "bond0.20" counter log prefix "[TRUSTED-GUEST-default-D] " drop
+  iifname "wg01" counter log prefix "[TRUSTED-GUEST-default-D] " drop
+  iifname "pod-containers" counter log prefix "[CONTAINERS-GUEST-default-D] " drop
+  iifname "bond0.5" counter log prefix "[TRANSIT-GUEST-default-D] " drop
+  iifname "bond0.99" counter log prefix "[WAN-GUEST-default-D] " drop
+
+  counter log prefix "[ZONE_TO_GUEST-default-D] " drop
+}
+
+chain ZONE_TO_IOT {
+  iifname "bond0.40" counter return
+
+  iifname "bond0.30" counter log prefix "[GUEST-IOT-default-D] " drop
+  iifname "bond0.100" counter log prefix "[LAN-IOT-default-D] " drop
+  iifname "bond0.10" counter jump SERVERS-IOT
+  iifname "bond0.20" counter jump TRUSTED-IOT
+  iifname "wg01" counter jump TRUSTED-IOT
+  iifname "pod-containers" counter log prefix "[CONTAINERS-IOT-default-D] " drop
+  iifname "bond0.5" counter jump TRANSIT-IOT
+  iifname "bond0.99" counter log prefix "[WAN-IOT-default-D] " drop
+
+  counter log prefix "[ZONE_TO_IOT-default-D] " drop
+}
+
+chain ZONE_TO_LAN {
+  iifname "bond0.100" counter return
+
+  iifname "bond0.30" counter log prefix "[GUEST-LAN-default-D] " drop
+  iifname "bond0.40" counter log prefix "[IOT-LAN-default-D] " drop
+  iifname "bond0.10" counter jump SERVERS-LAN
+  iifname "bond0.20" counter jump TRUSTED-LAN
+  iifname "wg01" counter jump TRUSTED-LAN
+  iifname "pod-containers" counter log prefix "[CONTAINERS-LAN-default-D] " drop
+  iifname "bond0.5" counter jump TRANSIT-LAN
+  iifname "bond0.99" counter log prefix "[WAN-LAN-default-D] " drop
+
+  counter log prefix "[ZONE_TO_LAN-default-D] " drop
+}
+
+chain ZONE_TO_SERVERS {
+  iifname "bond0.10" counter return
+
+  iifname "bond0.30" counter log prefix "[GUEST-SERVERS-default-D] " drop
+  iifname "bond0.40" counter jump IOT-SERVERS
+  iifname "bond0.100" counter jump LAN-SERVERS
+  iifname "bond0.20" counter jump TRUSTED-SERVERS
+  iifname "wg01" counter jump TRUSTED-SERVERS
+  iifname "pod-containers" counter jump CONTAINERS-SERVERS
+  iifname "bond0.5" counter jump TRANSIT-SERVERS
+  iifname "bond0.99" counter jump WAN-SERVERS
+
+  counter log prefix "[ZONE_TO_SERVERS-default-D] " drop
+}
+
+chain ZONE_TO_TRUSTED {
+  iifname "bond0.20" counter return
+  iifname "wg01" counter return
+
+  iifname "bond0.30" counter log prefix "[GUEST-TRUSTED-default-D] " drop
+  iifname "bond0.40" counter jump IOT-TRUSTED
+  iifname "bond0.100" counter jump LAN-TRUSTED
+  iifname "bond0.10" counter jump SERVERS-TRUSTED
+  iifname "pod-containers" counter log prefix "[CONTAINERS-TRUSTED-default-D] " drop
+  iifname "bond0.5" counter jump TRANSIT-TRUSTED
+  iifname "bond0.99" counter jump WAN-TRUSTED
+
+  counter log prefix "[ZONE_TO_TRUSTED-default-D] " drop
+}
+
+chain ZONE_TO_CONTAINERS {
+  iifname "pod-containers" counter return
+
+  iifname "bond0.30" counter jump GUEST-CONTAINERS
+  iifname "bond0.40" counter jump IOT-CONTAINERS
+  iifname "bond0.100" counter jump LAN-CONTAINERS
+  iifname "bond0.10" counter jump SERVERS-CONTAINERS
+  iifname "bond0.20" counter jump TRUSTED-CONTAINERS
+  iifname "wg01" counter jump TRUSTED-CONTAINERS
+  iifname "bond0.5" counter jump TRANSIT-CONTAINERS
+  iifname "bond0.99" counter log prefix "[WAN-CONTAINERS-default-D] " drop
+
+  counter log prefix "[ZONE_TO_CONTAINERS-default-D] " drop
+}
+
+chain ZONE_TO_TRANSIT {
+  iifname "bond0.5" counter return
+
+  iifname "bond0.30" counter jump GUEST-TRANSIT
+  iifname "bond0.40" counter jump IOT-TRANSIT
+  iifname "bond0.100" counter jump LAN-TRANSIT
+  iifname "bond0.10" counter jump SERVERS-TRANSIT
+  iifname "bond0.20" counter jump TRUSTED-TRANSIT
+  iifname "wg01" counter jump TRUSTED-TRANSIT
+  iifname "pod-containers" counter jump CONTAINERS-TRANSIT
+  iifname "bond0.99" counter jump WAN-TRANSIT
+
+  counter log prefix "[ZONE_TO_TRANSIT-default-D] " drop
+}
+
+chain ZONE_TO_WAN {
+  iifname "bond0.99" counter return
+
+  iifname "bond0.30" counter jump GUEST-WAN
+  iifname "bond0.40" counter jump IOT-WAN
+  iifname "bond0.100" counter jump LAN-WAN
+  iifname "bond0.10" counter jump SERVERS-WAN
+  iifname "bond0.20" counter jump TRUSTED-WAN
+  iifname "wg01" counter jump TRUSTED-WAN
+  iifname "pod-containers" counter jump CONTAINERS-WAN
+  iifname "bond0.5" counter jump TRANSIT-WAN
+
+  counter log prefix "[ZONE_TO_WAN-default-D] " drop
+}

@@ -1,0 +1,9 @@
+#!/usr/sbin/nft -f
+
+flush ruleset
+
+table inet vyos_migrated {
+  include "sets.nft"
+  include "zone-rules.nft"
+  include "zone-directions.nft"
+}
