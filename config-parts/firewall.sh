@@ -55,6 +55,7 @@ set firewall group address-group node_exporter_targets address '10.1.2.54' # am6
 set firewall group address-group node_exporter_targets address '10.1.2.15' # dev
 set firewall group address-group node_exporter_targets address '10.1.2.16' # gaming
 set firewall group address-group node_exporter_targets address '10.1.1.31' # pve
+set firewall group address-group node_exporter_targets address '10.1.1.32' # pbs
 set firewall group address-group node_exporter_targets address '10.1.1.41' # pve2
 set firewall group address-group node_exporter_targets address '10.1.0.1' # gateway
 set firewall group address-group node_exporter_targets address '10.1.1.155' # builer

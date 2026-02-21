@@ -111,6 +111,8 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbj-ipmi mac-address 'ac:1f:6b:e5:bb:5e'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pve ip-address '10.1.1.31'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pve mac-address 'ac:1f:6b:e5:be:42' # bond
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbs ip-address '10.1.1.32'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping pbs mac-address 'c4:65:16:19:a0:94'
 
 # vms
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping nas ip-address '10.1.1.40'
