@@ -1,7 +1,7 @@
 #!/bin/vbash
 
 # needed to route traffic to WAN
-set protocols static route 0.0.0.0/0 dhcp-interface bond0.99
+set protocols static route 0.0.0.0/0 dhcp-interface eth3
 
 set protocols static route 10.0.0.0/8 reject
 
