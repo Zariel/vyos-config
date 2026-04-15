@@ -38,3 +38,23 @@ set protocols ospfv3 parameters router-id 10.1.0.1
 set protocols ospfv3 interface bond0.5 area 0
 set protocols ospfv3 interface bond0.5 network 'point-to-point'
 set protocols ospfv3 redistribute connected
+
+# igmp ipv4 multicast, vyos is querier
+set protocols pim interface bond0.20 igmp version 2
+set protocols pim interface bond0.20 igmp query-interval 125
+set protocols pim interface bond0.20 igmp query-max-response-time 10
+set protocols pim interface bond0.40 igmp version 2
+set protocols pim interface bond0.40 igmp query-interval 125
+set protocols pim interface bond0.40 igmp query-max-response-time 10
+
+# igmp ipv6 multicast, vyos is querier
+set protocols pim6 interface bond0.20 mld version 2
+set protocols pim6 interface bond0.20 mld interval 125
+# bug in vyos 1.4 cant set this
+# set protocols pim6 interface bond0.20 mld max-response-time 10000
+set protocols pim6 interface bond0.40 mld version 2
+set protocols pim6 interface bond0.40 mld interval 125
+# set protocols pim6 interface bond0.40 mld max-response-time 10000
+
+# Route to thread devices via otbr
+set protocols static route6 fd42:dfb5:24e4:1::/64 next-hop fd74:f571:d3bd:40:41d7:bb2e:6c90:a8f5
