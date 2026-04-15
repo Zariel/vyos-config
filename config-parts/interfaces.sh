@@ -1,5 +1,8 @@
 #!/bin/vbash
 
+set interfaces dummy dum0 address '10.254.254.128/32'
+set interfaces dummy dum0 description 'loopback identity'
+
 set interfaces ethernet eth0 description 'LAN0'
 set interfaces ethernet eth0 hw-id '08:c0:eb:0f:e4:30'
 set interfaces ethernet eth0 offload gro
