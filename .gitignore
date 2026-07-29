@@ -12,6 +12,9 @@
 !config-parts/
 !containers/
 !scripts/
+!docs/
+!nix/
+!firewall/
 
 # CI
 !.github/

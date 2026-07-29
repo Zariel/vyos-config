@@ -147,6 +147,8 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping chris-macbook-lounge-dock mac-address '64:4b:f0:13:15:0c'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping gamingvm ip-address '10.1.2.15'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping gamingvm mac-address 'BC:24:11:76:51:F4'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping thinliz ip-address '10.1.2.102'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping thinliz mac-address '48:21:0b:60:1a:3f'
 
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-iphone ip-address '10.1.2.20'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping rocio-iphone mac-address '88:a4:79:ec:70:56'
@@ -172,6 +174,10 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-ma
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping mrx740 mac-address '50:1e:2d:3e:39:48'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping coreelec ip-address '10.1.2.54'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping coreelec mac-address '90:0e:b3:fd:a1:46'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping ufc-dock ip-address '10.1.2.55'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping ufc-dock mac-address '80:b5:4e:8f:29:03'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping ufc-remote ip-address '10.1.2.56'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 static-mapping ufc-remote mac-address '34:90:ea:c9:0d:6e'
 
 # roon
 # todo: move roon to IOT vlan and ensure it all works, need to forward ports and enable UDP Broadcast-Relay

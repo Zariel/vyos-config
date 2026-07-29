@@ -9,7 +9,7 @@ set firewall global-options all-ping enable
 set firewall global-options broadcast-ping disable
 
 # Router (VyOS itself)
-set firewall group address-group router-addresses address 10.1.0.1
+set firewall group address-group router-addresses address 10.254.254.65
 set firewall group address-group router-addresses address 127.0.0.1
 set firewall group ipv6-address-group router-addresses-ipv6 address fe80::e63a:6eff:fe5a:f805
 set firewall group ipv6-address-group router-addresses-ipv6 address ::1
@@ -57,7 +57,7 @@ set firewall group address-group node_exporter_targets address '10.1.2.16' # gam
 set firewall group address-group node_exporter_targets address '10.1.1.31' # pve
 set firewall group address-group node_exporter_targets address '10.1.1.32' # pbs
 set firewall group address-group node_exporter_targets address '10.1.1.41' # pve2
-set firewall group address-group node_exporter_targets address '10.1.0.1' # gateway
+set firewall group address-group node_exporter_targets address '10.254.254.65' # gateway
 set firewall group address-group node_exporter_targets address '10.1.1.155' # builer
 
 set firewall group address-group STORAGE address 10.254.1.101
