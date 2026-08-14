@@ -20,6 +20,7 @@ set service ssh port '22'
 # TFTP server
 set service tftp-server directory '/config/tftpboot'
 set service tftp-server listen-address 10.1.1.1
+set service tftp-server listen-address 10.254.255.0
 
 # mDNS Repeater
 set service mdns repeater interface 'bond0.20'

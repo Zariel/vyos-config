@@ -67,23 +67,23 @@ set interfaces bonding bond0 vif 40 mtu 1500
 set interfaces bonding bond0 vif 40 ip adjust-mss 'clamp-mss-to-pmtu'
 set interfaces bonding bond0 vif 40 ipv6 adjust-mss 'clamp-mss-to-pmtu'
 
-set interfaces bonding bond0 vif 99 address 'dhcp'
-set interfaces bonding bond0 vif 99 address 'dhcpv6'
-set interfaces bonding bond0 vif 99 description 'WAN'
-set interfaces bonding bond0 vif 99 mtu 1500
-set interfaces bonding bond0 vif 99 ip adjust-mss 'clamp-mss-to-pmtu'
-set interfaces bonding bond0 vif 99 ipv6 adjust-mss 'clamp-mss-to-pmtu'
-set interfaces bonding bond0 vif 99 dhcpv6-options rapid-commit
-set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 length 56
-set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.20 sla-id 20
-set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.20 address 1
-set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.40 sla-id 40
-set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.40 address 1
-
+# set interfaces bonding bond0 vif 99 address 'dhcp'
+# set interfaces bonding bond0 vif 99 address 'dhcpv6'
+# set interfaces bonding bond0 vif 99 description 'WAN'
+# set interfaces bonding bond0 vif 99 mtu 1500
+# set interfaces bonding bond0 vif 99 ip adjust-mss 'clamp-mss-to-pmtu'
+# set interfaces bonding bond0 vif 99 ipv6 adjust-mss 'clamp-mss-to-pmtu'
+# set interfaces bonding bond0 vif 99 dhcpv6-options rapid-commit
+# set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 length 56
+# set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.20 sla-id 20
+# set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.20 address 1
+# set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.40 sla-id 40
+# set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.40 address 1
 
 set interfaces bonding bond0 vif 100 address '10.1.0.1/24'
 set interfaces bonding bond0 vif 100 description 'management'
 set interfaces bonding bond0 vif 100 ip adjust-mss 'clamp-mss-to-pmtu'
+set interfaces bonding bond0 vif 100 mtu 1500
 
 set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1
@@ -94,6 +94,21 @@ set interfaces ethernet eth2 hw-id 'a0:36:9f:a9:0d:3a'
 # set interfaces ethernet eth2 mtu '1500'
 
 set interfaces ethernet eth3 hw-id 'a0:36:9f:a9:0d:3b'
+set interfaces ethernet eth3 address 'dhcp'
+set interfaces ethernet eth3 description 'WAN'
+set interfaces ethernet eth3 dhcpv6-options rapid-commit
+set interfaces ethernet eth3 dhcpv6-options pd 1 length 56
+set interfaces ethernet eth3 dhcpv6-options pd 1 interface bond0.20 sla-id 20
+set interfaces ethernet eth3 dhcpv6-options pd 1 interface bond0.20 address 1
+# set interfaces ethernet eth3 dhcpv6-options pd 1 interface bond0.40 sla-id 40
+# set interfaces ethernet eth3 dhcpv6-options pd 1 interface bond0.40 address 1
+
+set interfaces ethernet eth3 disable-flow-control
+set interfaces ethernet eth3 hw-id 'a0:36:9f:a9:0d:3b'
+set interfaces ethernet eth3 ip adjust-mss 'clamp-mss-to-pmtu'
+set interfaces ethernet eth3 ipv6 adjust-mss 'clamp-mss-to-pmtu'
+set interfaces ethernet eth3 ring-buffer rx '1024'
+set interfaces ethernet eth3 ring-buffer tx '1024'
 
 set interfaces ethernet eth4 hw-id '50:9a:4c:4b:f6:0c'
 set interfaces ethernet eth4 description 'MGMT'

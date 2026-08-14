@@ -22,6 +22,13 @@ set firewall ipv4 name transit-local rule 110 source group network-group POD_NET
 set firewall ipv4 name transit-local rule 110 protocol tcp
 set firewall ipv4 name transit-local rule 110 destination group address-group node_exporter_targets
 
+set firewall ipv4 name transit-local rule 120 action accept
+set firewall ipv4 name transit-local rule 120 description 'Allow tftpd access'
+set firewall ipv4 name transit-local rule 120 destination port 69
+set firewall ipv4 name transit-local rule 120 protocol udp
+set firewall ipv4 name transit-local rule 120 source address 10.254.254.0/24
+set firewall ipv4 name transit-local rule 120 destination address 10.254.254.1
+
 # From TRANSIT to CONTAINERS
 set firewall ipv4 name transit-containers rule 10 action accept
 set firewall ipv4 name transit-containers rule 10 description 'Allow DNS'
