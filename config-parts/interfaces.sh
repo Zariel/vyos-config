@@ -36,13 +36,6 @@ set interfaces bonding bond0 lacp-rate 'fast'
 set interfaces bonding bond0 mac '08:c0:eb:0f:e4:30'
 set interfaces bonding bond0 mtu 9000
 
-set interfaces bonding bond0 vif 5 address 10.254.255.0/31
-set interfaces bonding bond0 vif 5 address fd74:f571:d3bd:5::0/127
-set interfaces bonding bond0 vif 5 description 'TRANSIT'
-set interfaces bonding bond0 vif 5 mtu 9000
-set interfaces bonding bond0 vif 5 ip adjust-mss 'clamp-mss-to-pmtu'
-set interfaces bonding bond0 vif 5 ipv6 adjust-mss 'clamp-mss-to-pmtu'
-
 set interfaces bonding bond0 vif 10 address '10.1.1.1/24'
 set interfaces bonding bond0 vif 10 description 'SERVERS'
 set interfaces bonding bond0 vif 10 mtu 9000
@@ -84,6 +77,14 @@ set interfaces bonding bond0 vif 100 address '10.1.0.1/24'
 set interfaces bonding bond0 vif 100 description 'management'
 set interfaces bonding bond0 vif 100 ip adjust-mss 'clamp-mss-to-pmtu'
 set interfaces bonding bond0 vif 100 mtu 1500
+
+
+# set interfaces bonding bond0 vif 5 address fd74:f571:d3bd:5::0/127
+set interfaces bonding bond0 vif 3001 address 10.254.0.0/31
+set interfaces bonding bond0 vif 3001 description 'TRANSIT-ICX'
+set interfaces bonding bond0 vif 3001 mtu 9000
+set interfaces bonding bond0 vif 3001 ip adjust-mss 'clamp-mss-to-pmtu'
+set interfaces bonding bond0 vif 3001 ipv6 adjust-mss 'clamp-mss-to-pmtu'
 
 set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1

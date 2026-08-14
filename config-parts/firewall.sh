@@ -14,6 +14,9 @@ set firewall group address-group router-addresses address 127.0.0.1
 set firewall group ipv6-address-group router-addresses-ipv6 address fe80::e63a:6eff:fe5a:f805
 set firewall group ipv6-address-group router-addresses-ipv6 address ::1
 
+set firewall group network-group fabric-transit network '10.254.0.0/24'
+set firewall group network-group loopback network '10.254.254.0/24'
+
 # k8s nodes
 set firewall group address-group k8s_nodes address 10.254.1.1
 set firewall group address-group k8s_nodes address 10.254.1.3

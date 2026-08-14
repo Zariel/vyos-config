@@ -9,7 +9,7 @@ set firewall zone guest interface 'bond0.30'
 set firewall zone iot interface 'bond0.40'
 set firewall zone containers interface 'pod-containers'
 set firewall zone local local-zone
-set firewall zone transit interface 'bond0.5'
+set firewall zone transit interface 'bond0.3001'
 
 for to in guest iot lan local servers containers trusted transit vx0 wan; do
     set firewall zone $to default-action 'drop'
