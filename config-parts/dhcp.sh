@@ -51,7 +51,7 @@ set service dhcp-server shared-network-name LAN ping-check
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 default-router '10.1.0.1'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 lease '28800'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 name-server '172.53.53.53'
-set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 ntp-server '10.1.0.1'
+set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 ntp-server '10.254.254.1'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 range 0 start '10.1.0.200'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 range 0 stop '10.1.0.254'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 subnet-parameters 'option ubnt.unifi-controller 10.5.0.10;'
@@ -84,7 +84,7 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 default-r
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 domain-name 'cbannister.casa'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 lease '28800'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 name-server '172.53.53.53'
-set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 ntp-server '10.1.0.1'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 ntp-server '10.254.254.1'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 range 0 start '10.1.1.200'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 range 0 stop '10.1.1.254'
 
@@ -124,6 +124,14 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm mac-address '38:3b:26:7f:32:12'
 
 
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping katl-0 ip-address '10.1.1.110'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping katl-0 mac-address 'BC:24:11:06:D2:30'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping katl-1 ip-address '10.1.1.111'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping katl-1 mac-address 'BC:24:11:E9:26:7C'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping katl-2 ip-address '10.1.1.112'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping katl-2 mac-address 'BC:24:11:AF:13:13'
+
+
 # Trusted VLAN
 set service dhcp-server shared-network-name TRUSTED authoritative
 set service dhcp-server shared-network-name TRUSTED ping-check
@@ -131,7 +139,7 @@ set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 default-r
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 domain-name 'cbannister.casa'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 lease '28800'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 name-server '172.53.53.53'
-set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 ntp-server '10.1.0.1'
+set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 ntp-server '10.254.254.1'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 range 0 start '10.1.2.200'
 set service dhcp-server shared-network-name TRUSTED subnet 10.1.2.0/24 range 0 stop '10.1.2.254'
 

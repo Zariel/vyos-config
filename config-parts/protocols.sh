@@ -31,12 +31,14 @@ set protocols ospf redistribute connected metric '10' route-map 'OSPF-CONNECTED'
 set protocols ospf redistribute connected route-map 'OSPF-CONNECTED'
 set protocols ospf redistribute static metric '10'
 set protocols ospf log-adjacency-changes detail
-set protocols ospf parameters router-id '10.254.254.65'
+set protocols ospf parameters router-id '10.254.254.1'
 
-set protocols ospfv3 parameters router-id 10.254.254.65
+set protocols ospfv3 parameters router-id '10.254.254.1'
 set protocols ospfv3 interface bond0.3001 area 0
 set protocols ospfv3 interface bond0.3001 network 'point-to-point'
 set protocols ospfv3 redistribute connected
+
+set protocols bgp parameters router-id '10.254.254.1'
 
 # igmp ipv4 multicast, vyos is querier
 set protocols pim interface bond0.20 igmp version 2

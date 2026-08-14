@@ -1,6 +1,6 @@
 #!/bin/vbash
 
-set interfaces dummy dum0 address '10.254.254.65/32'
+set interfaces dummy dum0 address '10.254.254.1/32'
 set interfaces dummy dum0 description 'loopback identity'
 
 set interfaces ethernet eth0 description 'LAN0'
