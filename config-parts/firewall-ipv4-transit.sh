@@ -6,10 +6,12 @@ set firewall ipv4 name transit-local rule 10 action accept
 set firewall ipv4 name transit-local rule 10 protocol ospf
 set firewall ipv4 name transit-local rule 10 description 'Allow OSPF'
 
-set firewall ipv4 name transit-local rule 11 action accept
-set firewall ipv4 name transit-local rule 11 protocol tcp
-set firewall ipv4 name transit-local rule 11 destination port 179
-set firewall ipv4 name transit-local rule 11 description 'Allow BGP'
+set firewall ipv4 name transit-local rule 15 action 'accept'
+set firewall ipv4 name transit-local rule 15 description 'Allow BGP from core'
+set firewall ipv4 name transit-local rule 15 protocol 'tcp'
+set firewall ipv4 name transit-local rule 15 source address '10.254.0.1'
+set firewall ipv4 name transit-local rule 15 destination address '10.254.0.0'
+set firewall ipv4 name transit-local rule 15 destination port '179'
 
 set firewall ipv4 name transit-local rule 20 action accept
 set firewall ipv4 name transit-local rule 20 protocol icmp
@@ -32,7 +34,7 @@ set firewall ipv4 name transit-local rule 120 action accept
 set firewall ipv4 name transit-local rule 120 description 'Allow tftpd access'
 set firewall ipv4 name transit-local rule 120 destination port 69
 set firewall ipv4 name transit-local rule 120 protocol udp
-set firewall ipv4 name transit-local rule 120 source address 10.254.254.0/24 
+set firewall ipv4 name transit-local rule 120 source address 10.254.0.0/24 
 set firewall ipv4 name transit-local rule 120 destination address 10.254.254.1
 
 # From TRANSIT to CONTAINERS

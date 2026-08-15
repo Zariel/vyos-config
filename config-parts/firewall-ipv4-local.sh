@@ -84,6 +84,13 @@ set firewall ipv4 name local-transit rule 10 action accept
 set firewall ipv4 name local-transit rule 10 protocol ospf
 set firewall ipv4 name local-transit rule 10 description 'Allow OSPF'
 
+set firewall ipv4 name local-transit rule 15 action 'accept'
+set firewall ipv4 name local-transit rule 15 description 'Allow BGP to core'
+set firewall ipv4 name local-transit rule 15 protocol 'tcp'
+set firewall ipv4 name local-transit rule 15 source address '10.254.0.0'
+set firewall ipv4 name local-transit rule 15 destination address '10.254.0.1'
+set firewall ipv4 name local-transit rule 15 destination port '179'
+
 # Allow ICMP for ping testing
 set firewall ipv4 name local-transit rule 20 action accept
 set firewall ipv4 name local-transit rule 20 protocol icmp

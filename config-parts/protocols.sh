@@ -38,7 +38,31 @@ set protocols ospfv3 interface bond0.3001 area 0
 set protocols ospfv3 interface bond0.3001 network 'point-to-point'
 set protocols ospfv3 redistribute connected
 
+set policy route-map BGP-ALLOW-ALL rule 10 action 'permit'
+
+set protocols bgp system-as '65000'
 set protocols bgp parameters router-id '10.254.254.1'
+set protocols bgp parameters log-neighbor-changes
+set protocols bgp parameters network-import-check
+
+set protocols bgp neighbor 10.254.0.1 description 'ICX7250 core'
+set protocols bgp neighbor 10.254.0.1 remote-as '65001'
+set protocols bgp neighbor 10.254.0.1 address-family ipv4-unicast
+set protocols bgp neighbor 10.254.0.1 address-family ipv4-unicast route-map import 'BGP-ALLOW-ALL'
+set protocols bgp neighbor 10.254.0.1 address-family ipv4-unicast route-map export 'BGP-ALLOW-ALL'
+
+set protocols bgp address-family ipv4-unicast network '0.0.0.0/0'
+set protocols bgp address-family ipv4-unicast network '10.0.0.0/8'
+set protocols bgp address-family ipv4-unicast network '192.168.0.0/16'
+set protocols bgp address-family ipv4-unicast network '172.16.0.0/12'
+set protocols bgp address-family ipv4-unicast network '10.0.11.0/24'
+set protocols bgp address-family ipv4-unicast network '10.1.0.0/24'
+set protocols bgp address-family ipv4-unicast network '10.1.1.0/24'
+set protocols bgp address-family ipv4-unicast network '10.1.2.0/24'
+set protocols bgp address-family ipv4-unicast network '10.1.3.0/24'
+set protocols bgp address-family ipv4-unicast network '10.5.0.0/24'
+set protocols bgp address-family ipv4-unicast network '10.254.254.1/32'
+set protocols bgp address-family ipv4-unicast network '192.168.2.0/24'
 
 # igmp ipv4 multicast, vyos is querier
 set protocols pim interface bond0.20 igmp version 2
