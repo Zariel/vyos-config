@@ -30,6 +30,7 @@ set firewall ipv4 name servers-local rule 50 source port '67,68'
 set firewall ipv4 name servers-local rule 60 action 'accept'
 set firewall ipv4 name servers-local rule 60 description 'Rule: accept_ntp'
 set firewall ipv4 name servers-local rule 60 destination port 'ntp'
+set firewall ipv4 name servers-local rule 60 destination address 10.254.254.1
 set firewall ipv4 name servers-local rule 60 protocol 'udp'
 set firewall ipv4 name servers-local rule 70 action 'accept'
 set firewall ipv4 name servers-local rule 70 description 'Rule: accept_bgp'

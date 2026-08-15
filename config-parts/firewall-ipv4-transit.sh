@@ -6,6 +6,11 @@ set firewall ipv4 name transit-local rule 10 action accept
 set firewall ipv4 name transit-local rule 10 protocol ospf
 set firewall ipv4 name transit-local rule 10 description 'Allow OSPF'
 
+set firewall ipv4 name transit-local rule 11 action accept
+set firewall ipv4 name transit-local rule 11 protocol tcp
+set firewall ipv4 name transit-local rule 11 destination port 179
+set firewall ipv4 name transit-local rule 11 description 'Allow BGP'
+
 set firewall ipv4 name transit-local rule 20 action accept
 set firewall ipv4 name transit-local rule 20 protocol icmp
 set firewall ipv4 name transit-local rule 20 description 'Allow ICMP'
@@ -13,6 +18,7 @@ set firewall ipv4 name transit-local rule 20 description 'Allow ICMP'
 set firewall ipv4 name transit-local rule 30 action accept
 set firewall ipv4 name transit-local rule 30 description 'Allow NTP'
 set firewall ipv4 name transit-local rule 30 destination port 123
+set firewall ipv4 name transit-local rule 30 destination address 10.254.254.1
 set firewall ipv4 name transit-local rule 30 protocol udp
 
 set firewall ipv4 name transit-local rule 110 action accept
