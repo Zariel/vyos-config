@@ -1,6 +1,7 @@
 #!/bin/vbash
 
 # NTP server
+set service ntp listen-address 10.254.254.1
 delete service ntp allow-client
 set service ntp allow-client address '127.0.0.0/8'
 set service ntp allow-client address '10.0.0.0/8'
