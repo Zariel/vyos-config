@@ -19,3 +19,6 @@ export EDITOR=vi
 END
   chown vyos:users /home/vyos/.bash_aliases
 fi
+
+# VyOS 1.4 cannot express CAKE's ingress mode in its QoS configuration.
+/config/scripts/cake-ingress.sh
