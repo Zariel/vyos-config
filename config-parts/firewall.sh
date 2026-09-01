@@ -62,6 +62,7 @@ set firewall group address-group node_exporter_targets address '10.1.1.32' # pbs
 set firewall group address-group node_exporter_targets address '10.1.1.41' # pve2
 set firewall group address-group node_exporter_targets address '10.254.254.65' # gateway
 set firewall group address-group node_exporter_targets address '10.1.1.155' # builer
+set firewall group address-group node_exporter_targets address '10.1.0.100' # pikvm
 
 set firewall group address-group STORAGE address 10.254.1.101
 
