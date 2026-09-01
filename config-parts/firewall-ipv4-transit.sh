@@ -132,7 +132,7 @@ set firewall ipv4 name transit-lan rule 100 description 'allow snmp scraping'
 set firewall ipv4 name transit-lan rule 100 source group network-group POD_NETS
 set firewall ipv4 name transit-lan rule 100 destination port 161,162
 set firewall ipv4 name transit-lan rule 100 destination group address-group snmp_targets
-set firewall ipv4 name transit-lan rule 100 protocol tcp
+set firewall ipv4 name transit-lan rule 100 protocol udp
 
 set firewall ipv4 name transit-lan rule 101 action accept
 set firewall ipv4 name transit-lan rule 101 description 'Allow access to node_exporter'
