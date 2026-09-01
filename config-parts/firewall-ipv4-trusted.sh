@@ -94,3 +94,9 @@ set firewall ipv4 name trusted-transit rule 110 description 'Trusted to LBs'
 set firewall ipv4 name trusted-transit rule 120 action accept
 set firewall ipv4 name trusted-transit rule 120 destination group network-group DNS_SERVERS
 set firewall ipv4 name trusted-transit rule 120 description 'Trusted to dns'
+
+set firewall ipv4 name trusted-transit rule 200 action accept
+set firewall ipv4 name trusted-transit rule 200 destination group address-group K8S_NODES
+set firewall ipv4 name trusted-transit rule 200 destination group port-group KATL_PORTS
+set firewall ipv4 name trusted-transit rule 200 protocol tcp
+set firewall ipv4 name trusted-transit rule 200 description 'Trusted to katl api'

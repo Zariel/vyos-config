@@ -77,6 +77,14 @@ set firewall group network-group L3_SERVERS network 10.254.0.0/16
 set firewall group network-group POD_NETS network 172.20.0.0/16
 set firewall group network-group LB_IPS network 10.45.0.0/24
 set firewall group network-group DNS_SERVERS network 10.254.53.0/24
+set firewall group address-group K8S_NODES address 10.254.1.1
+set firewall group address-group K8S_NODES address 10.254.1.3
+set firewall group address-group K8S_NODES address 10.254.1.5
+
+set firewall group port-group KATL_PORTS port 22
+set firewall group port-group KATL_PORTS port 8080
+set firewall group port-group KATL_PORTS port 9443
+
 
 
 # brocade 
