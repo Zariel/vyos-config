@@ -123,6 +123,8 @@ set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-ma
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm ip-address '10.1.1.51'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping tesmart-kvm mac-address '38:3b:26:7f:32:12'
 
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping ash-vm ip-address '10.1.1.55'
+set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping ash-vm mac-address 'BC:24:11:56:D2:B7'
 
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping katl-0 ip-address '10.1.1.110'
 set service dhcp-server shared-network-name SERVERS subnet 10.1.1.0/24 static-mapping katl-0 mac-address 'BC:24:11:06:D2:30'
