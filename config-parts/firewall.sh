@@ -55,6 +55,7 @@ set firewall group port-group apple_services_ports port '30000-65535'
 set firewall group port-group roon_arc_ports port '59453'
 
 set firewall group address-group node_exporter_targets address '10.1.2.54' # am6b
+set firewall group address-group node_exporter_targets address '10.1.2.57' # bc250
 set firewall group address-group node_exporter_targets address '10.1.2.15' # dev
 set firewall group address-group node_exporter_targets address '10.1.2.16' # gaming
 set firewall group address-group node_exporter_targets address '10.1.1.31' # pve

@@ -91,16 +91,22 @@ set interfaces bonding bond0 member interface eth1
 
 set interfaces ethernet eth2 hw-id 'a0:36:9f:a9:0d:3a'
 
-# TODO: ipv6 prefix delegation
 # set interfaces ethernet eth2 mtu '1500'
+
+set interfaces dummy dum99 description 'ipv6 dhcp-pd holder'
+set interfaces dummy dum99 ipv6 disable-forwarding
 
 set interfaces ethernet eth3 hw-id 'a0:36:9f:a9:0d:3b'
 set interfaces ethernet eth3 address 'dhcp'
 set interfaces ethernet eth3 description 'WAN'
+# DHCPv6-PD supplies addresses; router advertisements supply the default route.
+set interfaces ethernet eth3 ipv6 address autoconf
 set interfaces ethernet eth3 dhcpv6-options rapid-commit
 set interfaces ethernet eth3 dhcpv6-options pd 1 length 56
-set interfaces ethernet eth3 dhcpv6-options pd 1 interface bond0.20 sla-id 20
-set interfaces ethernet eth3 dhcpv6-options pd 1 interface bond0.20 address 1
+set interfaces ethernet eth3 dhcpv6-options pd 1 interface dum99 sla-id 99
+set interfaces ethernet eth3 dhcpv6-options pd 1 interface dum99 address 1
+set interfaces ethernet eth3 dhcpv6-options pd 1 interface wg01 sla-id 11
+set interfaces ethernet eth3 dhcpv6-options pd 1 interface wg01 address 1
 # set interfaces ethernet eth3 dhcpv6-options pd 1 interface bond0.40 sla-id 40
 # set interfaces ethernet eth3 dhcpv6-options pd 1 interface bond0.40 address 1
 
@@ -117,6 +123,7 @@ set interfaces ethernet eth4 address '10.1.0.1/24'
 
 set interfaces wireguard wg01 address '10.0.11.1/24'
 set interfaces wireguard wg01 description 'WIREGUARD'
+set interfaces wireguard wg01 ip adjust-mss 'clamp-mss-to-pmtu'
 set interfaces wireguard wg01 peer wall-e allowed-ips '10.0.11.4/32'
 set interfaces wireguard wg01 peer wall-e persistent-keepalive '15'
 set interfaces wireguard wg01 peer wall-e public-key '0wrH9QqKMRbcnMc41xzwEvLX9xyKY/mB1no94woOAhQ='
@@ -128,4 +135,3 @@ set interfaces wireguard wg01 peer chris-iphone public-key '8GJVX0GvW7BE8n+G1+Be
 set interfaces wireguard wg01 peer chris-iphone persistent-keepalive '15'
 set interfaces wireguard wg01 port '51820'
 set interfaces wireguard wg01 private-key "${SECRET_WIREGUARD_PRIVATE_KEY}"
-

@@ -1,6 +1,6 @@
 #!/bin/vbash
 
-set firewall zone wan interface 'bond0.99'
+set firewall zone wan interface 'eth3'
 set firewall zone lan interface 'bond0.100'
 set firewall zone servers interface 'bond0.10'
 set firewall zone trusted interface 'bond0.20'
