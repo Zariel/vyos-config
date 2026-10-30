@@ -31,22 +31,6 @@ set nat destination rule 202 protocol 'tcp_udp'
 set nat destination rule 202 translation address '172.53.53.53'
 set nat destination rule 202 translation port '53'
 
-set nat66 destination rule 200 description 'Force DNS for IoT'
-set nat66 destination rule 200 destination address '!fd74:f571:d3bd:53::53'
-set nat66 destination rule 200 destination port '53'
-set nat66 destination rule 200 inbound-interface name 'bond0.40'
-set nat66 destination rule 200 protocol 'tcp_udp'
-set nat66 destination rule 200 translation address 'fd74:f571:d3bd:53::53'
-set nat66 destination rule 200 translation port '53'
-
-set nat66 destination rule 201 description 'Force DNS for trusted'
-set nat66 destination rule 201 destination address '!fd74:f571:d3bd:53::53'
-set nat66 destination rule 201 destination port '53'
-set nat66 destination rule 201 inbound-interface name 'bond0.20'
-set nat66 destination rule 201 protocol 'tcp_udp'
-set nat66 destination rule 201 translation address 'fd74:f571:d3bd:53::53'
-set nat66 destination rule 201 translation port '53'
-
 # Force NTP
 set nat destination rule 300 description 'Force NTP for LAN'
 set nat destination rule 300 destination address '!10.254.254.1'
