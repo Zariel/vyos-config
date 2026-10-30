@@ -121,12 +121,19 @@ set firewall ipv4 name transit-servers rule 110 destination port 5000
 set firewall ipv4 name transit-servers rule 110 destination address 10.1.1.155
 set firewall ipv4 name transit-servers rule 110 protocol tcp
 
+set firewall ipv4 name transit-servers rule 120 action accept
+set firewall ipv4 name transit-servers rule 120 description 'Allow access to proxmox nodes'
+set firewall ipv4 name transit-servers rule 120 destination group port-group PROXMOX_PORTS
+set firewall ipv4 name transit-servers rule 120 destination group address-group PROXMOX_HOSTS
+set firewall ipv4 name transit-servers rule 120 protocol tcp
+
 set firewall ipv4 name transit-servers rule 200 action accept
 set firewall ipv4 name transit-servers rule 200 description 'allow k8s access to ollama'
 set firewall ipv4 name transit-servers rule 200 destination port 11434
 set firewall ipv4 name transit-servers rule 200 destination address 10.1.1.55
 set firewall ipv4 name transit-servers rule 200 source group network-group POD_NETS
 set firewall ipv4 name transit-servers rule 200 protocol tcp
+
 # From TRANSIT to LAN
 
 set firewall ipv4 name transit-lan rule 20 action accept

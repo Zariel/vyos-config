@@ -86,6 +86,12 @@ set firewall group port-group KATL_PORTS port 22
 set firewall group port-group KATL_PORTS port 8080
 set firewall group port-group KATL_PORTS port 9443
 
+set firewall group port-group PROXMOX_PORTS port 8006
+set firewall group port-group PROXMOX_PORTS port 8007
+
+set firewall group address-group PROXMOX_HOSTS address '10.1.1.31'
+set firewall group address-group PROXMOX_HOSTS address '10.1.1.32'
+set firewall group address-group PROXMOX_HOSTS address '10.1.1.41'
 
 
 # brocade 
