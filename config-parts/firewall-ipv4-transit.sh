@@ -93,6 +93,13 @@ set firewall ipv4 name transit-trusted rule 100 destination port 9100,9633
 set firewall ipv4 name transit-trusted rule 100 destination group address-group node_exporter_targets
 set firewall ipv4 name transit-trusted rule 100 protocol tcp
 
+set firewall ipv4 name transit-trusted rule 110 action accept
+set firewall ipv4 name transit-trusted rule 110 description 'Allow pods to Brother scanner'
+set firewall ipv4 name transit-trusted rule 110 source group network-group POD_NETS
+set firewall ipv4 name transit-trusted rule 110 destination address 10.1.2.70
+set firewall ipv4 name transit-trusted rule 110 destination port 443,54921
+set firewall ipv4 name transit-trusted rule 110 protocol tcp
+
 # From TRANSIT to IOT
 set firewall ipv4 name transit-iot default-action drop
 set firewall ipv4 name transit-iot rule 20 action accept
