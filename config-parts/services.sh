@@ -1,5 +1,17 @@
 #!/bin/vbash
 
+# Cloudflare dynamic DNS for WireGuard clients (DNS-only A record).
+set service dns dynamic interval '300'
+set service dns dynamic name cloudflare-ipv4 address interface 'eth3'
+set service dns dynamic name cloudflare-ipv4 description 'Public IPv4 for WireGuard'
+set service dns dynamic name cloudflare-ipv4 host-name 'ipv4.cbannister.casa'
+set service dns dynamic name cloudflare-ipv4 ip-version 'ipv4'
+set service dns dynamic name cloudflare-ipv4 protocol 'cloudflare'
+set service dns dynamic name cloudflare-ipv4 username 'token'
+set service dns dynamic name cloudflare-ipv4 password "${SECRET_CLOUDFLARE_API_TOKEN:?Set SECRET_CLOUDFLARE_API_TOKEN in secrets.sops.env}"
+set service dns dynamic name cloudflare-ipv4 zone 'cbannister.casa'
+set service dns dynamic name cloudflare-ipv4 ttl '300'
+
 # NTP server
 set service ntp listen-address 10.254.254.1
 delete service ntp allow-client
