@@ -41,7 +41,8 @@ set interfaces bonding bond0 vif 10 description 'SERVERS'
 set interfaces bonding bond0 vif 10 mtu 9000
 set interfaces bonding bond0 vif 10 ip adjust-mss 'clamp-mss-to-pmtu'
 
-set interfaces bonding bond0 vif 20 address '10.1.2.1/24'
+# The client gateway 10.1.2.1 is owned by VRRP (high-availability.sh).
+set interfaces bonding bond0 vif 20 address '10.1.2.5/32'
 set interfaces bonding bond0 vif 20 address 'fd74:f571:d3bd:20::1/64'
 set interfaces bonding bond0 vif 20 description 'TRUSTED'
 set interfaces bonding bond0 vif 20 mtu 1500
