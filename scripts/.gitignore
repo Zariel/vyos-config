@@ -6,6 +6,10 @@
 !*.sh
 !*.script
 
+!/patches/
+/patches/*
+!/patches/*.patch
+
 !/commit
 /commit/*
 !/commit/pre-hooks.d

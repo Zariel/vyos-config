@@ -1,0 +1,28 @@
+--- service_mdns_repeater.py
++++ service_mdns_repeater.py
+@@ -62,16 +62,21 @@
+     if 'interface' not in mdns or len(mdns['interface']) < 2:
+         raise ConfigError('mDNS repeater requires at least 2 configured interfaces!')
+ 
+-    # For mdns-repeater to work it is essential that the interfaces has
+-    # an IPv4 address assigned
++    # Avahi can repeat over a mixture of IPv4-only and IPv6-only links.
++    # Each interface needs an address in at least one enabled family.
+     for interface in mdns['interface']:
+         verify_interface_exists(interface)
+ 
+-        if mdns['ip_version'] in ['ipv4', 'both'] and AF_INET not in ifaddresses(interface):
++        families = ifaddresses(interface)
++        if mdns['ip_version'] == 'both' and not ({AF_INET, AF_INET6} & families.keys()):
++            raise ConfigError('mDNS repeater requires an IPv4 or IPv6 address '
++                              f'configured on interface "{interface}"')
++
++        if mdns['ip_version'] == 'ipv4' and AF_INET not in families:
+             raise ConfigError('mDNS repeater requires an IPv4 address to be '
+                                   f'configured on interface "{interface}"')
+ 
+-        if mdns['ip_version'] in ['ipv6', 'both'] and AF_INET6 not in ifaddresses(interface):
++        if mdns['ip_version'] == 'ipv6' and AF_INET6 not in families:
+             raise ConfigError('mDNS repeater requires an IPv6 address to be '
+                                   f'configured on interface "{interface}"')
+ 
