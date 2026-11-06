@@ -60,19 +60,6 @@ set interfaces bonding bond0 vif 40 mtu 1500
 set interfaces bonding bond0 vif 40 ip adjust-mss 'clamp-mss-to-pmtu'
 set interfaces bonding bond0 vif 40 ipv6 adjust-mss 'clamp-mss-to-pmtu'
 
-# set interfaces bonding bond0 vif 99 address 'dhcp'
-# set interfaces bonding bond0 vif 99 address 'dhcpv6'
-# set interfaces bonding bond0 vif 99 description 'WAN'
-# set interfaces bonding bond0 vif 99 mtu 1500
-# set interfaces bonding bond0 vif 99 ip adjust-mss 'clamp-mss-to-pmtu'
-# set interfaces bonding bond0 vif 99 ipv6 adjust-mss 'clamp-mss-to-pmtu'
-# set interfaces bonding bond0 vif 99 dhcpv6-options rapid-commit
-# set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 length 56
-# set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.20 sla-id 20
-# set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.20 address 1
-# set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.40 sla-id 40
-# set interfaces bonding bond0 vif 99 dhcpv6-options pd 1 interface bond0.40 address 1
-
 set interfaces bonding bond0 vif 100 address '10.1.0.1/24'
 set interfaces bonding bond0 vif 100 description 'management'
 set interfaces bonding bond0 vif 100 ip adjust-mss 'clamp-mss-to-pmtu'
@@ -103,12 +90,8 @@ set interfaces ethernet eth3 description 'WAN'
 set interfaces ethernet eth3 ipv6 address autoconf
 set interfaces ethernet eth3 dhcpv6-options rapid-commit
 set interfaces ethernet eth3 dhcpv6-options pd 1 length 56
-set interfaces ethernet eth3 dhcpv6-options pd 1 interface dum99 sla-id 99
-set interfaces ethernet eth3 dhcpv6-options pd 1 interface dum99 address 1
-set interfaces ethernet eth3 dhcpv6-options pd 1 interface wg01 sla-id 11
-set interfaces ethernet eth3 dhcpv6-options pd 1 interface wg01 address 1
-# set interfaces ethernet eth3 dhcpv6-options pd 1 interface bond0.40 sla-id 40
-# set interfaces ethernet eth3 dhcpv6-options pd 1 interface bond0.40 address 1
+set interfaces ethernet eth3 dhcpv6-options pd 1 interface dum99 sla-id 0
+set interfaces ethernet eth3 dhcpv6-options pd 1 interface dum99 address 0
 
 set interfaces ethernet eth3 disable-flow-control
 set interfaces ethernet eth3 hw-id 'a0:36:9f:a9:0d:3b'
