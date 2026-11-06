@@ -79,11 +79,6 @@ set firewall ipv4 name local-wan default-action 'accept'
 # From LOCAL to TRANSIT
 set firewall ipv4 name local-transit default-action 'drop'
 set firewall ipv4 name local-transit default-log
-# Allow OSPF from OSPF zone to local (router itself)
-set firewall ipv4 name local-transit rule 10 action accept
-set firewall ipv4 name local-transit rule 10 protocol ospf
-set firewall ipv4 name local-transit rule 10 description 'Allow OSPF'
-
 set firewall ipv4 name local-transit rule 15 action 'accept'
 set firewall ipv4 name local-transit rule 15 description 'Allow BGP to core'
 set firewall ipv4 name local-transit rule 15 protocol 'tcp'
