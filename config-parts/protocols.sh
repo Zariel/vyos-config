@@ -81,5 +81,5 @@ set protocols pim6 interface bond0.40 mld version 2
 set protocols pim6 interface bond0.40 mld interval 125
 # set protocols pim6 interface bond0.40 mld max-response-time 10000
 
-# Route to thread devices via otbr
-set protocols static route6 fd42:dfb5:24e4:1::/64 next-hop fd74:f571:d3bd:40:41d7:bb2e:6c90:a8f5
+# OTBR advertises its OMR route on VLAN 1100. Restricted RIO learning is
+# configured in matter-networks.sh; do not pin a static route to the old IoT IP.

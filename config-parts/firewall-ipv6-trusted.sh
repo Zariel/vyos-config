@@ -31,6 +31,5 @@ set firewall ipv6 name trusted-transit rule 53 destination port 'domain,domain-s
 set firewall ipv6 name trusted-transit rule 53 destination address 'fd74:f571:d3bd:53::53'
 set firewall ipv6 name trusted-transit rule 53 protocol 'tcp_udp'
 
-set firewall ipv6 name trusted-iot rule 100 action 'accept'
-set firewall ipv6 name trusted-iot rule 100 description 'Rule: accept_matter'
-set firewall ipv6 name trusted-iot rule 100 destination address-mask'fd42:dfb5:24e4:1::/64'
+# Trusted commissioning of Thread devices now uses trusted-thread in
+# matter-networks.sh rather than the former IoT next hop.
