@@ -5,6 +5,10 @@
 !.gitignore
 !*.sh
 !*.script
+!/spamhaus-drop.py
+!/tests/
+/tests/*
+!/tests/test_spamhaus_drop.py
 
 !/patches/
 /patches/*
@@ -19,3 +23,4 @@
 !/commit/post-hooks.d
 /commit/post-hooks.d/*
 !/commit/post-hooks.d/99-cake-ingress
+!/commit/post-hooks.d/95-spamhaus-drop

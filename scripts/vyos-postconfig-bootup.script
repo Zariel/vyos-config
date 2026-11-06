@@ -22,3 +22,6 @@ fi
 
 # VyOS 1.4 cannot express CAKE's ingress mode in its QoS configuration.
 /config/scripts/cake-ingress.sh
+
+# Restore WAN blocklists locally, even when the feed is unavailable at boot.
+sudo -n /config/scripts/spamhaus-drop.py --restore
