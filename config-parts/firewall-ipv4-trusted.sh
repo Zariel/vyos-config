@@ -76,6 +76,10 @@ set firewall ipv4 name trusted-containers rule 40 protocol 'tcp_udp'
 
 # From TRUSTED to WAN
 set firewall ipv4 name trusted-wan default-action 'accept'
+set firewall ipv4 name trusted-wan rule 100 action 'drop'
+set firewall ipv4 name trusted-wan rule 100 description 'block DoT'
+set firewall ipv4 name trusted-wan rule 100 protocol 'tcp_udp'
+set firewall ipv4 name trusted-wan rule 100 destination port 853
 
 # From TRUSTED to TRANSIT
 set firewall ipv4 name trusted-transit default-action 'drop'

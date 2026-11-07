@@ -2,6 +2,11 @@
 
 # From IOT to WAN
 set firewall ipv4 name iot-wan default-action 'accept'
+set firewall ipv4 name iot-wan rule 100 action 'drop'
+set firewall ipv4 name iot-wan rule 100 description 'block DoT'
+set firewall ipv4 name iot-wan rule 100 protocol 'tcp_udp'
+set firewall ipv4 name iot-wan rule 100 destination port 853
+
 
 # From IOT to GUEST
 set firewall ipv4 name iot-guest default-action 'drop'
