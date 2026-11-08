@@ -163,3 +163,10 @@ set firewall ipv4 name transit-lan rule 101 destination port 9100
 set firewall ipv4 name transit-lan rule 101 source group network-group POD_NETS
 set firewall ipv4 name transit-lan rule 101 protocol tcp
 set firewall ipv4 name transit-lan rule 101 destination group address-group node_exporter_targets
+
+set firewall ipv4 name transit-lan rule 110 action accept
+set firewall ipv4 name transit-lan rule 110 description 'Allow PDU certificate deployment'
+set firewall ipv4 name transit-lan rule 110 source group network-group POD_NETS
+set firewall ipv4 name transit-lan rule 110 destination address '10.1.0.31'
+set firewall ipv4 name transit-lan rule 110 destination port '443'
+set firewall ipv4 name transit-lan rule 110 protocol tcp
