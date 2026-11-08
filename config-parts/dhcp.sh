@@ -73,8 +73,8 @@ set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mappin
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping unifi-os ip-address '10.1.0.23'
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping unifi-os mac-address 'bc:24:11:b4:9c:2c'
 
-set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pdu01 ip-address '10.1.0.31'
-set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pdu01 mac-address '00:0d:5d:09:27:b7'
+set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pdu ip-address '10.1.0.31'
+set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pdu mac-address '00:0d:5d:09:27:b7'
 
 # pikvm, static IP
 set service dhcp-server shared-network-name LAN subnet 10.1.0.0/24 static-mapping pikvm ip-address '10.1.0.100'
