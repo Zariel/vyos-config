@@ -130,6 +130,13 @@ set firewall ipv4 name transit-servers rule 120 destination group port-group PRO
 set firewall ipv4 name transit-servers rule 120 destination group address-group PROXMOX_HOSTS
 set firewall ipv4 name transit-servers rule 120 protocol tcp
 
+set firewall ipv4 name transit-servers rule 130 action 'accept'
+set firewall ipv4 name transit-servers rule 130 description 'Allow pods to deploy PVE IPMI certificates'
+set firewall ipv4 name transit-servers rule 130 source group network-group 'POD_NETS'
+set firewall ipv4 name transit-servers rule 130 destination address '10.1.1.30'
+set firewall ipv4 name transit-servers rule 130 destination port '443'
+set firewall ipv4 name transit-servers rule 130 protocol 'tcp'
+
 set firewall ipv4 name transit-servers rule 200 action accept
 set firewall ipv4 name transit-servers rule 200 description 'allow k8s access to ollama'
 set firewall ipv4 name transit-servers rule 200 destination port 11434
