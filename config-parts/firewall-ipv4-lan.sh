@@ -63,7 +63,7 @@ set firewall ipv4 name lan-trusted default-log
 set firewall ipv4 name lan-transit rule 10 action accept
 set firewall ipv4 name lan-transit rule 10 description 'Allow access to DNS'
 set firewall ipv4 name lan-transit rule 10 destination port '53'
-set firewall ipv4 name lan-transit rule 10 destination address '172.53.53.53'
+set firewall ipv4 name lan-transit rule 10 destination group address-group 'DNS_VIPS'
 set firewall ipv4 name lan-transit rule 10 protocol 'tcp_udp'
 
 set firewall ipv4 name lan-trusted rule 100 action 'accept'

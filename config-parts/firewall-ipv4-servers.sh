@@ -99,7 +99,7 @@ set firewall ipv4 name servers-transit default-action 'drop'
 set firewall ipv4 name servers-transit rule 10 action accept
 set firewall ipv4 name servers-transit rule 10 description 'Allow access to DNS'
 set firewall ipv4 name servers-transit rule 10 destination port '53'
-set firewall ipv4 name servers-transit rule 10 destination address '172.53.53.53'
+set firewall ipv4 name servers-transit rule 10 destination group address-group 'DNS_VIPS'
 set firewall ipv4 name servers-transit rule 10 protocol 'tcp_udp'
 
 set firewall ipv4 name servers-transit rule 15 action accept

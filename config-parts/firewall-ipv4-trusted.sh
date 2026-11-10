@@ -87,7 +87,7 @@ set firewall ipv4 name trusted-transit rule 15 action accept
 set firewall ipv4 name trusted-transit rule 15 description 'Allow ICMP'
 set firewall ipv4 name trusted-transit rule 15 protocol icmp
 set firewall ipv4 name trusted-transit rule 20 action accept
-set firewall ipv4 name trusted-transit rule 20 destination address 172.53.53.53
+set firewall ipv4 name trusted-transit rule 20 destination group address-group 'DNS_VIPS'
 set firewall ipv4 name trusted-transit rule 20 description 'Trusted to dns VIP'
 set firewall ipv4 name trusted-transit rule 20 protocol tcp_udp
 set firewall ipv4 name trusted-transit rule 20 destination port 53

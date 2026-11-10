@@ -25,9 +25,11 @@ will remain in backup until an intentional handover.
 
 The VIP is placed directly on `bond0.20`. Existing trusted-zone and DNS-redirect
 interface matches remain applicable. Gratuitous ARP updates clients when the
-VIP changes owners. DHCP still advertises `.1` and DNS `172.53.53.53`; the
-configured lease is eight hours, with each client's remaining lifetime applying
-during an outage. DHCP is not replicated to the backup VM.
+VIP changes owners. DHCP advertises `.1` and DNS `10.254.253.53`; the legacy DNS
+VIP `172.53.53.53` remains allowed during migration. Forced DNS uses the new VIP
+and exempts direct requests to either address. The configured lease is eight
+hours, with each client's remaining lifetime applying during an outage. DHCP
+is not replicated to the backup VM.
 
 ## Routing ownership
 

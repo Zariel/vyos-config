@@ -6,29 +6,29 @@ set nat source rule 100 destination address '0.0.0.0/0'
 set nat source rule 100 outbound-interface name 'eth3'
 set nat source rule 100 translation address 'masquerade'
 
-# Force DNS
+# Force DNS to the new VIP, preserving direct access to both DNS VIPs.
 set nat destination rule 200 description 'Force DNS for IoT'
-set nat destination rule 200 destination address '!172.53.53.53'
+set nat destination rule 200 destination group address-group '!DNS_VIPS'
 set nat destination rule 200 destination port '53'
 set nat destination rule 200 inbound-interface name 'bond0.40'
 set nat destination rule 200 protocol 'tcp_udp'
-set nat destination rule 200 translation address '172.53.53.53'
+set nat destination rule 200 translation address '10.254.253.53'
 set nat destination rule 200 translation port '53'
 
 set nat destination rule 201 description 'Force DNS for trusted'
-set nat destination rule 201 destination address '!172.53.53.53'
+set nat destination rule 201 destination group address-group '!DNS_VIPS'
 set nat destination rule 201 destination port '53'
 set nat destination rule 201 inbound-interface name 'bond0.20'
 set nat destination rule 201 protocol 'tcp_udp'
-set nat destination rule 201 translation address '172.53.53.53'
+set nat destination rule 201 translation address '10.254.253.53'
 set nat destination rule 201 translation port '53'
 
 set nat destination rule 202 description 'Force DNS for wireguard'
-set nat destination rule 202 destination address '!172.53.53.53'
+set nat destination rule 202 destination group address-group '!DNS_VIPS'
 set nat destination rule 202 destination port '53'
 set nat destination rule 202 inbound-interface name 'wg01'
 set nat destination rule 202 protocol 'tcp_udp'
-set nat destination rule 202 translation address '172.53.53.53'
+set nat destination rule 202 translation address '10.254.253.53'
 set nat destination rule 202 translation port '53'
 
 # Force NTP
