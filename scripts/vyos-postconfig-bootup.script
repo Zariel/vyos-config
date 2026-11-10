@@ -20,6 +20,9 @@ END
   chown vyos:users /home/vyos/.bash_aliases
 fi
 
+# Restore the IPv4 TCP IP-options filter until the kernel is patched.
+/config/scripts/commit/post-hooks.d/cve-2026-98432
+
 # VyOS 1.4 cannot express CAKE's ingress mode in its QoS configuration.
 /config/scripts/cake-ingress.sh
 

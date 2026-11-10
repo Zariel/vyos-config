@@ -24,3 +24,4 @@
 /commit/post-hooks.d/*
 !/commit/post-hooks.d/99-cake-ingress
 !/commit/post-hooks.d/95-spamhaus-drop
+!/commit/post-hooks.d/cve-2026-98432
