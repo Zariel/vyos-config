@@ -3,7 +3,7 @@
 set system domain-name 'cbannister.casa'
 set system host-name 'gateway'
 
-set system static-host-mapping host-name gateway inet '10.254.254.65'
+set system static-host-mapping host-name gateway inet '10.254.254.1'
 
 # set system ipv6 disable-forwarding
 

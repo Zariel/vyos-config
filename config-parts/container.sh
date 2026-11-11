@@ -16,6 +16,7 @@ set container name haproxy-k8s-api volume config destination '/usr/local/etc/hap
 set container name haproxy-k8s-api volume config mode 'ro'
 
 # node-exporter
+set container name node-exporter arguments '--web.listen-address=10.254.254.1:9100'
 set container name node-exporter environment procfs value '/host/proc'
 set container name node-exporter environment rootfs value '/host/rootfs'
 set container name node-exporter environment sysfs value '/host/sys'
