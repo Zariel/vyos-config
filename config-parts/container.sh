@@ -5,22 +5,12 @@ set container network containers description 'Network for VyOS containers'
 set container network containers prefix '10.5.0.0/24'
 set container network containers prefix 'fd74:f571:d3bd:1005::/64'
 
-# haproxy-k8s-api
-set container name haproxy-k8s-api image 'docker.io/library/haproxy:2.9.6'
-set container name haproxy-k8s-api memory '0'
-set container name haproxy-k8s-api network containers address '10.5.0.2'
-set container name haproxy-k8s-api restart 'on-failure'
-set container name haproxy-k8s-api shared-memory '0'
-set container name haproxy-k8s-api volume config source '/config/containers/haproxy/config/haproxy.cfg'
-set container name haproxy-k8s-api volume config destination '/usr/local/etc/haproxy/haproxy.cfg'
-set container name haproxy-k8s-api volume config mode 'ro'
-
 # node-exporter
 set container name node-exporter arguments '--web.listen-address=10.254.254.1:9100'
 set container name node-exporter environment procfs value '/host/proc'
 set container name node-exporter environment rootfs value '/host/rootfs'
 set container name node-exporter environment sysfs value '/host/sys'
-set container name node-exporter image 'quay.io/prometheus/node-exporter:v1.9.1'
+set container name node-exporter image 'quay.io/prometheus/node-exporter:v1.12.1'
 set container name node-exporter memory '0'
 set container name node-exporter allow-host-networks
 set container name node-exporter restart 'on-failure'
@@ -35,17 +25,10 @@ set container name node-exporter volume sysfs source '/sys'
 set container name node-exporter volume sysfs destination '/host/sys'
 set container name node-exporter volume sysfs mode 'ro'
 
-# speedtest-exporter
-set container name speedtest-exporter image 'ghcr.io/miguelndecarvalho/speedtest-exporter:v3.5.4'
-set container name speedtest-exporter memory '0'
-set container name speedtest-exporter allow-host-networks
-set container name speedtest-exporter restart 'on-failure'
-set container name speedtest-exporter shared-memory '0'
-
 # matchbox
 set container name matchbox arguments '-address=0.0.0.0:80 -log-level=debug'
 set container name matchbox cap-add 'net-bind-service'
-set container name matchbox image 'quay.io/poseidon/matchbox:v0.10.0'
+set container name matchbox image 'quay.io/poseidon/matchbox:v0.11.0'
 set container name matchbox memory '0'
 set container name matchbox network containers address '10.5.0.8'
 set container name matchbox shared-memory '0'

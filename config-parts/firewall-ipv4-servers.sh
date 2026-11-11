@@ -50,11 +50,6 @@ set firewall ipv4 name servers-local rule 101 description 'Rule: accept_node_exp
 set firewall ipv4 name servers-local rule 101 destination port '9100'
 set firewall ipv4 name servers-local rule 101 protocol 'tcp'
 set firewall ipv4 name servers-local rule 101 source group address-group 'k8s_nodes'
-set firewall ipv4 name servers-local rule 110 action 'accept'
-set firewall ipv4 name servers-local rule 110 description 'Rule: accept_speedtest_exporter_from_k8s_nodes'
-set firewall ipv4 name servers-local rule 110 destination port '9798'
-set firewall ipv4 name servers-local rule 110 protocol 'tcp'
-set firewall ipv4 name servers-local rule 110 source group network-group 'k8s_pods'
 
 # From SERVERS to CONTAINERS
 set firewall ipv4 name servers-containers default-action 'accept'
