@@ -3,6 +3,12 @@
 set system domain-name 'cbannister.casa'
 set system host-name 'gateway'
 
+# Keep only the helpers used by internal NFS/RPC and PXE/TFTP services.
+# VyOS's default configuration enables additional protocol helpers.
+delete system conntrack modules
+set system conntrack modules nfs
+set system conntrack modules tftp
+
 set system static-host-mapping host-name gateway inet '10.254.254.1'
 
 # set system ipv6 disable-forwarding
