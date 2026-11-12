@@ -97,6 +97,7 @@ set interfaces ethernet eth3 dhcpv6-options pd 1 interface dum99 address 0
 set interfaces ethernet eth3 disable-flow-control
 set interfaces ethernet eth3 hw-id 'a0:36:9f:a9:0d:3b'
 set interfaces ethernet eth3 ip adjust-mss 'clamp-mss-to-pmtu'
+set interfaces ethernet eth3 ip source-validation 'loose'
 set interfaces ethernet eth3 ipv6 adjust-mss 'clamp-mss-to-pmtu'
 set interfaces ethernet eth3 ring-buffer rx '1024'
 set interfaces ethernet eth3 ring-buffer tx '1024'
