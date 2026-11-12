@@ -4,7 +4,8 @@
 set firewall global-options state-policy established action 'accept'
 set firewall global-options state-policy related action 'accept'
 set firewall global-options state-policy invalid action 'drop'
-set firewall global-options state-policy invalid log
+# Invalid packets are dropped globally without per-packet logging. WAN policy
+# drops are sampled in firewall-zones.sh to keep floods from overwhelming logs.
 set firewall global-options all-ping enable
 set firewall global-options broadcast-ping disable
 

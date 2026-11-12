@@ -28,7 +28,6 @@ for to in guest iot lan local servers containers trusted transit wan; do
         set firewall ipv4 name $from-$to rule 999 action 'drop'
         set firewall ipv4 name $from-$to rule 999 description 'Rule: drop_invalid'
         set firewall ipv4 name $from-$to rule 999 state invalid
-        set firewall ipv4 name $from-$to rule 999 log
 
         set firewall ipv6 name $from-$to description "From ${from^^} to ${to^^}"
         set firewall ipv6 name $from-$to rule 1 action 'accept'
@@ -38,7 +37,21 @@ for to in guest iot lan local servers containers trusted transit wan; do
         set firewall ipv6 name $from-$to rule 999 action 'drop'
         set firewall ipv6 name $from-$to rule 999 description 'Rule: drop_invalid'
         set firewall ipv6 name $from-$to rule 999 state invalid
-        set firewall ipv6 name $from-$to rule 999 log
+        if [[ "$from" == wan ]]; then
+            # Only logging is limited: packets above the sampling rate fall
+            # through to the unconditional default drop, with counters intact.
+            for family in ipv4 ipv6; do
+                set firewall $family name $from-$to default-action 'drop'
+                set firewall $family name $from-$to rule 1000 action 'drop'
+                set firewall $family name $from-$to rule 1000 description 'Sample WAN policy drops'
+                set firewall $family name $from-$to rule 1000 limit rate '5/minute'
+                set firewall $family name $from-$to rule 1000 limit burst '10'
+                set firewall $family name $from-$to rule 1000 log
+            done
+        else
+            set firewall ipv4 name $from-$to rule 999 log
+            set firewall ipv6 name $from-$to rule 999 log
+        fi
   done
 done
 

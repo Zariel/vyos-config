@@ -2,19 +2,25 @@
 
 # WAN to LOCAL
 set firewall ipv6 name wan-local default-action 'drop'
-set firewall ipv6 name wan-local default-log
+# Neighbor discovery must originate on the WAN link. Only router adverts need
+# a link-local source; solicitations may use :: for duplicate-address detection.
 set firewall ipv6 name wan-local rule 24 action accept
 set firewall ipv6 name wan-local rule 24 protocol icmpv6
 set firewall ipv6 name wan-local rule 24 icmpv6 type-name nd-router-advert
+set firewall ipv6 name wan-local rule 24 source address 'fe80::/10'
+set firewall ipv6 name wan-local rule 24 hop-limit eq '255'
 set firewall ipv6 name wan-local rule 25 action accept
 set firewall ipv6 name wan-local rule 25 protocol icmpv6
 set firewall ipv6 name wan-local rule 25 icmpv6 type-name nd-router-solicit
+set firewall ipv6 name wan-local rule 25 hop-limit eq '255'
 set firewall ipv6 name wan-local rule 26 action accept
 set firewall ipv6 name wan-local rule 26 protocol icmpv6
 set firewall ipv6 name wan-local rule 26 icmpv6 type-name nd-neighbor-solicit
+set firewall ipv6 name wan-local rule 26 hop-limit eq '255'
 set firewall ipv6 name wan-local rule 27 action accept
 set firewall ipv6 name wan-local rule 27 protocol icmpv6
 set firewall ipv6 name wan-local rule 27 icmpv6 type-name nd-neighbor-advert
+set firewall ipv6 name wan-local rule 27 hop-limit eq '255'
 set firewall ipv6 name wan-local rule 28 action 'accept'
 set firewall ipv6 name wan-local rule 28 description 'WAN multicast membership queries'
 set firewall ipv6 name wan-local rule 28 protocol 'icmpv6'
