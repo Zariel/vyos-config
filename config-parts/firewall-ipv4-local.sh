@@ -79,7 +79,55 @@ set firewall ipv4 name local-trusted rule 400 protocol 'udp'
 set firewall ipv4 name local-trusted rule 400 action 'accept'
 
 # From LOCAL to WAN
-set firewall ipv4 name local-wan default-action 'accept'
+set firewall ipv4 name local-wan default-action 'drop'
+set firewall ipv4 name local-wan default-log
+
+# Allow both DHCP discovery broadcasts and unicast lease renewals.
+set firewall ipv4 name local-wan rule 10 action 'accept'
+set firewall ipv4 name local-wan rule 10 description 'WAN DHCP client'
+set firewall ipv4 name local-wan rule 10 protocol 'udp'
+set firewall ipv4 name local-wan rule 10 source port '68'
+set firewall ipv4 name local-wan rule 10 destination port '67'
+
+# Other services below may only use unicast destinations.
+set firewall ipv4 name local-wan rule 20 action 'drop'
+set firewall ipv4 name local-wan rule 20 description 'Block WAN multicast'
+set firewall ipv4 name local-wan rule 20 destination address '224.0.0.0/4'
+set firewall ipv4 name local-wan rule 21 action 'drop'
+set firewall ipv4 name local-wan rule 21 description 'Block non-DHCP WAN broadcast'
+set firewall ipv4 name local-wan rule 21 destination address '255.255.255.255'
+
+set firewall ipv4 name local-wan rule 30 action 'accept'
+set firewall ipv4 name local-wan rule 30 description 'DNS to configured resolver'
+set firewall ipv4 name local-wan rule 30 protocol 'tcp_udp'
+set firewall ipv4 name local-wan rule 30 destination address '1.1.1.1'
+set firewall ipv4 name local-wan rule 30 destination port '53'
+
+# Pool addresses and HTTPS CDN endpoints change; restrict their service ports.
+set firewall ipv4 name local-wan rule 40 action 'accept'
+set firewall ipv4 name local-wan rule 40 description 'NTP client'
+set firewall ipv4 name local-wan rule 40 protocol 'udp'
+set firewall ipv4 name local-wan rule 40 destination port '123'
+set firewall ipv4 name local-wan rule 50 action 'accept'
+set firewall ipv4 name local-wan rule 50 description 'HTTPS maintenance and DDNS'
+set firewall ipv4 name local-wan rule 50 protocol 'tcp'
+set firewall ipv4 name local-wan rule 50 destination port '443'
+
+# Roaming WireGuard peers can use arbitrary destination ports.
+set firewall ipv4 name local-wan rule 60 action 'accept'
+set firewall ipv4 name local-wan rule 60 description 'WireGuard router socket'
+set firewall ipv4 name local-wan rule 60 protocol 'udp'
+set firewall ipv4 name local-wan rule 60 source port '51820'
+
+icmp_rule=70
+for icmp_type in echo-request echo-reply destination-unreachable time-exceeded parameter-problem; do
+    set firewall ipv4 name local-wan rule "$icmp_rule" action 'accept'
+    set firewall ipv4 name local-wan rule "$icmp_rule" description "ICMP $icmp_type"
+    set firewall ipv4 name local-wan rule "$icmp_rule" protocol 'icmp'
+    set firewall ipv4 name local-wan rule "$icmp_rule" icmp type-name "$icmp_type"
+    icmp_rule=$((icmp_rule + 1))
+done
+unset icmp_rule icmp_type
 
 # From LOCAL to TRANSIT
 set firewall ipv4 name local-transit default-action 'drop'

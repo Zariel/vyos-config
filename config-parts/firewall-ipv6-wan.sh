@@ -15,6 +15,13 @@ set firewall ipv6 name wan-local rule 26 icmpv6 type-name nd-neighbor-solicit
 set firewall ipv6 name wan-local rule 27 action accept
 set firewall ipv6 name wan-local rule 27 protocol icmpv6
 set firewall ipv6 name wan-local rule 27 icmpv6 type-name nd-neighbor-advert
+set firewall ipv6 name wan-local rule 28 action 'accept'
+set firewall ipv6 name wan-local rule 28 description 'WAN multicast membership queries'
+set firewall ipv6 name wan-local rule 28 protocol 'icmpv6'
+set firewall ipv6 name wan-local rule 28 icmpv6 type-name 'mld-listener-query'
+set firewall ipv6 name wan-local rule 28 source address 'fe80::/10'
+set firewall ipv6 name wan-local rule 28 destination address 'ff02::/16'
+set firewall ipv6 name wan-local rule 28 hop-limit eq '1'
 set firewall ipv6 name wan-local rule 30 description 'Rule: allow_dhcpv6'
 set firewall ipv6 name wan-local rule 30 action 'accept'
 set firewall ipv6 name wan-local rule 30 destination port '546'
