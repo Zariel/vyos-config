@@ -72,13 +72,6 @@ set nat destination rule 304 protocol 'udp'
 set nat destination rule 304 translation address '10.254.254.1'
 set nat destination rule 304 translation port '123'
 
-set nat destination rule 400 description 'Forward port for Roon ARC'
-set nat destination rule 400 destination group port-group 'roon_arc_ports'
-set nat destination rule 400 inbound-interface name 'eth3'
-set nat destination rule 400 protocol 'tcp'
-set nat destination rule 400 translation address '10.1.2.60'
-set nat destination rule 400 translation port '59453'
-
 set nat destination rule 401 description 'Forward port for qbittorrent'
 set nat destination rule 401 destination port '50413'
 set nat destination rule 401 inbound-interface name 'eth3'
