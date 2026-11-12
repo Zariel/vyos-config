@@ -9,8 +9,8 @@ set firewall ipv6 name iot-local default-log
 set firewall ipv6 name iot-local rule 110 action 'accept'
 set firewall ipv6 name iot-local rule 110 description 'Rule: accept_mdns'
 set firewall ipv6 name iot-local rule 110 destination port 'mdns'
+set firewall ipv6 name iot-local rule 110 destination address 'ff02::fb'
 set firewall ipv6 name iot-local rule 110 protocol 'udp'
-set firewall ipv6 name iot-local rule 110 source port 'mdns'
 
 # From IOT to CONTAINERS
 set firewall ipv6 name iot-containers default-action 'accept'

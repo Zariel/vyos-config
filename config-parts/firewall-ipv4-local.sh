@@ -1,5 +1,16 @@
 #!/bin/vbash
 
+# DHCP replies can be unicast or broadcast and do not always match the
+# client's conntrack entry. Permit only server-to-client UDP on served LANs.
+for dhcp_zone in guest iot lan servers trusted; do
+    set firewall ipv4 name local-$dhcp_zone rule 50 action 'accept'
+    set firewall ipv4 name local-$dhcp_zone rule 50 description 'DHCP server replies'
+    set firewall ipv4 name local-$dhcp_zone rule 50 protocol 'udp'
+    set firewall ipv4 name local-$dhcp_zone rule 50 source port '67'
+    set firewall ipv4 name local-$dhcp_zone rule 50 destination port '68'
+done
+unset dhcp_zone
+
 # From LOCAL to GUEST
 set firewall ipv4 name local-guest default-action 'drop'
 set firewall ipv4 name local-guest default-log
@@ -13,8 +24,9 @@ set firewall ipv4 name local-iot rule 100 protocol 2
 set firewall ipv4 name local-iot rule 110 action 'accept'
 set firewall ipv4 name local-iot rule 110 description 'Rule: accept_mdns'
 set firewall ipv4 name local-iot rule 110 destination port 'mdns'
+set firewall ipv4 name local-iot rule 110 destination address '224.0.0.251'
 set firewall ipv4 name local-iot rule 110 protocol 'udp'
-set firewall ipv4 name local-iot rule 110 source port 'mdns'
+# Avahi reflects legacy queries using an ephemeral source port.
 
 # From LOCAL to LAN
 set firewall ipv4 name local-lan default-action 'drop'
@@ -71,8 +83,8 @@ set firewall ipv4 name local-trusted rule 100 protocol '2'
 set firewall ipv4 name local-trusted rule 110 action 'accept'
 set firewall ipv4 name local-trusted rule 110 description 'Rule: accept_mdns'
 set firewall ipv4 name local-trusted rule 110 destination port 'mdns'
+set firewall ipv4 name local-trusted rule 110 destination address '224.0.0.251'
 set firewall ipv4 name local-trusted rule 110 protocol 'udp'
-set firewall ipv4 name local-trusted rule 110 source port 'mdns'
 set firewall ipv4 name local-trusted rule 400 description 'Rule: accept_wireguard'
 set firewall ipv4 name local-trusted rule 400 source port '51820'
 set firewall ipv4 name local-trusted rule 400 protocol 'udp'

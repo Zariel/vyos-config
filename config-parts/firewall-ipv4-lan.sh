@@ -11,6 +11,22 @@ set firewall ipv4 name lan-iot default-log
 # From LAN to LOCAL
 set firewall ipv4 name lan-local default-action 'drop'
 set firewall ipv4 name lan-local default-log
+
+# Permit gateway diagnostics and ICMP errors from the management subnet.
+# Established replies are already accepted; redirects remain default-denied.
+icmp_rule=20
+for icmp_type in echo-request destination-unreachable time-exceeded parameter-problem; do
+    set firewall ipv4 name lan-local rule "$icmp_rule" action 'accept'
+    set firewall ipv4 name lan-local rule "$icmp_rule" description "Management ICMP $icmp_type"
+    set firewall ipv4 name lan-local rule "$icmp_rule" protocol 'icmp'
+    set firewall ipv4 name lan-local rule "$icmp_rule" source address '10.1.0.0/24'
+    set firewall ipv4 name lan-local rule "$icmp_rule" icmp type-name "$icmp_type"
+    icmp_rule=$((icmp_rule + 1))
+done
+unset icmp_rule icmp_type
+set firewall ipv4 name lan-local rule 20 limit rate '10/second'
+set firewall ipv4 name lan-local rule 20 limit burst '20'
+
 set firewall ipv4 name lan-local rule 50 action 'accept'
 set firewall ipv4 name lan-local rule 50 description 'Rule: accept_dhcp'
 set firewall ipv4 name lan-local rule 50 destination port '67,68'

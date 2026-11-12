@@ -159,7 +159,7 @@ for matter_zone in thread matter; do
         set firewall ipv6 name "${matter_policy}" rule 110 action 'accept'
         set firewall ipv6 name "${matter_policy}" rule 110 description 'Allow reflected mDNS'
         set firewall ipv6 name "${matter_policy}" rule 110 protocol 'udp'
-        set firewall ipv6 name "${matter_policy}" rule 110 source port '5353'
         set firewall ipv6 name "${matter_policy}" rule 110 destination port '5353'
+        set firewall ipv6 name "${matter_policy}" rule 110 destination address 'ff02::fb'
     done
 done
